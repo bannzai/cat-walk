@@ -1,0 +1,677 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1187A701630AA5655E3E0BE8 /* CatWalkCore in Frameworks */ = {isa = PBXBuildFile; productRef = 26E5DC07BEB47E7497B13848 /* CatWalkCore */; };
+		463747B73912E35F06600C5C /* CatWalkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1132E636363475990873537 /* CatWalkApp.swift */; };
+		49E6A9D38C189C324A295E48 /* CatWalkSmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA80CEFFD24389831E5438B /* CatWalkSmokeTests.swift */; };
+		506A925872C1F8DE8E85BEB1 /* CatWalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A8E4261743AEC774810F1 /* CatWalkView.swift */; };
+		55594BFE457263B2262E9ABF /* CatOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80125F2AB09F47A99480D78C /* CatOverlayView.swift */; };
+		55FC660CE848F56C0D54CD12 /* CatWalkCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7DDF673C97F6FCF7537AEAE0 /* CatWalkCore */; };
+		8CE7A04241E798298C6761E0 /* CatWalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2E867212BCD08D0479F12 /* CatWalkView.swift */; };
+		8E25106C16BBE46C67BC1285 /* CatWalkCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6725508631B5EE03A65A0DEC /* CatWalkCore */; };
+		C0D0B2D6BB7798FD8D20B2E7 /* CatWalkCore in Frameworks */ = {isa = PBXBuildFile; productRef = B50E248FF3D37BBF2E63A5A8 /* CatWalkCore */; };
+		E7F8F43763C20600ADBD88D2 /* CatWalkWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E71F638FA9A9CCA9CFA038 /* CatWalkWatchApp.swift */; };
+		EA395DB040FAB23B2DAD83AE /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82958EA9A6CBC24DC77CC217 /* OverlayWindow.swift */; };
+		FD93A6017896BC738907E90D /* CatWalkiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D520B940CB592C8D392E427 /* CatWalkiOSApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		41B6742877DA387CF622D019 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FBB9F2A7548847717E2D9975 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F8ABA423424FEF4203B286E1;
+			remoteInfo = CatWalk;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0AAEF2B2A4624035055905F3 /* CatWalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CatWalk.entitlements; sourceTree = "<group>"; };
+		66E71F638FA9A9CCA9CFA038 /* CatWalkWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkWatchApp.swift; sourceTree = "<group>"; };
+		687FFEDADDD84BAAFA8CCA2F /* CatWalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatWalkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D520B940CB592C8D392E427 /* CatWalkiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkiOSApp.swift; sourceTree = "<group>"; };
+		79B236955F893747019804FF /* CatWalkWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatWalkWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F0D49065C63E6E2A7A4B081 /* CatWalkiOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CatWalkiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		80125F2AB09F47A99480D78C /* CatOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatOverlayView.swift; sourceTree = "<group>"; };
+		82958EA9A6CBC24DC77CC217 /* OverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindow.swift; sourceTree = "<group>"; };
+		8829DAC5A6063AA065840B3E /* CatWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DA80CEFFD24389831E5438B /* CatWalkSmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkSmokeTests.swift; sourceTree = "<group>"; };
+		C1132E636363475990873537 /* CatWalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkApp.swift; sourceTree = "<group>"; };
+		E7BC8F439B0225873744DA2F /* CatWalkCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CatWalkCore; path = CatWalkCore; sourceTree = SOURCE_ROOT; };
+		EC6A8E4261743AEC774810F1 /* CatWalkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkView.swift; sourceTree = "<group>"; };
+		EDB2E867212BCD08D0479F12 /* CatWalkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		16D490128F7791534E19D012 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E25106C16BBE46C67BC1285 /* CatWalkCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45F0748C392790F99C785C8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1187A701630AA5655E3E0BE8 /* CatWalkCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD2CCE6EB5AFAF76CF0CBA2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55FC660CE848F56C0D54CD12 /* CatWalkCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5DF65706BB472028CF46E7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0D0B2D6BB7798FD8D20B2E7 /* CatWalkCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		035B387EE5E224315C6E5A2B /* CatWalk */ = {
+			isa = PBXGroup;
+			children = (
+				80125F2AB09F47A99480D78C /* CatOverlayView.swift */,
+				0AAEF2B2A4624035055905F3 /* CatWalk.entitlements */,
+				C1132E636363475990873537 /* CatWalkApp.swift */,
+				82958EA9A6CBC24DC77CC217 /* OverlayWindow.swift */,
+			);
+			path = CatWalk;
+			sourceTree = "<group>";
+		};
+		29EF81278407E0E098E87DB0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8829DAC5A6063AA065840B3E /* CatWalk.app */,
+				7F0D49065C63E6E2A7A4B081 /* CatWalkiOS.app */,
+				687FFEDADDD84BAAFA8CCA2F /* CatWalkTests.xctest */,
+				79B236955F893747019804FF /* CatWalkWatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		313415DEDA075532F34138BC /* CatWalkWatch */ = {
+			isa = PBXGroup;
+			children = (
+				EC6A8E4261743AEC774810F1 /* CatWalkView.swift */,
+				66E71F638FA9A9CCA9CFA038 /* CatWalkWatchApp.swift */,
+			);
+			path = CatWalkWatch;
+			sourceTree = "<group>";
+		};
+		5471F07E45EDF8166A99DCE8 /* CatWalkTests */ = {
+			isa = PBXGroup;
+			children = (
+				8DA80CEFFD24389831E5438B /* CatWalkSmokeTests.swift */,
+			);
+			path = CatWalkTests;
+			sourceTree = "<group>";
+		};
+		8FDD8F7BBEC74307784A0D33 = {
+			isa = PBXGroup;
+			children = (
+				035B387EE5E224315C6E5A2B /* CatWalk */,
+				D2D4DC5C1494846617AECCDE /* CatWalkiOS */,
+				5471F07E45EDF8166A99DCE8 /* CatWalkTests */,
+				313415DEDA075532F34138BC /* CatWalkWatch */,
+				9182DFB51509B6AC045BBD63 /* Packages */,
+				29EF81278407E0E098E87DB0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9182DFB51509B6AC045BBD63 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				E7BC8F439B0225873744DA2F /* CatWalkCore */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		D2D4DC5C1494846617AECCDE /* CatWalkiOS */ = {
+			isa = PBXGroup;
+			children = (
+				6D520B940CB592C8D392E427 /* CatWalkiOSApp.swift */,
+				EDB2E867212BCD08D0479F12 /* CatWalkView.swift */,
+			);
+			path = CatWalkiOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		229CEE9D3CA87F5DF99FA064 /* CatWalkiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E1DAC1506AADC47F22DF186 /* Build configuration list for PBXNativeTarget "CatWalkiOS" */;
+			buildPhases = (
+				7CE93E16D402C263B1D233A0 /* Sources */,
+				E5DF65706BB472028CF46E7A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CatWalkiOS;
+			packageProductDependencies = (
+				B50E248FF3D37BBF2E63A5A8 /* CatWalkCore */,
+			);
+			productName = CatWalkiOS;
+			productReference = 7F0D49065C63E6E2A7A4B081 /* CatWalkiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4B397D60D09443F218BBD533 /* CatWalkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39FC45F9B95C5662305FF877 /* Build configuration list for PBXNativeTarget "CatWalkTests" */;
+			buildPhases = (
+				E8F08339E78D371998E366B7 /* Sources */,
+				45F0748C392790F99C785C8D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				080429BC40897E1D0090382D /* PBXTargetDependency */,
+			);
+			name = CatWalkTests;
+			packageProductDependencies = (
+				26E5DC07BEB47E7497B13848 /* CatWalkCore */,
+			);
+			productName = CatWalkTests;
+			productReference = 687FFEDADDD84BAAFA8CCA2F /* CatWalkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B68B2C4086CDA75C60771D23 /* CatWalkWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F9FC7CD9BA98DF73328DE0D /* Build configuration list for PBXNativeTarget "CatWalkWatch" */;
+			buildPhases = (
+				9D8530940A2E927F868E0229 /* Sources */,
+				CD2CCE6EB5AFAF76CF0CBA2B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CatWalkWatch;
+			packageProductDependencies = (
+				7DDF673C97F6FCF7537AEAE0 /* CatWalkCore */,
+			);
+			productName = CatWalkWatch;
+			productReference = 79B236955F893747019804FF /* CatWalkWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F8ABA423424FEF4203B286E1 /* CatWalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 337514CD83798774B257E1AA /* Build configuration list for PBXNativeTarget "CatWalk" */;
+			buildPhases = (
+				7EB9F318439B1368B337DB84 /* Sources */,
+				16D490128F7791534E19D012 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CatWalk;
+			packageProductDependencies = (
+				6725508631B5EE03A65A0DEC /* CatWalkCore */,
+			);
+			productName = CatWalk;
+			productReference = 8829DAC5A6063AA065840B3E /* CatWalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FBB9F2A7548847717E2D9975 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					229CEE9D3CA87F5DF99FA064 = {
+						DevelopmentTeam = TQPN82UBBY;
+					};
+					4B397D60D09443F218BBD533 = {
+						DevelopmentTeam = TQPN82UBBY;
+					};
+					B68B2C4086CDA75C60771D23 = {
+						DevelopmentTeam = TQPN82UBBY;
+					};
+					F8ABA423424FEF4203B286E1 = {
+						DevelopmentTeam = TQPN82UBBY;
+					};
+				};
+			};
+			buildConfigurationList = 126B048B5D43250EC9B3BD31 /* Build configuration list for PBXProject "CatWalk" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 8FDD8F7BBEC74307784A0D33;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				93E6027DB0AE639B216029A1 /* XCLocalSwiftPackageReference "CatWalkCore" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F8ABA423424FEF4203B286E1 /* CatWalk */,
+				4B397D60D09443F218BBD533 /* CatWalkTests */,
+				B68B2C4086CDA75C60771D23 /* CatWalkWatch */,
+				229CEE9D3CA87F5DF99FA064 /* CatWalkiOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7CE93E16D402C263B1D233A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CE7A04241E798298C6761E0 /* CatWalkView.swift in Sources */,
+				FD93A6017896BC738907E90D /* CatWalkiOSApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7EB9F318439B1368B337DB84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55594BFE457263B2262E9ABF /* CatOverlayView.swift in Sources */,
+				463747B73912E35F06600C5C /* CatWalkApp.swift in Sources */,
+				EA395DB040FAB23B2DAD83AE /* OverlayWindow.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D8530940A2E927F868E0229 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				506A925872C1F8DE8E85BEB1 /* CatWalkView.swift in Sources */,
+				E7F8F43763C20600ADBD88D2 /* CatWalkWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8F08339E78D371998E366B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E6A9D38C189C324A295E48 /* CatWalkSmokeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		080429BC40897E1D0090382D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F8ABA423424FEF4203B286E1 /* CatWalk */;
+			targetProxy = 41B6742877DA387CF622D019 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1C7AFF2BE4C899B9334C2345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cat Walk";
+				INFOPLIST_KEY_WKApplication = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bannzai.CatWalkWatch;
+				PRODUCT_NAME = CatWalkWatch;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
+		47EB73285F0D6ACE0197F495 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bannzai.CatWalkiOS;
+				PRODUCT_NAME = "Cat Walk";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		4EB65FA76C62C0100AA692E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bannzai.CatWalkTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CatWalk.app/Contents/MacOS/CatWalk";
+			};
+			name = Release;
+		};
+		5054FA2CBACC543EC465FCE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bannzai.CatWalkiOS;
+				PRODUCT_NAME = "Cat Walk";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		59015AAFD52E5765C0D93F2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = TQPN82UBBY;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		7572B1356E5A16FFCCACC275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CatWalk/CatWalk.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cat Walk";
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bannzai.CatWalk;
+				PRODUCT_NAME = CatWalk;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		956D2247AA90A5C7D5AE7D43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cat Walk";
+				INFOPLIST_KEY_WKApplication = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bannzai.CatWalkWatch;
+				PRODUCT_NAME = CatWalkWatch;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		CA8B884A2011D7508EEBBA7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bannzai.CatWalkTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CatWalk.app/Contents/MacOS/CatWalk";
+			};
+			name = Debug;
+		};
+		E2970B57FD5AE78BF3D40ED3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CatWalk/CatWalk.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cat Walk";
+				INFOPLIST_KEY_LSUIElement = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bannzai.CatWalk;
+				PRODUCT_NAME = CatWalk;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EA0F3C1D0464C9D2BEA72F28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = TQPN82UBBY;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		126B048B5D43250EC9B3BD31 /* Build configuration list for PBXProject "CatWalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59015AAFD52E5765C0D93F2D /* Debug */,
+				EA0F3C1D0464C9D2BEA72F28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		2F9FC7CD9BA98DF73328DE0D /* Build configuration list for PBXNativeTarget "CatWalkWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				956D2247AA90A5C7D5AE7D43 /* Debug */,
+				1C7AFF2BE4C899B9334C2345 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		337514CD83798774B257E1AA /* Build configuration list for PBXNativeTarget "CatWalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2970B57FD5AE78BF3D40ED3 /* Debug */,
+				7572B1356E5A16FFCCACC275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		39FC45F9B95C5662305FF877 /* Build configuration list for PBXNativeTarget "CatWalkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA8B884A2011D7508EEBBA7C /* Debug */,
+				4EB65FA76C62C0100AA692E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9E1DAC1506AADC47F22DF186 /* Build configuration list for PBXNativeTarget "CatWalkiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47EB73285F0D6ACE0197F495 /* Debug */,
+				5054FA2CBACC543EC465FCE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		93E6027DB0AE639B216029A1 /* XCLocalSwiftPackageReference "CatWalkCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = CatWalkCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		26E5DC07BEB47E7497B13848 /* CatWalkCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CatWalkCore;
+		};
+		6725508631B5EE03A65A0DEC /* CatWalkCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CatWalkCore;
+		};
+		7DDF673C97F6FCF7537AEAE0 /* CatWalkCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CatWalkCore;
+		};
+		B50E248FF3D37BBF2E63A5A8 /* CatWalkCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CatWalkCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = FBB9F2A7548847717E2D9975 /* Project object */;
+}
