@@ -12,6 +12,7 @@
 		49E6A9D38C189C324A295E48 /* CatWalkSmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA80CEFFD24389831E5438B /* CatWalkSmokeTests.swift */; };
 		506A925872C1F8DE8E85BEB1 /* CatWalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6A8E4261743AEC774810F1 /* CatWalkView.swift */; };
 		55594BFE457263B2262E9ABF /* CatOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80125F2AB09F47A99480D78C /* CatOverlayView.swift */; };
+		A1C4E7F02B3D5968C7E1F0A2 /* CatWalkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5F8013C4E6A79D8F2A1B3 /* CatWalkModel.swift */; };
 		55FC660CE848F56C0D54CD12 /* CatWalkCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7DDF673C97F6FCF7537AEAE0 /* CatWalkCore */; };
 		8CE7A04241E798298C6761E0 /* CatWalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2E867212BCD08D0479F12 /* CatWalkView.swift */; };
 		8E25106C16BBE46C67BC1285 /* CatWalkCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6725508631B5EE03A65A0DEC /* CatWalkCore */; };
@@ -40,6 +41,7 @@
 		7F0D49065C63E6E2A7A4B081 /* CatWalkiOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CatWalkiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80125F2AB09F47A99480D78C /* CatOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatOverlayView.swift; sourceTree = "<group>"; };
 		82958EA9A6CBC24DC77CC217 /* OverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindow.swift; sourceTree = "<group>"; };
+		B2D5F8013C4E6A79D8F2A1B3 /* CatWalkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkModel.swift; sourceTree = "<group>"; };
 		8829DAC5A6063AA065840B3E /* CatWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA80CEFFD24389831E5438B /* CatWalkSmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkSmokeTests.swift; sourceTree = "<group>"; };
 		C1132E636363475990873537 /* CatWalkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkApp.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				80125F2AB09F47A99480D78C /* CatOverlayView.swift */,
 				0AAEF2B2A4624035055905F3 /* CatWalk.entitlements */,
 				C1132E636363475990873537 /* CatWalkApp.swift */,
+				B2D5F8013C4E6A79D8F2A1B3 /* CatWalkModel.swift */,
 				82958EA9A6CBC24DC77CC217 /* OverlayWindow.swift */,
 			);
 			path = CatWalk;
@@ -296,6 +299,7 @@
 			files = (
 				55594BFE457263B2262E9ABF /* CatOverlayView.swift in Sources */,
 				463747B73912E35F06600C5C /* CatWalkApp.swift in Sources */,
+				A1C4E7F02B3D5968C7E1F0A2 /* CatWalkModel.swift in Sources */,
 				EA395DB040FAB23B2DAD83AE /* OverlayWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
