@@ -1,0 +1,54 @@
+name: ci
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read # checkout のみ
+
+jobs:
+  # public repo のため macOS runner は無料 (private では使わない方針の例外)
+  build-and-test:
+    runs-on: macos-26
+    if: ${{ !contains(github.event.pull_request.title, '[Skip CI]') }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: xcodebuild -version
+      - name: Build macOS
+        run: |
+          set -o pipefail
+          mkdir -p tmp
+          make build-macos 2>&1 | tee tmp/build-macos.log
+      - name: Build iOS
+        run: |
+          set -o pipefail
+          mkdir -p tmp
+          make build-ios 2>&1 | tee tmp/build-ios.log
+      - name: Build watchOS
+        run: |
+          set -o pipefail
+          mkdir -p tmp
+          make build-watchos 2>&1 | tee tmp/build-watchos.log
+      - name: Test
+        run: |
+          set -o pipefail
+          mkdir -p tmp
+          make test 2>&1 | tee tmp/test.log
+      # warning があっても fail にはしない。job summary に出して目視できるようにする
+      - name: Summarize warnings and errors
+        if: always()
+        run: |
+          {
+            echo "## warning / error"
+            echo '```'
+            grep -i -e "warning:" -e "error:" tmp/*.log || echo "なし"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
