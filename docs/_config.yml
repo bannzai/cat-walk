@@ -3,3 +3,8 @@
 title: Cat Walk
 description: 猫がデスクトップの上を散歩する macOS / iOS / watchOS アプリ
 lang: ja
+defaults:
+  - scope:
+      path: "*-en.md"
+    values:
+      lang: en

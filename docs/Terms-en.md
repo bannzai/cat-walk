@@ -21,7 +21,7 @@ The following terms used in these Terms have the meanings set forth below.
 1. In using the Service, users must prepare the necessary smart devices, operating systems, electricity, and the like at their own expense and responsibility.
 2. The Provider may, when the Provider deems it necessary, change all or part of the content of the Service (including specifications, design, expressions, effects, parameters, and all other matters) at any time without prior notice to users, and may discontinue its provision.
 3. The Provider is not obligated to provide users with support for software relating to the Service or with corrected versions (including updated versions).
-4. The Service is provided free of charge and does not require account registration.
+4. The Service does not require account registration.
 
 ## Article 4 (Content)
 1. The Provider grants users a non-exclusive right to use the Service Content provided by the Provider, which is non-transferable and non-sublicensable, for the purpose of using the Service.

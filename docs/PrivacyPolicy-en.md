@@ -10,7 +10,7 @@ The settings you configure in the Service, such as the cat's visibility, size, w
 
 - Retention period: stored on your device until you delete them
 - Deletion procedure (iOS and watchOS): deleting the app from your device also deletes these settings
-- Deletion procedure (macOS): settings may remain on your device even after you move the app to the Trash. To erase them completely, delete the app and then, in Finder, move this app's folder (named after the app's bundle identifier) inside the `Containers` folder of your Library folder to the Trash
+- Deletion procedure (macOS): settings may remain on your device even after you move the app to the Trash. To erase them completely, delete the app and then, in Finder, open the Go menu while holding the Option key, choose Library, and move the "Cat Walk" folder inside the `Containers` folder to the Trash
 
 <!-- source: unverified: that settings remain on macOS after the app is deleted is a general description; before release, confirm the storage location (~/Library/Containers/<bundle identifier>/) on a real device and rewrite -->
 <!-- source: change made in response to the Codex local review (PR #3) -->
