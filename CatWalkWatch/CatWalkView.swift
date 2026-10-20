@@ -28,7 +28,12 @@ struct CatWalkView: View {
                     // 見た目の行動の並びに再現性は要らないため、OS の乱数を使う
                     var random = SystemRandomNumberGenerator()
                     while !Task.isCancelled {
-                        try? await Task.sleep(for: .seconds(Self.tickSeconds))
+                        // Always On に入って取り消された時に 1 歩進めてから止まらないよう、状態を進めずに抜ける
+                        do {
+                            try await Task.sleep(for: .seconds(Self.tickSeconds))
+                        } catch {
+                            return
+                        }
                         walk = walk.advanced(elapsedSeconds: Self.tickSeconds, width: travel, walkingSpeed: Self.walkingSpeed, random: &random)
                     }
                 }

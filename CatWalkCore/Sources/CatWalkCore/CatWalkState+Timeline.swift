@@ -16,7 +16,7 @@ extension CatWalkState {
 
     /// `date` を含む区切りの時刻の猫の状態を返す。`calendar` の暦でその日の 0 時に初期状態から始め、その日の 0 時から作ったシードで区切りまで進める。
     /// 同じ区切りには何度呼んでも同じ状態を返すため、タイムラインを作り直しても猫が飛ばない。行動の並びは `width` と `walkingSpeed` に依らないため、
-    /// 同じ暦の iPhone と Apple Watch のウィジェットは同じ時刻に同じ姿勢になる。
+    /// 同じ暦の iPhone と Apple Watch のウィジェットは同じ時刻に同じ行動になる。向きと位置は端で折り返す回数で決まり、画面の幅によって変わる。
     public static func timelineState(date: Date, calendar: Calendar, width: Double, walkingSpeed: Double) -> CatWalkState {
         let dayStart = calendar.startOfDay(for: date)
         var random = SplitMix64(state: UInt64(bitPattern: Int64(dayStart.timeIntervalSince1970)))
