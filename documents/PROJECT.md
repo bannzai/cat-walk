@@ -62,7 +62,7 @@ Mac で作業する人 (と同じ人の iPhone / Apple Watch) に、作業の邪
 
 - 配信先は Mac App Store と App Store (iOS / watchOS)
 - 計測は App Store のレビュー (appstore-research skill) と App Store Connect の表示回数
-- Analytics・Crashlytics は入れない (`documents/adr/0001-local-only-no-backend-infra.md`。このブランチには無いファイルだが PR #1 で入るので参照だけ書く)
+- Analytics・Crashlytics は入れない (`documents/adr/0001-local-only-no-backend-infra.md`)
 
 ## 参考にした競合
 
