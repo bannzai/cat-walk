@@ -334,6 +334,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cat Walk";
 				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKWatchOnly = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bannzai.CatWalkWatch;
 				PRODUCT_NAME = CatWalkWatch;
 				SDKROOT = watchos;
@@ -492,6 +493,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cat Walk";
 				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKWatchOnly = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bannzai.CatWalkWatch;
 				PRODUCT_NAME = CatWalkWatch;
 				SDKROOT = watchos;
