@@ -3,8 +3,10 @@ import SwiftUI
 
 /// 猫のプレースホルダーが左右に往復する view。
 struct CatWalkView: View {
+    /// 猫の大きさ。小さい画面でも往復の動きが確認できる、iOS の半分ほどの仮の値で、デザインの段階で決め直す。
     private static let catSize: Double = 28
 
+    // 歩幅も猫の大きさに合わせた仮の値で、デザインの段階で決め直す
     @State private var walk = CatWalkState(stride: 12)
 
     var body: some View {
@@ -17,8 +19,9 @@ struct CatWalkView: View {
                 .animation(.linear(duration: 1), value: walk.x)
                 .task {
                     while !Task.isCancelled {
+                        // 動きの確認に十分な仮の間隔。.animation の duration と揃えて途切れなく見せる。デザインの段階で決め直す
                         try? await Task.sleep(for: .seconds(1))
-                        walk = walk.step(in: travel)
+                        walk = walk.step(width: travel)
                     }
                 }
         }

@@ -3,6 +3,7 @@ import SwiftUI
 
 /// 猫のプレースホルダーが画面下端を左右に往復する view。
 struct CatOverlayView: View {
+    /// 猫の大きさ。プレースホルダーの見た目の確認に十分な仮の値で、デザインの段階で決め直す。
     private static let catSize: Double = 44
 
     @State private var walk = CatWalkState()
@@ -17,8 +18,9 @@ struct CatOverlayView: View {
                 .animation(.linear(duration: 1), value: walk.x)
                 .task {
                     while !Task.isCancelled {
+                        // 動きの確認に十分な仮の間隔。.animation の duration と揃えて途切れなく見せる。デザインの段階で決め直す
                         try? await Task.sleep(for: .seconds(1))
-                        walk = walk.step(in: travel)
+                        walk = walk.step(width: travel)
                     }
                 }
         }

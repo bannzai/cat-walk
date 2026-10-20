@@ -23,12 +23,13 @@ final class OverlayPanel: NSPanel {
     }
 }
 
-/// ディスプレイ構成が変わっても、`show()` を呼ぶたびに現在の全ディスプレイへ 1 枚ずつ作り直す (冪等)。
-@MainActor
+/// 全ディスプレイの上に置く `OverlayPanel` を保持し、ディスプレイ構成の変化に追従させる。
 final class OverlayWindowController {
     private var panels: [OverlayPanel] = []
     private var screenObserver: NSObjectProtocol?
 
+    /// 現在の全ディスプレイへ 1 枚ずつ `OverlayPanel` を作り直して前面に出す。
+    /// ディスプレイ構成の変更通知の購読は初回だけ登録するため、何度呼んでも結果は同じ (冪等)。
     func show() {
         if screenObserver == nil {
             screenObserver = NotificationCenter.default.addObserver(
