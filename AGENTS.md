@@ -21,6 +21,7 @@
   - repo が private / internal に変わった場合は、`/ios-simulator` skill Phase 1 の owner による分岐に従い Devin (devin-macos-e2e skill) を使う。このマシンのローカル simulator には倒さない
   - simtunnel で検証できない場合 (Secrets 未登録・tailnet 未接続等) は、検証できない理由を報告し、確認をユーザー作業の一覧に回す
 - macOS の動作確認: `/macos-simtunnel` skill で GitHub Actions の macOS runner 上に起動し、WDA の screenshot で確認する (caller workflow は `.github/workflows/macos-app-session.yml`、`SIMTUNNEL_WORKFLOW=macos-app-session.yml`)。透明オーバーレイの猫が runner の screenshot に写ることを確認の基準にする
+  - macOS target の Debug 構成は ad-hoc 署名 (`CODE_SIGN_IDENTITY = "-"`) のため、証明書の無い runner でもビルドできる。Release は自動署名のまま
 - watchOS の動作確認: simtunnel は watchOS simulator を扱わないため、CI のビルドと `CatWalkCore` のユニットテストまでを agent の検証範囲とする。実機・simulator での見た目の確認は「ユーザー作業の一覧」issue の確認のセクションへ回す (`~/.claude/documents/rules/defer-manual-verification-to-release.md`)
 - 引数なしの `make` は `macos` (Release ビルドを `/Applications/CatWalk.app` へ配置) で、人が手元で試す時の入口。agent は上の方針によりこのマシンで実行しない
 
