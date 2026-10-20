@@ -1,0 +1,22 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-21T05:30:00Z"},
+  "title": "Cat Walk モック",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 900, "title": "macOS: 作業中のデスクトップを歩く猫"},
+    "MacSettings.dc.html": {"x": 1520, "y": 0, "w": 520, "h": 420, "title": "macOS: 設定ウィンドウ"},
+    "Poses.dc.html": {"x": 1520, "y": 540, "w": 520, "h": 360, "title": "猫の 5 つの姿勢"},
+    "IPhone.dc.html": {"x": 0, "y": 1020, "w": 390, "h": 844, "title": "iOS: ホーム画面ウィジェットと Dynamic Island"},
+    "IPhoneLock.dc.html": {"x": 470, "y": 1020, "w": 390, "h": 844, "title": "iOS: ロック画面ウィジェット"},
+    "IPhoneApp.dc.html": {"x": 940, "y": 1020, "w": 390, "h": 844, "title": "iOS: アプリ本体"},
+    "Watch.dc.html": {"x": 1520, "y": 1020, "w": 520, "h": 420, "title": "watchOS: 文字盤のコンプリケーションとアプリ"}
+  },
+  "order": ["Main.dc.html", "MacSettings.dc.html", "Poses.dc.html", "IPhone.dc.html", "IPhoneLock.dc.html", "IPhoneApp.dc.html", "Watch.dc.html"],
+  "notes": {
+    "t1": {"x": 0, "y": -300, "text": "Cat Walk: 3 OS で同じ猫が「動いて見える」", "kind": "title1", "maxW": 2040},
+    "t2": {"x": 0, "y": 720, "text": "iOS / watchOS: 歩き続けるのではなく、更新の瞬間に姿勢と位置が変わる", "kind": "title1", "maxW": 2040}
+  },
+  "designSystems": []
+}

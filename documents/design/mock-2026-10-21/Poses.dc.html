@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>猫の 5 つの姿勢</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;font-family:-apple-system,"SF Pro Text","Hiragino Sans",system-ui,sans-serif}
+a{color:#1d4ed8}a:hover{color:#1e3a8a}
+</style>
+</helmet>
+<div style="width: 520px; height: 360px; box-sizing: border-box; background: #1f2937; color: #e5e7eb; padding: 24px; display: flex; flex-direction: column; gap: 18px">
+  <div style="font-size: 15px; font-weight: 600">同じ猫の 5 つの姿勢 (3 OS 共通)</div>
+  <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <svg width="80" height="64" viewBox="0 0 96 72" role="img" aria-label="歩く" style="display: block"><path d="M8 60 C4 52 6 40 14 36 L14 24 L6 10 L20 18 L36 18 L50 10 L42 24 L42 36 C50 40 52 52 48 60 Z" fill="{{accent}}"/><ellipse cx="28" cy="50" rx="12" ry="8" fill="{{belly}}"/><path d="M48 44 Q66 36 82 20" stroke="{{accent}}" stroke-width="7" stroke-linecap="round" fill="none"/><rect x="12" y="58" width="7" height="12" rx="3" fill="{{accent}}"/><rect x="34" y="58" width="7" height="12" rx="3" fill="{{accent}}"/><circle cx="20" cy="26" r="2.4" fill="#1f2937"/><circle cx="34" cy="26" r="2.4" fill="#1f2937"/></svg>
+      <span style="font-size: 12px">歩く</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <svg width="80" height="64" viewBox="0 0 96 72" role="img" aria-label="立ち止まる" style="display: block"><path d="M8 60 C4 52 6 40 14 36 L14 24 L6 10 L20 18 L36 18 L50 10 L42 24 L42 36 C50 40 52 52 48 60 Z" fill="{{accent}}"/><ellipse cx="28" cy="50" rx="12" ry="8" fill="{{belly}}"/><path d="M48 44 Q58 30 54 14" stroke="{{accent}}" stroke-width="7" stroke-linecap="round" fill="none"/><rect x="16" y="58" width="7" height="12" rx="3" fill="{{accent}}"/><rect x="30" y="58" width="7" height="12" rx="3" fill="{{accent}}"/><circle cx="20" cy="26" r="2.4" fill="#1f2937"/><circle cx="34" cy="26" r="2.4" fill="#1f2937"/></svg>
+      <span style="font-size: 12px">立ち止まる</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <svg width="80" height="64" viewBox="0 0 96 72" role="img" aria-label="座る" style="display: block"><path d="M12 68 C6 56 10 36 22 30 L22 20 L14 6 L28 14 L44 14 L58 6 L50 20 L50 30 C62 36 66 56 60 68 Z" fill="{{accent}}"/><ellipse cx="36" cy="52" rx="13" ry="10" fill="{{belly}}"/><path d="M60 60 Q78 58 82 44" stroke="{{accent}}" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="28" cy="22" r="2.4" fill="#1f2937"/><circle cx="44" cy="22" r="2.4" fill="#1f2937"/></svg>
+      <span style="font-size: 12px">座る</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <svg width="80" height="64" viewBox="0 0 96 72" role="img" aria-label="眠る" style="display: block"><ellipse cx="48" cy="54" rx="38" ry="16" fill="{{accent}}"/><ellipse cx="40" cy="56" rx="18" ry="9" fill="{{belly}}"/><path d="M62 40 L56 28 L68 34 L80 34 L90 28 L86 40 Z" fill="{{accent}}"/><path d="M68 40 Q72 44 76 40" stroke="#1f2937" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M80 40 Q84 44 88 40" stroke="#1f2937" stroke-width="1.6" fill="none" stroke-linecap="round"/><text x="4" y="30" font-size="12" fill="#e5e7eb" font-family="system-ui">z z</text></svg>
+      <span style="font-size: 12px">眠る</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <svg width="80" height="64" viewBox="0 0 96 72" role="img" aria-label="毛づくろい" style="display: block"><path d="M12 68 C6 56 10 36 22 30 L22 20 L14 6 L28 14 L44 14 L58 6 L50 20 L50 30 C62 36 66 56 60 68 Z" fill="{{accent}}"/><ellipse cx="36" cy="52" rx="13" ry="10" fill="{{belly}}"/><path d="M60 60 Q78 58 82 44" stroke="{{accent}}" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M20 52 Q28 44 36 42" stroke="{{accent}}" stroke-width="8" stroke-linecap="round" fill="none"/><path d="M26 24 Q30 26 34 24" stroke="#1f2937" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M40 24 Q44 26 48 24" stroke="#1f2937" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+      <span style="font-size: 12px">毛づくろい</span>
+    </div>
+  </div>
+  <div style="font-size: 12px; color: #9ca3af; line-height: 1.6">輪郭線なし・2 色 (体と腹) の丸い形。向きは左右反転で表す。表情は目 2 点と口だけ。背景が何色でも埋もれないよう、体色はデスクトップの壁紙より明るいオレンジを既定にし、グレーと黒の猫を設定で選べる想定</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#E8863B","options":["#E8863B","#6B7280","#1F2937","#F5E6C8"]},"belly":{"editor":"color","default":"#FBE9D0"},"$preview":{"width":520,"height":360}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#E8863B', belly: this.props.belly ?? '#FBE9D0' };
+}
+}
+</script>
+</body>
+</html>
