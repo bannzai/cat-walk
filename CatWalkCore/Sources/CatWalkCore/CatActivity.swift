@@ -10,6 +10,8 @@ public enum CatActivity: String, CaseIterable, Codable, Sendable {
     case sleeping
     /// 毛づくろいする。
     case grooming
+    /// 撫でられて喜ぶ。`CatWalkState.petted()` でだけ入り、どの行動の `nextCandidates` にも含めない。
+    case delighted
 
     /// この行動を続ける秒数の範囲。下限は 0 より大きく、`CatWalkState.advanced` が経過時間を区切る処理を必ず前に進める。
     public var durationRange: Range<Double> {
@@ -29,6 +31,9 @@ public enum CatActivity: String, CaseIterable, Codable, Sendable {
         // 毛づくろいは短い仕草として、立ち止まると同程度にする。デザインの段階で決め直す
         case .grooming:
             3..<8
+        // 撫でた手応えが見える長さにしつつ、撫でた後にすぐ歩きへ戻れる短さにする。デザインの段階で決め直す
+        case .delighted:
+            3..<5
         }
     }
 
@@ -46,6 +51,8 @@ public enum CatActivity: String, CaseIterable, Codable, Sendable {
             [.sitting, .standing]
         case .grooming:
             [.sitting, .walking, .standing]
+        case .delighted:
+            [.walking, .sitting, .grooming]
         }
     }
 

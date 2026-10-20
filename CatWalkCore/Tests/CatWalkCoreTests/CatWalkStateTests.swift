@@ -116,7 +116,20 @@ struct CatWalkStateTests {
             state = next
         }
 
-        #expect(seenActivities == Set(CatActivity.allCases))
+        #expect(seenActivities == Set(CatActivity.allCases).subtracting([.delighted]))
+    }
+
+    @Test func pettedEntersDelightedAndKeepsPosition() {
+        let petted = CatWalkState(x: 30, direction: .left, activity: .sleeping, activityElapsed: 10, activityRemaining: 50).petted()
+
+        #expect(petted == CatWalkState(x: 30, direction: .left, activity: .delighted, activityElapsed: 0, activityRemaining: CatActivity.delighted.durationRange.lowerBound))
+    }
+
+    @Test func returnsFromDelightedToCandidate() {
+        var random = ZeroRandomNumberGenerator()
+        let next = CatWalkState().petted().advanced(elapsedSeconds: CatActivity.delighted.durationRange.lowerBound, width: 100, walkingSpeed: 24, random: &random)
+
+        #expect(next.activity == CatActivity.delighted.nextCandidates.first)
     }
 
     @Test func sameSeedGivesSameState() {

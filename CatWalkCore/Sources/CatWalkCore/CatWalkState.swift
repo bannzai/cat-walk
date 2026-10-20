@@ -73,6 +73,12 @@ public struct CatWalkState: Equatable, Codable, Sendable {
         return next
     }
 
+    /// 撫でられた直後の状態を返す。今の行動を中断して喜ぶ行動に入り、位置と向きは変えない。
+    /// 滞在時間は `init` と同じく乱数を使わずに済む下限にする。
+    public func petted() -> CatWalkState {
+        CatWalkState(x: x, direction: direction, activity: .delighted)
+    }
+
     /// `direction` に `distance` 進め、端に達したら端で向きを反転する。端ちょうどに着いた時も反転した向きにする。
     private mutating func walk(distance: Double, width: Double) {
         guard width > 0 else {
