@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>macOS 設定ウィンドウ</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;font-family:-apple-system,"SF Pro Text","Hiragino Sans",system-ui,sans-serif}
+a{color:#1d4ed8}a:hover{color:#1e3a8a}
+</style>
+</helmet>
+<div style="width: 520px; height: 420px; box-sizing: border-box; background: #ececec; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); overflow: hidden; color: #1f2937; display: flex; flex-direction: column">
+  <div style="height: 52px; display: flex; align-items: center; padding: 0 14px; gap: 8px; background: #e2e2e2; border-bottom: 1px solid #d1d5db">
+    <span style="width: 12px; height: 12px; border-radius: 6px; background: #ef4444; display: inline-block"></span>
+    <span style="width: 12px; height: 12px; border-radius: 6px; background: #f59e0b; display: inline-block"></span>
+    <span style="width: 12px; height: 12px; border-radius: 6px; background: #22c55e; display: inline-block"></span>
+    <span style="flex: 1; text-align: center; font-size: 13px; font-weight: 600; color: #374151">Cat Walk</span>
+    <span style="width: 44px; display: inline-block"></span>
+  </div>
+  <div style="flex: 1; padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; font-size: 13px">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <label for="show">猫を表示する</label>
+      <input id="show" type="checkbox" checked="checked" style="width: 20px; height: 20px">
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <label for="size">大きさ</label>
+      <div style="display: flex; border: 1px solid #c4c4c4; border-radius: 6px; overflow: hidden; background: #fff">
+        <button type="button" style="border: 0; padding: 6px 14px; background: #fff; font-size: 12px">小</button>
+        <button type="button" style="border: 0; padding: 6px 14px; background: {{accent}}; color: #fff; font-size: 12px">中</button>
+        <button type="button" style="border: 0; padding: 6px 14px; background: #fff; font-size: 12px">大</button>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <label for="speed">歩く速さ</label>
+      <div style="display: flex; border: 1px solid #c4c4c4; border-radius: 6px; overflow: hidden; background: #fff">
+        <button type="button" style="border: 0; padding: 6px 14px; background: #fff; font-size: 12px">のんびり</button>
+        <button type="button" style="border: 0; padding: 6px 14px; background: {{accent}}; color: #fff; font-size: 12px">ふつう</button>
+        <button type="button" style="border: 0; padding: 6px 14px; background: #fff; font-size: 12px">はやい</button>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <label for="login">ログイン時に起動する</label>
+      <input id="login" type="checkbox" checked="checked" style="width: 20px; height: 20px">
+    </div>
+    <div style="height: 1px; background: #d1d5db; margin: 4px 0"></div>
+    <div style="display: flex; gap: 16px; font-size: 12px">
+      <a href="https://bannzai.github.io/cat-walk/Terms-ja">利用規約</a>
+      <a href="https://bannzai.github.io/cat-walk/PrivacyPolicy-ja">プライバシーポリシー</a>
+      <a href="mailto:bannzai.app@gmail.com">お問い合わせ</a>
+    </div>
+    <div style="font-size: 11px; color: #6b7280">設定はこの Mac の中にだけ保存されます</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#E8863B"},"$preview":{"width":520,"height":420}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#E8863B' };
+}
+}
+</script>
+</body>
+</html>
