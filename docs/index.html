@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cat Walk | 画面の上を猫が散歩する Mac・iPhone・Apple Watch アプリ</title>
+<meta name="description" content="Cat Walk は、作業中の画面の上を 1 匹の猫が歩き回る macOS / iOS / watchOS アプリ。クリックを邪魔せず、ログインも広告もありません。">
+<link rel="canonical" href="https://bannzai.github.io/cat-walk/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cat Walk">
+<meta property="og:title" content="Cat Walk | 作業中の画面に猫がいる">
+<meta property="og:description" content="画面の上を猫が散歩する macOS / iOS / watchOS アプリ。クリックを通し、ログインも広告もありません。">
+<meta property="og:url" content="https://bannzai.github.io/cat-walk/">
+<meta property="og:image" content="https://bannzai.github.io/cat-walk/og.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cat Walk | 作業中の画面に猫がいる">
+<meta name="twitter:description" content="画面の上を猫が散歩する macOS / iOS / watchOS アプリ。">
+<meta name="twitter:image" content="https://bannzai.github.io/cat-walk/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Cat Walk",
+  "description": "作業中の画面の上を 1 匹の猫が歩き回る macOS / iOS / watchOS アプリ。",
+  "applicationCategory": "EntertainmentApplication",
+  "operatingSystem": "macOS, iOS, watchOS",
+  "url": "https://bannzai.github.io/cat-walk/",
+  "image": "https://bannzai.github.io/cat-walk/og.png",
+  "inLanguage": "ja"
+}
+</script>
+<style>
+:root {
+  --bg: #1d1f23;
+  --bg-raised: #272a30;
+  --text: #eceef1;
+  --text-sub: #a8aeb8;
+  --accent: #f0a05a;
+  --accent-dark: #1d1f23;
+  --line: #3a3e46;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+header.site { padding: 20px 0; }
+header.site .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.brand { font-weight: 700; font-size: 1.1rem; letter-spacing: 0.02em; color: var(--text); text-decoration: none; }
+nav a { color: var(--text-sub); text-decoration: none; margin-left: 20px; font-size: 0.95rem; }
+nav a:hover { color: var(--text); }
+
+.hero { padding: 56px 0 0; text-align: center; }
+.hero h1 { font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.3; margin: 0 0 20px; font-weight: 800; }
+.hero h1 span { color: var(--accent); }
+.hero p.lead { max-width: 640px; margin: 0 auto; color: var(--text-sub); font-size: 1.05rem; }
+
+.stage {
+  position: relative;
+  height: 150px;
+  margin-top: 40px;
+  border-bottom: 4px solid var(--line);
+  overflow: hidden;
+}
+.walker { position: absolute; bottom: 0; left: 0; width: 120px; height: 90px; animation: patrol 16s linear infinite; }
+.flipper { position: absolute; inset: 0; animation: face 16s steps(1, end) infinite; transform-origin: 50% 50%; }
+.cat-body { position: absolute; left: 22px; bottom: 14px; width: 70px; height: 38px; background: var(--accent); border-radius: 50% 50% 40% 40%; }
+.cat-head { position: absolute; left: 76px; bottom: 28px; width: 34px; height: 30px; background: var(--accent); border-radius: 50%; }
+.cat-head::before, .cat-head::after {
+  content: ""; position: absolute; top: -9px; width: 13px; height: 13px; background: var(--accent);
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
+.cat-head::before { left: 3px; }
+.cat-head::after { right: 3px; }
+.cat-eye { position: absolute; left: 96px; bottom: 42px; width: 4px; height: 4px; background: var(--accent-dark); border-radius: 50%; }
+.cat-tail { position: absolute; left: 4px; bottom: 30px; width: 30px; height: 10px; background: var(--accent); border-radius: 10px; transform-origin: 100% 50%; transform: rotate(-30deg); animation: tail 1.2s ease-in-out infinite alternate; }
+.leg { position: absolute; bottom: 0; width: 8px; height: 18px; background: var(--accent); border-radius: 4px; transform-origin: 50% 0; animation: step 0.5s ease-in-out infinite alternate; }
+.leg.a { left: 30px; }
+.leg.b { left: 44px; animation-delay: -0.25s; }
+.leg.c { left: 64px; animation-delay: -0.25s; }
+.leg.d { left: 78px; }
+
+@keyframes patrol {
+  0% { transform: translateX(-130px); }
+  50% { transform: translateX(calc(min(100vw, 960px) - 40px)); }
+  100% { transform: translateX(-130px); }
+}
+@keyframes face {
+  0% { transform: scaleX(1); }
+  50% { transform: scaleX(-1); }
+}
+@keyframes step { from { transform: rotate(-22deg); } to { transform: rotate(22deg); } }
+@keyframes tail { from { transform: rotate(-45deg); } to { transform: rotate(-10deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .walker, .flipper, .cat-tail, .leg { animation: none; }
+  .walker { left: calc(50% - 60px); }
+}
+
+.stores { padding: 36px 0 8px; text-align: center; }
+.stores p { margin: 0 0 14px; color: var(--text-sub); font-size: 0.95rem; }
+.store-buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.btn {
+  display: inline-block; padding: 12px 22px; border-radius: 8px;
+  background: var(--bg-raised); border: 1px solid var(--line); color: var(--text-sub);
+  font-size: 1rem; font-weight: 600; text-decoration: none;
+}
+.btn small { display: block; font-size: 0.75rem; font-weight: 400; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-dark); }
+
+section { padding: 64px 0 0; }
+h2 { font-size: 1.6rem; margin: 0 0 24px; line-height: 1.4; }
+.values { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.card { background: var(--bg-raised); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+.card h3 { margin: 0 0 8px; font-size: 1.1rem; color: var(--accent); }
+.card p { margin: 0; color: var(--text-sub); }
+.platforms { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.platforms li { border-left: 4px solid var(--accent); padding: 4px 0 4px 16px; }
+.platforms strong { display: block; }
+.platforms span { color: var(--text-sub); }
+
+.contact-box { background: var(--bg-raised); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+.contact-box p { margin: 0 0 12px; }
+.contact-box p:last-child { margin-bottom: 0; }
+.legal-links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+
+footer { margin-top: 72px; padding: 28px 0 40px; border-top: 1px solid var(--line); color: var(--text-sub); font-size: 0.9rem; text-align: center; }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="./">Cat Walk</a>
+    <nav aria-label="ページ内メニュー">
+      <a href="#values">特長</a>
+      <a href="#support">サポート</a>
+      <a href="#legal">規約</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <h1>作業中の画面に<br><span>猫がいる</span></h1>
+      <p class="lead">Mac の画面の上を 1 匹の猫が歩き回ります。iPhone のウィジェットや Dynamic Island、Apple Watch の文字盤でも、同じ猫が動いて見えます。</p>
+    </div>
+    <div class="wrap">
+      <div class="stage" role="img" aria-label="画面の下端を左右に歩く猫のシルエット">
+        <div class="walker">
+          <div class="flipper">
+            <div class="cat-tail"></div>
+            <div class="leg a"></div><div class="leg b"></div>
+            <div class="cat-body"></div>
+            <div class="leg c"></div><div class="leg d"></div>
+            <div class="cat-head"></div>
+            <div class="cat-eye"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stores">
+    <div class="wrap">
+      <p>公開準備中です。</p>
+      <!-- 公開後: 下の span を <a class="btn primary" href="ストアの URL"> に差し替え、「近日公開」の small を削除する (Mac App Store / App Store の 2 か所) -->
+      <div class="store-buttons">
+        <span class="btn" aria-disabled="true">Mac App Store<small>近日公開</small></span>
+        <span class="btn" aria-disabled="true">App Store (iPhone・Apple Watch)<small>近日公開</small></span>
+      </div>
+    </div>
+  </div>
+
+  <section id="values">
+    <div class="wrap">
+      <h2>邪魔をしない 消えない 集めない</h2>
+      <div class="values">
+        <div class="card">
+          <h3>作業の邪魔をしない</h3>
+          <p>猫の後ろにある画面は、そのままクリックできます。猫は透明なウィンドウの中だけを歩き、動いていない時の負荷は小さく抑えます。</p>
+        </div>
+        <div class="card">
+          <h3>フルスクリーンでも消えない</h3>
+          <p>全画面のアプリの上にも、複数のディスプレイにも、猫は出ます。Space を切り替えても、そばにいます。</p>
+        </div>
+        <div class="card">
+          <h3>ログインも広告もない</h3>
+          <p>アカウントの登録も、広告も、データを集める仕組みもありません。設定は端末の中にだけ保存され、提供者には送信されません。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="platforms">
+    <div class="wrap">
+      <h2>同じ猫が3つの画面を歩く</h2>
+      <ul class="platforms">
+        <li><strong>macOS</strong><span>メニューバーに常駐し、画面の下端を歩きます。猫をつかんで別の場所に置けます。</span></li>
+        <li><strong>iOS</strong><span>ホーム画面・ロック画面のウィジェットと、Live Activity・Dynamic Island で猫が動きます。</span></li>
+        <li><strong>watchOS</strong><span>文字盤のコンプリケーションと watch アプリで、同じ猫に会えます。</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="support">
+    <div class="wrap">
+      <h2>サポート・お問い合わせ</h2>
+      <div class="contact-box">
+        <p>不具合のご報告やご質問は、メールでお送りください。</p>
+        <p><a href="mailto:bannzai.app@gmail.com">bannzai.app@gmail.com</a></p>
+        <p>アプリ内の設定画面の「お問い合わせ」からも送れます。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="legal">
+    <div class="wrap">
+      <h2>規約とプライバシー</h2>
+      <ul class="legal-links">
+        <li><a href="./PrivacyPolicy-ja">プライバシーポリシー</a></li>
+        <li><a href="./Terms-ja">利用規約</a></li>
+        <li><a href="./PrivacyPolicy-en">Privacy Policy (English)</a></li>
+        <li><a href="./Terms-en">Terms of Use (English)</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Cat Walk by bannzai</div>
+</footer>
+</body>
+</html>
