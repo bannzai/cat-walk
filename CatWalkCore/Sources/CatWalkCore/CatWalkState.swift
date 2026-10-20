@@ -73,6 +73,13 @@ public struct CatWalkState: Equatable, Codable, Sendable {
         return next
     }
 
+    /// 次に `advanced` で状態を進めるまで待つ秒数を返す。描画の更新を歩いている間と行動が切り替わる時だけにするため、
+    /// 歩く間は `walkingTickSeconds` ごと (行動の残りがそれより短ければ残りまで)、ほかの行動では行動が切り替わるまでの残り全部になる。
+    /// `activityRemaining` が 0 以下なら 0 を返し、すぐに次の行動へ進めさせる。
+    public func secondsUntilNextUpdate(walkingTickSeconds: Double) -> Double {
+        activity == .walking ? min(walkingTickSeconds, max(activityRemaining, 0)) : max(activityRemaining, 0)
+    }
+
     /// `direction` に `distance` 進め、端に達したら端で向きを反転する。端ちょうどに着いた時も反転した向きにする。
     private mutating func walk(distance: Double, width: Double) {
         guard width > 0 else {

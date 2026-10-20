@@ -129,6 +129,25 @@ struct CatWalkStateTests {
         )
     }
 
+    @Test func updatesEveryTickWhileWalking() {
+        #expect(CatWalkState(activity: .walking, activityRemaining: 10).secondsUntilNextUpdate(walkingTickSeconds: 1) == 1)
+    }
+
+    @Test func updatesAtEndOfWalkingWhenShorterThanTick() {
+        #expect(CatWalkState(activity: .walking, activityRemaining: 0.25).secondsUntilNextUpdate(walkingTickSeconds: 1) == 0.25)
+    }
+
+    @Test func waitsUntilActivityEndsWhileNotWalking() {
+        for activity in CatActivity.allCases where activity != .walking {
+            #expect(CatWalkState(activity: activity, activityRemaining: 42).secondsUntilNextUpdate(walkingTickSeconds: 1) == 42)
+        }
+    }
+
+    @Test func updatesImmediatelyWhenActivityHasNoTimeLeft() {
+        #expect(CatWalkState(activity: .sleeping, activityRemaining: -3).secondsUntilNextUpdate(walkingTickSeconds: 1) == 0)
+        #expect(CatWalkState(activity: .walking, activityRemaining: 0).secondsUntilNextUpdate(walkingTickSeconds: 1) == 0)
+    }
+
     @Test func roundTripsThroughCodable() throws {
         let state = CatWalkState(x: 12.5, direction: .left, activity: .sleeping, activityElapsed: 3, activityRemaining: 40)
 
