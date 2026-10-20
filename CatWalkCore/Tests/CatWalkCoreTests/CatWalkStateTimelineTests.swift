@@ -45,6 +45,17 @@ struct CatWalkStateTimelineTests {
         }
     }
 
+    @Test(arguments: 0..<7)
+    func changesAcrossMidnight(dayOffset: Int) {
+        let states = CatWalkState.timelineDates(date: Self.dayStart.addingTimeInterval(Double(dayOffset * 24 + 21) * 60 * 60), count: 16, calendar: Self.calendar)
+            .map { CatWalkState.timelineState(date: $0, calendar: Self.calendar, width: 1, walkingSpeed: 0.1) }
+
+        for (previous, next) in zip(states, states.dropFirst()) {
+            #expect(previous.activity != next.activity)
+            #expect(previous.x != next.x)
+        }
+    }
+
     @Test func activitiesDoNotDependOnWidth() {
         let date = Self.dayStart.addingTimeInterval(13 * 60 * 60)
 
