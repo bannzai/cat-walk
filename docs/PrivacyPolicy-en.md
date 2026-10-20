@@ -8,8 +8,13 @@ In this Policy, "user information" means information relating to the identificat
 ### Information Entered by Users (Stored Only on Your Device)
 The settings you configure in the Service, such as the cat's visibility, size, walking speed, and position, are **stored only on your device (in `UserDefaults`) and are not transmitted to the Provider's servers**. The Provider cannot collect or view this information.
 
-- Retention period: stored on your device until you delete the app
-- Deletion procedure: deleting the app from your device also deletes these settings
+- Retention period: stored on your device until you delete them
+- Deletion procedure (iOS and watchOS): deleting the app from your device also deletes these settings
+- Deletion procedure (macOS): settings may remain on your device even after you move the app to the Trash. To erase them completely, delete the app and then, in Finder, move this app's folder (named after the app's bundle identifier) inside the `Containers` folder of your Library folder to the Trash
+
+<!-- source: unverified: that settings remain on macOS after the app is deleted is a general description; before release, confirm the storage location (~/Library/Containers/<bundle identifier>/) on a real device and rewrite -->
+<!-- source: change made in response to the Codex local review (PR #3) -->
+
 
 <!-- source: documents/adr/0001-local-only-no-backend-infra.md: policy of using no servers or external SDKs and keeping state only on the device -->
 
@@ -36,7 +41,7 @@ The Provider will not provide personal information among user information to thi
 ## Disclosure, Correction, Suspension of Use, and Deletion of Personal Information
 When the Provider is requested by a user to disclose, correct, suspend the use of, or delete personal information based on the provisions of the Personal Information Protection Act, the Provider will respond without delay after confirming that the request is made by the user themselves (if such personal information does not exist, the Provider will notify the user to that effect). However, this does not apply where the Provider is not obligated to do so under the Personal Information Protection Act or other laws and regulations.
 
-Settings stored only on your device are not held by the Provider, so you can delete them yourself by deleting the app.
+Settings stored only on your device are not held by the Provider, so you can delete them yourself by following the deletion procedure above.
 
 ## Contact
 For opinions, questions, complaints, and other inquiries regarding the handling of user information, please contact:
