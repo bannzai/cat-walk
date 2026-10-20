@@ -337,7 +337,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bannzai.CatWalkWatch;
 				PRODUCT_NAME = CatWalkWatch;
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 26.0;
 			};
@@ -495,7 +495,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bannzai.CatWalkWatch;
 				PRODUCT_NAME = CatWalkWatch;
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 26.0;
 			};
