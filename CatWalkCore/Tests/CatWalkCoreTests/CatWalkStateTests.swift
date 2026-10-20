@@ -1,27 +1,137 @@
+import Foundation
 import Testing
 
 @testable import CatWalkCore
 
+@Suite(.timeLimit(.minutes(1)))
 struct CatWalkStateTests {
-    @Test func movesInFacingDirection() {
-        let state = CatWalkState(x: 10, direction: .right, stride: 5)
+    @Test func movesInFacingDirectionWhileWalking() {
+        var random = ZeroRandomNumberGenerator()
 
-        #expect(state.step(width: 100).x == 15)
+        #expect(CatWalkState(x: 10, direction: .right).advanced(elapsedSeconds: 1, width: 100, walkingSpeed: 24, random: &random).x == 34)
     }
 
     @Test func turnsBackAtRightEdge() {
-        let state = CatWalkState(x: 98, direction: .right, stride: 5)
-        let next = state.step(width: 100)
+        var random = ZeroRandomNumberGenerator()
+        let next = CatWalkState(x: 90, direction: .right).advanced(elapsedSeconds: 1, width: 100, walkingSpeed: 24, random: &random)
+
+        #expect(next.x == 86)
+        #expect(next.direction == .left)
+    }
+
+    @Test func turnsBackAtLeftEdge() {
+        var random = ZeroRandomNumberGenerator()
+        let next = CatWalkState(x: 10, direction: .left).advanced(elapsedSeconds: 1, width: 100, walkingSpeed: 24, random: &random)
+
+        #expect(next.x == 14)
+        #expect(next.direction == .right)
+    }
+
+    @Test func foldsDistanceLongerThanRoundTrip() {
+        var random = ZeroRandomNumberGenerator()
+        let next = CatWalkState(x: 0, direction: .right).advanced(elapsedSeconds: 5, width: 100, walkingSpeed: 100, random: &random)
 
         #expect(next.x == 100)
         #expect(next.direction == .left)
     }
 
-    @Test func turnsBackAtLeftEdge() {
-        let state = CatWalkState(x: 2, direction: .left, stride: 5)
-        let next = state.step(width: 100)
+    @Test func staysStillWhileNotWalking() {
+        var random = ZeroRandomNumberGenerator()
 
-        #expect(next.x == 0)
-        #expect(next.direction == .right)
+        #expect(CatWalkState(x: 10, activity: .sitting).advanced(elapsedSeconds: 1, width: 100, walkingSpeed: 24, random: &random).x == 10)
+    }
+
+    @Test func tracksElapsedAndRemainingInActivity() {
+        var random = ZeroRandomNumberGenerator()
+        let next = CatWalkState(activityRemaining: 5).advanced(elapsedSeconds: 1, width: 100, walkingSpeed: 24, random: &random)
+
+        #expect(next.activity == .walking)
+        #expect(next.activityElapsed == 1)
+        #expect(next.activityRemaining == 4)
+    }
+
+    @Test func transitionsWalkingStandingWalkingWithZeroRandom() {
+        var random = ZeroRandomNumberGenerator()
+        let standing = CatWalkState().advanced(elapsedSeconds: 5, width: 1000, walkingSpeed: 24, random: &random)
+
+        #expect(standing.activity == .standing)
+        #expect(standing.activityElapsed == 0)
+        #expect(standing.activityRemaining == CatActivity.standing.durationRange.lowerBound)
+
+        let walking = standing.advanced(elapsedSeconds: 2, width: 1000, walkingSpeed: 24, random: &random)
+
+        #expect(walking.activity == .walking)
+        #expect(walking.activityRemaining == CatActivity.walking.durationRange.lowerBound)
+    }
+
+    @Test func crossesSeveralActivitiesInOneCall() {
+        var random = ZeroRandomNumberGenerator()
+        let next = CatWalkState().advanced(elapsedSeconds: 7, width: 1000, walkingSpeed: 24, random: &random)
+
+        // 最初の 5 秒だけ歩き、立ち止まる 2 秒の間は動かない
+        #expect(next.x == 120)
+        #expect(next.activity == .walking)
+        #expect(next.activityRemaining == CatActivity.walking.durationRange.lowerBound)
+    }
+
+    @Test func followsFixedSeedSequence() {
+        var random = SplitMix64(state: 42)
+        var state = CatWalkState()
+        var activities = [state.activity]
+        for _ in 0..<7 {
+            state = state.advanced(elapsedSeconds: state.activityRemaining, width: 300, walkingSpeed: 24, random: &random)
+            activities.append(state.activity)
+        }
+
+        // SplitMix64・unitRandom・候補表・滞在時間を同じ式で Python に写して再計算した並び
+        #expect(activities == [.walking, .grooming, .sitting, .standing, .walking, .sitting, .standing, .sitting])
+    }
+
+    @Test func clampsIntoNarrowedWidth() {
+        var random = ZeroRandomNumberGenerator()
+
+        #expect(CatWalkState(x: 500, activity: .sitting).advanced(elapsedSeconds: 1, width: 100, walkingSpeed: 24, random: &random).x == 100)
+    }
+
+    @Test func staysAtZeroWhenWidthIsZero() {
+        var random = ZeroRandomNumberGenerator()
+
+        #expect(CatWalkState(x: 10).advanced(elapsedSeconds: 1, width: 0, walkingSpeed: 24, random: &random).x == 0)
+    }
+
+    @Test func staysInRangeAndTransitionsAlongCandidatesOverLongRun() throws {
+        // 1 秒刻みで進めるため、どの行動も 1 秒より長く続かないと 1 刻みの間の遷移を見落とす
+        try #require(CatActivity.allCases.allSatisfy { $0.durationRange.lowerBound > 1 })
+
+        var random = SplitMix64(state: 42)
+        var state = CatWalkState()
+        var seenActivities: Set<CatActivity> = [state.activity]
+        for _ in 0..<10_000 {
+            let next = state.advanced(elapsedSeconds: 1, width: 300, walkingSpeed: 24, random: &random)
+            #expect((0.0...300.0).contains(next.x))
+            if next.activity != state.activity {
+                #expect(state.activity.nextCandidates.contains(next.activity))
+            }
+            seenActivities.insert(next.activity)
+            state = next
+        }
+
+        #expect(seenActivities == Set(CatActivity.allCases))
+    }
+
+    @Test func sameSeedGivesSameState() {
+        var firstRandom = SplitMix64(state: 7)
+        var secondRandom = SplitMix64(state: 7)
+
+        #expect(
+            CatWalkState().advanced(elapsedSeconds: 600, width: 300, walkingSpeed: 24, random: &firstRandom)
+                == CatWalkState().advanced(elapsedSeconds: 600, width: 300, walkingSpeed: 24, random: &secondRandom)
+        )
+    }
+
+    @Test func roundTripsThroughCodable() throws {
+        let state = CatWalkState(x: 12.5, direction: .left, activity: .sleeping, activityElapsed: 3, activityRemaining: 40)
+
+        #expect(try JSONDecoder().decode(CatWalkState.self, from: JSONEncoder().encode(state)) == state)
     }
 }
