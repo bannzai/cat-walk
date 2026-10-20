@@ -39,8 +39,8 @@ struct CatWalkStateTimelineTests {
             .map { CatWalkState.timelineState(date: $0, calendar: Self.calendar, width: 1, walkingSpeed: 0.1) }
 
         for (previous, next) in zip(states, states.dropFirst()) {
-            // 経過時間は区切りごとにほぼ必ず変わるため、見た目に出る値 (行動・向き・位置) だけで比べる
-            #expect(previous.activity != next.activity || previous.direction != next.direction || previous.x != next.x)
+            #expect(previous.activity != next.activity)
+            #expect(previous.x != next.x)
             #expect((0.0...1.0).contains(next.x))
         }
     }
