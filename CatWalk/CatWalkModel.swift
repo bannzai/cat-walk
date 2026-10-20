@@ -21,6 +21,10 @@ final class CatWalkModel {
     }
     /// 状態を進めている Task。止まっている間は nil。
     @ObservationIgnored private var driveTask: Task<Void, Never>?
+    /// 経過時間を測る時計。Task.sleep と同じくスリープ中の時間も数える。
+    @ObservationIgnored private let clock = ContinuousClock()
+    /// 最後に `walk` へ経過時間を反映した時刻。止める時に、そこから経った分を行動の残り時間から引くために持つ。
+    @ObservationIgnored private var lastInstant: ContinuousClock.Instant?
 
     /// 状態を時間で進め始める。歩く間は `walkingTickSeconds` ごと、ほかの行動では行動が切り替わる時だけ起きる。
     /// 既に動いていれば何もしないため冪等。
@@ -28,31 +32,39 @@ final class CatWalkModel {
         guard driveTask == nil else {
             return
         }
+        lastInstant = clock.now
         driveTask = Task { [weak self] in
             // 見た目の行動の並びに再現性は要らないため、OS の乱数を使う
             var random = SystemRandomNumberGenerator()
-            let clock = ContinuousClock()
-            var lastInstant = clock.now
             while !Task.isCancelled {
                 guard let waitSeconds = self?.walk.secondsUntilNextUpdate(walkingTickSeconds: Self.walkingTickSeconds) else {
                     return
                 }
                 try? await Task.sleep(for: .seconds(waitSeconds))
-                guard !Task.isCancelled, let self else {
+                guard !Task.isCancelled, let self, let lastInstant else {
                     return
                 }
                 // Task.sleep の遅れや Mac のスリープからの復帰で状態がずれないよう、待った秒数ではなく実際に経った秒数で進める
                 let now = clock.now
                 advance(elapsedSeconds: (now - lastInstant) / .seconds(1), random: &random)
-                lastInstant = now
+                self.lastInstant = now
             }
         }
     }
 
-    /// 状態を進めるのを止める。止まっている間はタイマーが動かず、猫はその場に留まる。何度呼んでも結果は同じ (冪等)。
+    /// 状態を進めるのを止める。止まっている間はタイマーが動かず、猫はその場に留まる。
+    /// 歩く以外の行動は切り替わるまで 1 回だけ待つため、止めるまでに経った時間を行動の残り時間から引き、出し直した時に同じ行動を最初から待ち直さないようにする。
+    /// 止まっている時に呼んでも何もしないため冪等。
     func stop() {
-        driveTask?.cancel()
-        driveTask = nil
+        guard let driveTask, let lastInstant else {
+            return
+        }
+        driveTask.cancel()
+        self.driveTask = nil
+        self.lastInstant = nil
+        let elapsedSeconds = (clock.now - lastInstant) / .seconds(1)
+        walk.activityElapsed += elapsedSeconds
+        walk.activityRemaining -= elapsedSeconds
     }
 
     /// `elapsedSeconds` 秒ぶん状態を進める。歩いていた間の移動だけを linear に補間して見せる。
