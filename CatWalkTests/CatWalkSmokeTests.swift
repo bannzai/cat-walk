@@ -3,8 +3,8 @@ import Testing
 
 struct CatWalkSmokeTests {
     @Test func coreIsLinkedIntoTestBundle() {
-        let state = CatWalkState(x: 0, direction: .right, stride: 1)
+        var random = SystemRandomNumberGenerator()
 
-        #expect(state.step(width: 10).x == 1)
+        #expect(CatWalkState(x: 0, direction: .right).advanced(elapsedSeconds: 1, width: 10, walkingSpeed: 1, random: &random).x == 1)
     }
 }
