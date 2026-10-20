@@ -12,6 +12,8 @@ final class OverlayPanel: NSPanel {
         )
         level = .floating
         ignoresMouseEvents = true
+        // NSPanel は既定で非アクティブ化時に隠れるが、他のアプリの操作中も猫を表示し続ける必要があるため
+        hidesOnDeactivate = false
         collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary]
         isOpaque = false
         backgroundColor = .clear
