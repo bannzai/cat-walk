@@ -3,8 +3,6 @@ CONFIGURATION := Debug
 DERIVED_DATA := tmp/DerivedData
 IOS_APP := $(DERIVED_DATA)/Build/Products/$(CONFIGURATION)-iphonesimulator/Cat Walk.app
 IOS_BUNDLE_ID := com.bannzai.CatWalkiOS
-# 遅延評価の ?= にして ios target の実行時にだけ sim-boot を呼ぶ (make -n や読み込み時に simulator を起動しない)
-SIMULATOR_UDID ?= $(shell SCRIPT_QUIET=1 sim-boot | sed -n 's/^DEVICE_UDID=//p' | tail -n 1)
 
 .PHONY: build-macos build-ios build-watchos ios test clean
 
@@ -21,7 +19,7 @@ build-watchos:
 # Simulator 向けビルドを sim-boot で起動した simulator にインストールして起動する
 ios: build-ios
 	@set -e; \
-	simulator_udid="$(SIMULATOR_UDID)"; \
+	simulator_udid="$${SIMULATOR_UDID:-$$(SCRIPT_QUIET=1 sim-boot | sed -n 's/^DEVICE_UDID=//p' | tail -n 1)}"; \
 	[ -n "$$simulator_udid" ] || { echo "Error: sim-boot でSimulatorを解決できません (sim-bootがPATHにあるか確認するか、SIMULATOR_UDID=<UDID>を指定してください)" >&2; exit 1; }; \
 	xcrun simctl install "$$simulator_udid" "$(IOS_APP)"; \
 	xcrun simctl launch "$$simulator_udid" $(IOS_BUNDLE_ID)

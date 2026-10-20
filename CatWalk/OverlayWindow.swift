@@ -5,7 +5,7 @@ import SwiftUI
 final class OverlayPanel: NSPanel {
     init(screen: NSScreen) {
         super.init(
-            contentRect: screen.frame,
+            contentRect: screen.visibleFrame, // Dock やメニューバーに猫が隠れないよう、使える領域に合わせる
             styleMask: [.borderless, .nonactivatingPanel],
             backing: .buffered,
             defer: false
