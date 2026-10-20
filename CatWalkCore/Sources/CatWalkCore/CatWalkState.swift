@@ -52,9 +52,7 @@ public struct CatWalkState: Equatable, Codable, Sendable {
         walkingSpeed: Double,
         random: inout some RandomNumberGenerator
     ) -> CatWalkState {
-        var next = self
-        // 画面の幅が縮んでも範囲外から歩き出さないようにする
-        next.x = min(max(x, 0), max(width, 0))
+        var next = clamped(width: width)
         var remainingSeconds = max(elapsedSeconds, 0)
         while remainingSeconds > 0 {
             let segmentSeconds = min(remainingSeconds, max(next.activityRemaining, 0))
@@ -70,6 +68,14 @@ public struct CatWalkState: Equatable, Codable, Sendable {
                 next.activityRemaining = next.activity.duration(unitRandom: Self.unitRandom(random: &random))
             }
         }
+        return next
+    }
+
+    /// x を 0 から `width` の範囲に収めた状態を返す。画面の幅が縮んだ時に、範囲外に取り残されたり範囲外から歩き出したりしないようにするため。
+    /// `width` が負なら 0 として扱う。
+    public func clamped(width: Double) -> CatWalkState {
+        var next = self
+        next.x = min(max(x, 0), max(width, 0))
         return next
     }
 

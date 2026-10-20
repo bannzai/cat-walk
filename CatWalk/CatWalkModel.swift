@@ -13,7 +13,12 @@ final class CatWalkModel {
     /// 今の猫の状態。
     private(set) var walk = CatWalkState()
     /// 猫が歩ける横幅 (pt)。パネルの幅から猫の大きさを引いた値で、ディスプレイ構成が変わるたびにパネルが更新する。
-    var travelWidth: Double = 0
+    /// 眠っている間は次に状態を進めるまで長く待つため、縮んだ時はその場で猫を範囲内へ戻し、画面外に取り残さない。
+    var travelWidth: Double = 0 {
+        didSet {
+            walk = walk.clamped(width: travelWidth)
+        }
+    }
     /// 状態を進めている Task。止まっている間は nil。
     @ObservationIgnored private var driveTask: Task<Void, Never>?
 
