@@ -9,6 +9,11 @@ final class OverlayPanel: NSPanel {
     let catWalkModel: CatWalkModel
     /// 猫を置いた時に呼ぶ処理。終了処理を通らずに終わっても置いた位置から再開できるよう、すぐ保存させるため。
     var didDrop: (() -> Void)?
+    /// 猫の上でクリックを受けている間に判定し直す間隔 (秒)。猫は最速 48pt/秒で歩くため、0.1 秒なら猫が去った後に遮る幅を 5pt 程度に抑えられる。
+    /// 動くのはカーソルが猫の上にある間だけで、常駐時の CPU には効かない
+    static let hoverRecheckSeconds: Double = 0.1
+    /// 猫の上でクリックを受けている間だけ判定し直し続ける Task。クリックを下のアプリに通している間は nil。
+    private var hoverRecheckTask: Task<Void, Never>?
 
     init(screen: NSScreen, catWalkModel: CatWalkModel) {
         self.catWalkModel = catWalkModel
@@ -49,8 +54,9 @@ final class OverlayPanel: NSPanel {
 
     /// カーソルが猫の上にある間だけクリックを受け、それ以外は下のアプリに通す。持ち上げている間はカーソルが猫から外れても受け続け、離すまで猫を追わせる。
     /// `mouseLocation` はカーソルの画面座標 (左下原点)。判定は呼んだ時刻に描かれている猫の位置で行い、同じ時刻と位置なら何度呼んでも結果は同じ。
-    /// 判定し直すのはカーソルが動いた時と状態を進めた時だけのため、止まったカーソルの下へ猫が歩いてきた間は、次に状態を進めるまで下のアプリにクリックを通す。
-    /// 猫以外の場所のクリックを遮らないことを、動く猫を止まったカーソルで掴めることより優先した
+    /// 猫の外にある間に判定し直すのはカーソルが動いた時と状態を進めた時だけのため、止まったカーソルの下へ猫が歩いてきた間は、次に状態を進めるまで下のアプリにクリックを通す。
+    /// 猫以外の場所のクリックを遮らないことを、動く猫を止まったカーソルで掴めることより優先した。
+    /// 逆に猫の上でクリックを受けている間は、止まったカーソルから猫が歩き去った時に猫のいない場所のクリックを受けないよう、`hoverRecheckTask` で判定し直し続ける
     func updateIgnoresMouseEvents(mouseLocation: CGPoint) {
         guard catWalkModel.liftedCenter == nil else {
             return
@@ -60,6 +66,20 @@ final class OverlayPanel: NSPanel {
             walkX: catWalkModel.displayedWalkX,
             catSize: catWalkModel.catSize
         ).contains(mouseLocation)
+        if ignoresMouseEvents {
+            hoverRecheckTask?.cancel()
+            hoverRecheckTask = nil
+        } else if hoverRecheckTask == nil {
+            hoverRecheckTask = Task { [weak self] in
+                while !Task.isCancelled {
+                    try? await Task.sleep(for: .seconds(Self.hoverRecheckSeconds))
+                    guard !Task.isCancelled, let self else {
+                        return
+                    }
+                    updateIgnoresMouseEvents(mouseLocation: NSEvent.mouseLocation)
+                }
+            }
+        }
     }
 
     /// 猫の上で受けた左ボタンの操作で、猫を持ち上げ・動かし・置く。ボタンを受けるのはカーソルが猫の上にある間と持ち上げている間だけのため、
