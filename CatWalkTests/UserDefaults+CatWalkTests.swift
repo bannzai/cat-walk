@@ -1,5 +1,4 @@
 import CatWalkCore
-import CoreGraphics
 import Foundation
 import Testing
 
@@ -39,9 +38,9 @@ struct UserDefaultsCatWalkTests {
 
     @Test func roundTripsStatesPerDisplay() throws {
         try withIsolatedDefaults { defaults in
-            let states: [CGDirectDisplayID: CatWalkState] = [
-                1: CatWalkState(x: 120, direction: .left, activity: .sleeping, activityElapsed: 3, activityRemaining: 40),
-                69_733_382: CatWalkState(x: 8, activity: .sitting),
+            let states: [String: CatWalkState] = [
+                "37D8832A-2D66-02CA-B9F7-8F30A301B230": CatWalkState(x: 120, direction: .left, activity: .sleeping, activityElapsed: 3, activityRemaining: 40),
+                "69733382": CatWalkState(x: 8, activity: .sitting),
             ]
             defaults.catWalkStates = states
 

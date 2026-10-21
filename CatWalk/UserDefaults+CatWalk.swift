@@ -1,5 +1,4 @@
 import CatWalkCore
-import CoreGraphics
 import Foundation
 
 /// 猫の設定と状態の保存先。端末内の `UserDefaults` にだけ置き、外部へ送らない (プライバシーポリシーの記述と `documents/adr/0001-local-only-no-backend-infra.md`)。
@@ -46,26 +45,15 @@ extension UserDefaults {
         }
     }
 
-    /// ディスプレイ ID ごとの猫の位置と行動。外したディスプレイの状態も、付け直した時に戻せるよう残す。
+    /// ディスプレイの UUID の文字列 (`displayStorageKey(displayID:)`) ごとの猫の位置と行動。外したディスプレイの状態も、付け直した時に戻せるよう残す。
     /// 読めない値は、猫を出せなくなるより初回の状態から歩き直す方がよいため空として扱う。
     /// JSON にできない値 (NaN 等) の時は、前に保存した状態を消さないよう書き込まない。
-    var catWalkStates: [CGDirectDisplayID: CatWalkState] {
+    var catWalkStates: [String: CatWalkState] {
         get {
-            guard let data = data(forKey: CatWalkKey.catWalkStates),
-                  let states = try? JSONDecoder().decode([String: CatWalkState].self, from: data)
-            else {
-                return [:]
-            }
-            // JSON のオブジェクトのキーは文字列だけのため、ディスプレイ ID を文字列にして保存している
-            return Dictionary(
-                states.compactMap { key, state in
-                    CGDirectDisplayID(key).map { ($0, state) }
-                },
-                uniquingKeysWith: { first, _ in first }
-            )
+            data(forKey: CatWalkKey.catWalkStates).flatMap { try? JSONDecoder().decode([String: CatWalkState].self, from: $0) } ?? [:]
         }
         set {
-            guard let data = try? JSONEncoder().encode(Dictionary(uniqueKeysWithValues: newValue.map { (String($0.key), $0.value) })) else {
+            guard let data = try? JSONEncoder().encode(newValue) else {
                 return
             }
             set(data, forKey: CatWalkKey.catWalkStates)

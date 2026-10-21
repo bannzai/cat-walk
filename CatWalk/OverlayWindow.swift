@@ -214,7 +214,7 @@ final class OverlayWindowController {
 
     /// 今出しているパネルの猫の状態を保存する。今は外しているディスプレイの保存済みの状態は残す。同じ状態で何度呼んでも結果は同じ (冪等)。
     func saveStates() {
-        defaults.catWalkStates.merge(panels.mapValues { $0.catWalkModel.currentWalk }) { _, current in
+        defaults.catWalkStates.merge(panels.map { (displayStorageKey(displayID: $0.key), $0.value.catWalkModel.currentWalk) }) { _, current in
             current
         }
     }
@@ -230,7 +230,7 @@ final class OverlayWindowController {
         )
         for (displayID, panel) in panels where screens[displayID] == nil {
             panel.catWalkModel.stop()
-            defaults.catWalkStates[displayID] = panel.catWalkModel.currentWalk
+            defaults.catWalkStates[displayStorageKey(displayID: displayID)] = panel.catWalkModel.currentWalk
             panel.close()
             panels[displayID] = nil
         }
@@ -240,7 +240,7 @@ final class OverlayWindowController {
                 screen: screen,
                 catWalkModel: CatWalkModel(
                     // 保存が無いディスプレイは、初回起動と同じ姿から歩き始める
-                    walk: savedStates[displayID] ?? CatWalkState(),
+                    walk: savedStates[displayStorageKey(displayID: displayID)] ?? CatWalkState(),
                     catSize: catSize.points,
                     walkingSpeed: walkingSpeed.pointsPerSecond
                 )
@@ -268,4 +268,10 @@ final class OverlayWindowController {
             panel.updateIgnoresMouseEvents(mouseLocation: NSEvent.mouseLocation)
         }
     }
+}
+
+/// `displayID` のディスプレイの状態を保存するキー。`CGDirectDisplayID` は Mac の再起動などで割り当て直されるため、ディスプレイごとに変わらない UUID の文字列にする。
+/// UUID を取れないディスプレイは、保存した状態を戻せない時がある代わりに猫を出せるよう、ディスプレイ ID の文字列にする。
+func displayStorageKey(displayID: CGDirectDisplayID) -> String {
+    CGDisplayCreateUUIDFromDisplayID(displayID).map { CFUUIDCreateString(nil, $0.takeRetainedValue()) as String } ?? String(displayID)
 }
