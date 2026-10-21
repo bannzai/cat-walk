@@ -57,11 +57,16 @@ final class OverlayPanel: NSPanel {
     /// 猫の外にある間に判定し直すのはカーソルが動いた時と状態を進めた時だけのため、止まったカーソルの下へ猫が歩いてきた間は、次に状態を進めるまで下のアプリにクリックを通す。
     /// 猫以外の場所のクリックを遮らないことを、動く猫を止まったカーソルで掴めることより優先した。
     /// 逆に猫の上でクリックを受けている間は、止まったカーソルから猫が歩き去った時に猫のいない場所のクリックを受けないよう、`hoverRecheckTask` で判定し直し続ける
+    /// 隠している間・閉じた後は猫が見えないため、クリックを受けず判定し直しも止める。
     func updateIgnoresMouseEvents(mouseLocation: CGPoint) {
+        // Mission Control や画面のロックで左ボタンを離したイベントがこのパネルに届かないと、持ち上げたまま画面全体のクリックを受け続けるため、ボタンの実際の状態で置く
+        if catWalkModel.liftedCenter != nil, NSEvent.pressedMouseButtons & 1 == 0 {
+            dropLiftedCat()
+        }
         guard catWalkModel.liftedCenter == nil else {
             return
         }
-        ignoresMouseEvents = !walkingCatScreenRect(
+        ignoresMouseEvents = !isVisible || !walkingCatScreenRect(
             panelFrame: frame,
             walkX: catWalkModel.displayedWalkX,
             catSize: catWalkModel.catSize
@@ -89,12 +94,20 @@ final class OverlayPanel: NSPanel {
         case .leftMouseDown, .leftMouseDragged:
             catWalkModel.lift(center: liftedCatCenter(locationInWindow: event.locationInWindow, panelSize: frame.size, catSize: catWalkModel.catSize))
         case .leftMouseUp:
-            catWalkModel.drop()
-            didDrop?()
+            dropLiftedCat()
             updateIgnoresMouseEvents(mouseLocation: NSEvent.mouseLocation)
         default:
             super.sendEvent(event)
         }
+    }
+
+    /// 持ち上げている猫を置いて保存させる。持ち上げていない時は何もしないため冪等。
+    func dropLiftedCat() {
+        guard catWalkModel.liftedCenter != nil else {
+            return
+        }
+        catWalkModel.drop()
+        didDrop?()
     }
 
     /// 猫の上でクリックを受けている間にカーソルが動いた時に、猫から外れていればクリックを下のアプリに通す状態へ戻す。
@@ -229,9 +242,12 @@ final class OverlayWindowController {
             uniquingKeysWith: { first, _ in first }
         )
         for (displayID, panel) in panels where screens[displayID] == nil {
+            // 持ち上げたまま閉じると、次にパネルを作った時まで持ち上げた状態が残るため置いてから閉じる
+            panel.dropLiftedCat()
             panel.catWalkModel.stop()
             defaults.catWalkStates[displayStorageKey(displayID: displayID)] = panel.catWalkModel.currentWalk
             panel.close()
+            panel.updateIgnoresMouseEvents(mouseLocation: NSEvent.mouseLocation)
             panels[displayID] = nil
         }
         let savedStates = defaults.catWalkStates
@@ -256,9 +272,11 @@ final class OverlayWindowController {
                 panel.orderFrontRegardless()
                 panel.catWalkModel.start()
             } else {
+                panel.dropLiftedCat()
                 panel.catWalkModel.stop()
                 panel.orderOut(nil)
             }
+            panel.updateIgnoresMouseEvents(mouseLocation: NSEvent.mouseLocation)
         }
     }
 
