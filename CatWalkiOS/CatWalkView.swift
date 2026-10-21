@@ -1,7 +1,7 @@
 import CatWalkCore
 import SwiftUI
 
-/// 猫のプレースホルダーが画面下端を歩いたり止まったりする view。
+/// 猫のプレースホルダーが画面下端を歩いたり止まったりする view。タップするかウィジェットから開くと撫でて喜ばせる。
 struct CatWalkView: View {
     /// 猫の大きさ。プレースホルダーの見た目の確認に十分な仮の値で、デザインの段階で決め直す。
     private static let catSize: Double = 44
@@ -13,9 +13,7 @@ struct CatWalkView: View {
     var body: some View {
         GeometryReader { proxy in
             let travel = max(proxy.size.width - Self.catSize, 0)
-            Image(systemName: "cat.fill")
-                .font(.system(size: Self.catSize))
-                .scaleEffect(x: walk.direction == .right ? 1 : -1, y: 1)
+            CatPostureView(activity: walk.activity, direction: walk.direction, size: Self.catSize)
                 .position(x: walk.x + Self.catSize / 2, y: proxy.size.height - Self.catSize * 2)
                 .animation(.linear(duration: Self.tickSeconds), value: walk.x)
                 .task {
@@ -26,6 +24,14 @@ struct CatWalkView: View {
                         walk = walk.advanced(elapsedSeconds: Self.tickSeconds, width: travel, walkingSpeed: CatWalkState.defaultWalkingSpeed, random: &random)
                     }
                 }
+        }
+        // 猫は小さく毎秒動くため、猫の上に限らず画面のどこをタップしても撫でられるようにする
+        .contentShape(Rectangle())
+        .onTapGesture {
+            walk = walk.petted()
+        }
+        .onOpenURL { _ in
+            walk = walk.petted()
         }
     }
 }

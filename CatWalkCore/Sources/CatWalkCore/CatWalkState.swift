@@ -71,6 +71,12 @@ public struct CatWalkState: Equatable, Codable, Sendable {
         return next
     }
 
+    /// 撫でられた直後の状態を返す。今の行動を中断して喜ぶ行動に入り、位置と向きは変えない。
+    /// 滞在時間は `init` と同じく乱数を使わずに済む下限にする。
+    public func petted() -> CatWalkState {
+        CatWalkState(x: x, direction: direction, activity: .delighted)
+    }
+
     /// x を 0 から `width` の範囲に収めた状態を返す。画面の幅が縮んだ時に、範囲外に取り残されたり範囲外から歩き出したりしないようにするため。
     /// `width` が負なら 0 として扱う。
     public func clamped(width: Double) -> CatWalkState {
