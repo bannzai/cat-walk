@@ -1,5 +1,5 @@
 ---
-status: evaluating        # evaluating | building | launched | pivoting | retiring | retired
+status: building          # evaluating | building | launched | pivoting | retiring | retired
 decision_date:            # 次の判定日 (YYYY-MM-DD)。判定のたびに cycle_days 後へ進める
 cycle_days: 14            # 判定の周期 (7 または 14)
 veto_wait_hours: 12       # 公開後の無人ループの拒否権の待ち時間 (既定 12)
@@ -25,7 +25,7 @@ Mac で作業する人 (と同じ人の iPhone / Apple Watch) に、作業の邪
 
 ## 必要な機能
 
-構想の段階 (関門 1) の返答待ち。下は agent の提案で、bannzai の返答で確定する。
+2026-10-21 の構想の判断 (作る。 https://github.com/bannzai/IdeaMemo/issues/366#issuecomment-6300479645 ) で確定した一覧。進捗はロードマップの親 issue で管理する。
 
 macOS:
 - [ ] メニューバー常駐 (`MenuBarExtra`、Dock に出ない) と、透明・クリック透過・最前面のオーバーレイ。全 Space・他アプリのフルスクリーン・複数ディスプレイの上に出る
@@ -42,7 +42,7 @@ watchOS:
 - [ ] 歩行ロジックを共有する Swift Package (`CatWalkCore`) と、3 OS で同じ猫の見た目 (デザインの段階で決める)
 - [ ] 利用規約・プライバシーポリシー・紹介サイト (GitHub Pages) と、設定画面からの導線 (お問い合わせ (メール) の導線を含む)
 
-MVP に入れないもの (後続): 育成・餌・ミニゲーム、複数の猫、自分の猫の柄の再現、季節のイベント、課金 (関門 1 の返答で決まるまで)。
+MVP に入れないもの (後続): 育成・餌・ミニゲーム、複数の猫、自分の猫の柄の再現、季節のイベント、課金。
 
 ## デザインの方向
 
@@ -54,7 +54,11 @@ MVP に入れないもの (後続): 育成・餌・ミニゲーム、複数の�
 | --- | --- | --- | --- |
 | 2026-10-20 | 評価 | evaluate-service-idea の判定は「作る」。決め手は、需要が iOS の競合の評価件数で実測できる一方、本命の体験 (画面の上を歩く) を出せる macOS には評価件数が付いた定番が無いこと。作り手の目的は未確認のため 4 通りの判定を並べ、収益以外の 3 つは作る、収益は到達可能性が未判定のまま作る (判定日で早く見切る)。レポート: https://github.com/bannzai/IdeaMemo/issues/366#issuecomment-6280604722 | agent |
 | 2026-10-20 | 評価 | 判定基準の計測元は Mac App Store のレビュー (appstore-research skill) と App Store Connect の売上・表示回数にし、Analytics・Crashlytics は入れない (ADR 0001) | agent |
+| 2026-10-21 | 構想 (関門 1) | 作る。対話セッションのチャットで「実装開始。よろしく」。記録: https://github.com/bannzai/IdeaMemo/issues/366#issuecomment-6300479645 | bannzai |
+| 2026-10-21 | 構想 (関門 1) | 必要な機能は提案の一覧のまま (上の「必要な機能」)。弾の分け方は、土台 (CatWalkCore の状態機械 + macOS のオーバーレイ) → 土台に依存する機能 (macOS の設定・保存、iOS、watchOS) → 仕上げ (Live Activity、導線、デザインの反映、ストア素材) | 返答なしのため提案を採用 (agent) |
+| 2026-10-21 | 構想 (関門 1) | 配信先は Mac App Store + App Store (iOS / watchOS)。3 OS を揃えてから公開するか macOS 版を先に出すかは、Mac で触れる版の「公開に進むか」の判断で問う | 返答なしのため提案を採用 (agent)。配信先は可逆でないため、違えば IdeaMemo #366 のコメントで訂正してもらう |
+| 2026-10-21 | 構想 (関門 1) | 無料で公開し、MVP に課金は入れない (特定商取引法に基づく表記は不要)。作り手の目的は「自分が使いたい」を仮置きし、収益の目標は置かない。判定基準の「買い切りの購入数」の行は課金を入れるまで使わない | 返答なしのため提案を採用 (agent) |
 
 ## agent に任せること
 
-文書に無い問いはすべて。関門 1 の返答で「任せる」とされた項目をここに足す。
+文書に無い問いはすべて。構想の判断で個別の返答が無かった次の項目も agent が決めた (上の「決めたこと」): 必要な機能の過不足、弾の分け方、配信先、課金の有無と作り手の目的。

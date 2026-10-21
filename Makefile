@@ -57,6 +57,8 @@ macos:
 # Debug ビルドにしか無い操作 (開発者メニュー等) を普段使いのデータに対して行うための一時的な配置で、
 # 終わったら make macos で Release に戻す
 # 起動は自動では行わない (ssh 越しの実行を想定)
+# project の Debug は runner 向けの ad-hoc 署名のため、普段使いのデータ (App Sandbox の container) を
+# Release と同じ署名で開けるよう自動署名で上書きする
 .PHONY: macos-debug
 
 macos-debug:
@@ -65,6 +67,7 @@ macos-debug:
 		-destination 'platform=macOS' \
 		-derivedDataPath 'tmp/DerivedData' \
 		-allowProvisioningUpdates -allowProvisioningDeviceRegistration \
+		CODE_SIGN_STYLE=Automatic CODE_SIGN_IDENTITY='Apple Development' DEVELOPMENT_TEAM=TQPN82UBBY \
 		build
 	rm -rf $(INSTALL_APP)
 	ditto 'tmp/DerivedData/Build/Products/Debug/CatWalk.app' $(INSTALL_APP)
