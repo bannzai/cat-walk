@@ -21,6 +21,8 @@ final class CatWalkModel {
     private(set) var liftedCenter: CGPoint?
     /// 直前に状態を進める前の `walk.x`。歩く間は linear のアニメーションがここから `walk.x` へ猫を動かすため、猫が描かれ得る範囲をマウスの判定に使う。
     @ObservationIgnored private(set) var previousWalkX: Double
+    /// 歩く間の補間を始めた回数。補間の完了時に、その補間が最新のものかを見分けるため。
+    @ObservationIgnored private var walkAnimationGeneration = 0
     /// 猫が歩ける横幅 (pt)。パネルの幅から猫の大きさを引いた値で、ディスプレイ構成や猫の大きさが変わるたびにパネルが更新する。
     /// 眠っている間は次に状態を進めるまで長く待つため、縮んだ時はその場で猫を範囲内へ戻し、画面外に取り残さない。
     var travelWidth: Double = 0 {
@@ -130,8 +132,18 @@ final class CatWalkModel {
             return
         }
         previousWalkX = walk.x
+        walkAnimationGeneration += 1
+        let generation = walkAnimationGeneration
         withAnimation(.linear(duration: elapsedSeconds)) {
             walk = next
+        } completion: { [weak self] in
+            // 歩き終えて座る・眠る等に切り替わると次に状態を進めるまで長く待つため、補間を終えた時点で猫のいない元の位置をマウスの判定から外す。
+            // 既に次の補間が始まっていれば、その補間の元の位置を消さないよう何もしない
+            guard let self, walkAnimationGeneration == generation else {
+                return
+            }
+            previousWalkX = walk.x
+            didAdvance?()
         }
     }
 }
