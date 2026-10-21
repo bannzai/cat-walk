@@ -2,7 +2,6 @@ import SwiftUI
 import WidgetKit
 
 /// iOS のホーム画面・ロック画面のウィジェット。タイムラインの区切りごとに猫の姿勢と位置が変わり、タップでアプリを開いて撫でる。
-@main
 struct CatWalkWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "CatWalkWidget", provider: CatWalkTimelineProvider()) { entry in

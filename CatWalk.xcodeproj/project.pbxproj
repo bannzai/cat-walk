@@ -33,6 +33,11 @@
 		CA7A110000000000000000BC /* CatWalkCore in Frameworks */ = {isa = PBXBuildFile; productRef = CA7A110000000000000000C2 /* CatWalkCore */; };
 		CA7A110000000000000000BD /* CatWalkWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CA7A110000000000000000A8 /* CatWalkWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA7A110000000000000000BE /* CatWalkWatchWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CA7A110000000000000000A9 /* CatWalkWatchWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA7A120000000000000000B1 /* CatWalkActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A120000000000000000A1 /* CatWalkActivityAttributes.swift */; };
+		CA7A120000000000000000B2 /* CatWalkActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A120000000000000000A1 /* CatWalkActivityAttributes.swift */; };
+		CA7A120000000000000000B3 /* CatWalkActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A120000000000000000A2 /* CatWalkActivity.swift */; };
+		CA7A120000000000000000B4 /* CatWalkWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A120000000000000000A4 /* CatWalkWidgetBundle.swift */; };
+		CA7A120000000000000000B5 /* CatWalkLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A120000000000000000A5 /* CatWalkLiveActivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +113,11 @@
 		CA7A110000000000000000A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7A110000000000000000A8 /* CatWalkWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CatWalkWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A110000000000000000A9 /* CatWalkWatchWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CatWalkWatchWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA7A120000000000000000A1 /* CatWalkActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkActivityAttributes.swift; sourceTree = "<group>"; };
+		CA7A120000000000000000A2 /* CatWalkActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkActivity.swift; sourceTree = "<group>"; };
+		CA7A120000000000000000A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA7A120000000000000000A4 /* CatWalkWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkWidgetBundle.swift; sourceTree = "<group>"; };
+		CA7A120000000000000000A5 /* CatWalkLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkLiveActivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,8 +239,11 @@
 		D2D4DC5C1494846617AECCDE /* CatWalkiOS */ = {
 			isa = PBXGroup;
 			children = (
+				CA7A120000000000000000A2 /* CatWalkActivity.swift */,
+				CA7A120000000000000000A1 /* CatWalkActivityAttributes.swift */,
 				6D520B940CB592C8D392E427 /* CatWalkiOSApp.swift */,
 				EDB2E867212BCD08D0479F12 /* CatWalkView.swift */,
+				CA7A120000000000000000A3 /* Info.plist */,
 			);
 			path = CatWalkiOS;
 			sourceTree = "<group>";
@@ -248,7 +261,9 @@
 		CA7A110000000000000000D2 /* CatWalkWidget */ = {
 			isa = PBXGroup;
 			children = (
+				CA7A120000000000000000A5 /* CatWalkLiveActivity.swift */,
 				CA7A110000000000000000A4 /* CatWalkWidget.swift */,
+				CA7A120000000000000000A4 /* CatWalkWidgetBundle.swift */,
 				CA7A110000000000000000A5 /* Info.plist */,
 			);
 			path = CatWalkWidget;
@@ -447,6 +462,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A110000000000000000B1 /* CatPostureView.swift in Sources */,
+				CA7A120000000000000000B3 /* CatWalkActivity.swift in Sources */,
+				CA7A120000000000000000B1 /* CatWalkActivityAttributes.swift in Sources */,
 				8CE7A04241E798298C6761E0 /* CatWalkView.swift in Sources */,
 				FD93A6017896BC738907E90D /* CatWalkiOSApp.swift in Sources */,
 			);
@@ -485,8 +502,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A110000000000000000B2 /* CatPostureView.swift in Sources */,
+				CA7A120000000000000000B2 /* CatWalkActivityAttributes.swift in Sources */,
+				CA7A120000000000000000B5 /* CatWalkLiveActivity.swift in Sources */,
 				CA7A110000000000000000B5 /* CatWalkTimelineProvider.swift in Sources */,
 				CA7A110000000000000000B9 /* CatWalkWidget.swift in Sources */,
+				CA7A120000000000000000B4 /* CatWalkWidgetBundle.swift in Sources */,
 				CA7A110000000000000000B7 /* CatWalkWidgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,6 +564,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = CatWalkiOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -581,6 +602,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = CatWalkiOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
