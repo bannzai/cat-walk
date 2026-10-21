@@ -19,10 +19,12 @@ final class CatWalkModel {
     /// 持ち上げられている間の猫の中心 (パネルの左上を原点とする座標)。持ち上げていない間は nil。
     /// 持ち上げは時間で進む行動ではなく離すまで続く操作のため、`CatWalkState` の行動に入れない。保存する状態にも入らないため、持ち上げたまま終了しても次の起動では画面下端の猫に戻る。
     private(set) var liftedCenter: CGPoint?
-    /// 直前に状態を進める前の `walk.x`。歩く間は linear のアニメーションがここから `walk.x` へ猫を動かすため、猫が描かれ得る範囲をマウスの判定に使う。
+    /// 直前に状態を進める前の `walk.x`。歩く間は linear のアニメーションがここから `walk.x` へ猫を動かすため、今描かれている位置を求めるのに使う。
     @ObservationIgnored private(set) var previousWalkX: Double
-    /// 歩く間の補間を始めた回数。補間の完了時に、その補間が最新のものかを見分けるため。
-    @ObservationIgnored private var walkAnimationGeneration = 0
+    /// `previousWalkX` から `walk.x` への linear のアニメーションを始めた時刻。補間していない間は nil。
+    @ObservationIgnored private var walkAnimationStart: ContinuousClock.Instant?
+    /// `previousWalkX` から `walk.x` への linear のアニメーションの長さ (秒)。
+    @ObservationIgnored private var walkAnimationSeconds: Double = 0
     /// 猫が歩ける横幅 (pt)。パネルの幅から猫の大きさを引いた値で、ディスプレイ構成や猫の大きさが変わるたびにパネルが更新する。
     /// 眠っている間は次に状態を進めるまで長く待つため、縮んだ時はその場で猫を範囲内へ戻し、画面外に取り残さない。
     var travelWidth: Double = 0 {
@@ -132,18 +134,23 @@ final class CatWalkModel {
             return
         }
         previousWalkX = walk.x
-        walkAnimationGeneration += 1
-        let generation = walkAnimationGeneration
+        walkAnimationStart = clock.now
+        walkAnimationSeconds = elapsedSeconds
         withAnimation(.linear(duration: elapsedSeconds)) {
             walk = next
-        } completion: { [weak self] in
-            // 歩き終えて座る・眠る等に切り替わると次に状態を進めるまで長く待つため、補間を終えた時点で猫のいない元の位置をマウスの判定から外す。
-            // 既に次の補間が始まっていれば、その補間の元の位置を消さないよう何もしない
-            guard let self, walkAnimationGeneration == generation else {
-                return
-            }
-            previousWalkX = walk.x
-            didAdvance?()
         }
+    }
+
+    /// 今画面に描かれている猫の左端の x。歩く間は linear のアニメーションの途中の位置になるため、マウスの判定を見えている猫に合わせるのに使う。
+    var displayedWalkX: Double {
+        guard let walkAnimationStart else {
+            return walk.x
+        }
+        return interpolatedWalkX(
+            previousWalkX: previousWalkX,
+            walkX: walk.x,
+            elapsedSeconds: (clock.now - walkAnimationStart) / .seconds(1),
+            durationSeconds: walkAnimationSeconds
+        )
     }
 }

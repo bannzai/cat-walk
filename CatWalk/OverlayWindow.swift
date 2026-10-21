@@ -48,15 +48,16 @@ final class OverlayPanel: NSPanel {
     }
 
     /// カーソルが猫の上にある間だけクリックを受け、それ以外は下のアプリに通す。持ち上げている間はカーソルが猫から外れても受け続け、離すまで猫を追わせる。
-    /// `mouseLocation` はカーソルの画面座標 (左下原点)。同じ値で何度呼んでも結果は同じ (冪等)。
+    /// `mouseLocation` はカーソルの画面座標 (左下原点)。判定は呼んだ時刻に描かれている猫の位置で行い、同じ時刻と位置なら何度呼んでも結果は同じ。
+    /// 判定し直すのはカーソルが動いた時と状態を進めた時だけのため、止まったカーソルの下へ猫が歩いてきた間は、次に状態を進めるまで下のアプリにクリックを通す。
+    /// 猫以外の場所のクリックを遮らないことを、動く猫を止まったカーソルで掴めることより優先した
     func updateIgnoresMouseEvents(mouseLocation: CGPoint) {
         guard catWalkModel.liftedCenter == nil else {
             return
         }
         ignoresMouseEvents = !walkingCatScreenRect(
             panelFrame: frame,
-            walkX: catWalkModel.walk.x,
-            previousWalkX: catWalkModel.previousWalkX,
+            walkX: catWalkModel.displayedWalkX,
             catSize: catWalkModel.catSize
         ).contains(mouseLocation)
     }
@@ -106,8 +107,11 @@ final class OverlayWindowController {
     @ObservationIgnored private var panels: [CGDirectDisplayID: OverlayPanel] = [:]
     /// ディスプレイ構成の変更通知の購読。
     @ObservationIgnored private var screenObserver: NSObjectProtocol?
-    /// カーソルが猫の外にある間 (クリックを下のアプリに通している間) のマウスの移動の監視。猫の上にある間はパネルの tracking area が受ける。
+    /// 他のアプリに届くマウスの移動の監視。猫の上にある間はパネルの tracking area が受ける。
     @ObservationIgnored private var globalMouseMonitor: Any?
+    /// このアプリの他のウィンドウ (設定ウィンドウ) に届くマウスの移動の監視。global monitor は自分のアプリに届くイベントを受けないため。
+    /// 移動がそのウィンドウに届くかは中の view の tracking area 次第で、届かない間は状態を進めた時の判定し直しに頼る。
+    @ObservationIgnored private var localMouseMonitor: Any?
     /// 一定間隔で状態を保存している Task。
     @ObservationIgnored private var autosaveTask: Task<Void, Never>?
 
@@ -140,6 +144,14 @@ final class OverlayWindowController {
                 MainActor.assumeIsolated {
                     self?.updateIgnoresMouseEvents()
                 }
+            }
+        }
+        if localMouseMonitor == nil {
+            localMouseMonitor = NSEvent.addLocalMonitorForEvents(matching: .mouseMoved) { [weak self] event in
+                MainActor.assumeIsolated {
+                    self?.updateIgnoresMouseEvents()
+                }
+                return event
             }
         }
         if autosaveTask == nil {
