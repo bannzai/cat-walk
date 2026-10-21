@@ -129,6 +129,43 @@ struct CatWalkStateTests {
         )
     }
 
+    @Test func clampsPositionIntoNarrowedWidth() {
+        #expect(CatWalkState(x: 900, activity: .sleeping).clamped(width: 500).x == 500)
+        #expect(CatWalkState(x: -10).clamped(width: 500).x == 0)
+        #expect(CatWalkState(x: 200).clamped(width: 500).x == 200)
+        #expect(CatWalkState(x: 200).clamped(width: -1).x == 0)
+    }
+
+    @Test func clampingKeepsActivity() {
+        let state = CatWalkState(x: 900, direction: .left, activity: .sleeping, activityElapsed: 3, activityRemaining: 42)
+
+        let clamped = state.clamped(width: 500)
+
+        #expect(clamped.direction == .left)
+        #expect(clamped.activity == .sleeping)
+        #expect(clamped.activityElapsed == 3)
+        #expect(clamped.activityRemaining == 42)
+    }
+
+    @Test func updatesEveryTickWhileWalking() {
+        #expect(CatWalkState(activity: .walking, activityRemaining: 10).secondsUntilNextUpdate(walkingTickSeconds: 1) == 1)
+    }
+
+    @Test func updatesAtEndOfWalkingWhenShorterThanTick() {
+        #expect(CatWalkState(activity: .walking, activityRemaining: 0.25).secondsUntilNextUpdate(walkingTickSeconds: 1) == 0.25)
+    }
+
+    @Test func waitsUntilActivityEndsWhileNotWalking() {
+        for activity in CatActivity.allCases where activity != .walking {
+            #expect(CatWalkState(activity: activity, activityRemaining: 42).secondsUntilNextUpdate(walkingTickSeconds: 1) == 42)
+        }
+    }
+
+    @Test func updatesImmediatelyWhenActivityHasNoTimeLeft() {
+        #expect(CatWalkState(activity: .sleeping, activityRemaining: -3).secondsUntilNextUpdate(walkingTickSeconds: 1) == 0)
+        #expect(CatWalkState(activity: .walking, activityRemaining: 0).secondsUntilNextUpdate(walkingTickSeconds: 1) == 0)
+    }
+
     @Test func roundTripsThroughCodable() throws {
         let state = CatWalkState(x: 12.5, direction: .left, activity: .sleeping, activityElapsed: 3, activityRemaining: 40)
 

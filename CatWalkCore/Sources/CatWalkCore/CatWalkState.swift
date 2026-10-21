@@ -52,9 +52,7 @@ public struct CatWalkState: Equatable, Codable, Sendable {
         walkingSpeed: Double,
         random: inout some RandomNumberGenerator
     ) -> CatWalkState {
-        var next = self
-        // 画面の幅が縮んでも範囲外から歩き出さないようにする
-        next.x = min(max(x, 0), max(width, 0))
+        var next = clamped(width: width)
         var remainingSeconds = max(elapsedSeconds, 0)
         while remainingSeconds > 0 {
             let segmentSeconds = min(remainingSeconds, max(next.activityRemaining, 0))
@@ -71,6 +69,21 @@ public struct CatWalkState: Equatable, Codable, Sendable {
             }
         }
         return next
+    }
+
+    /// x を 0 から `width` の範囲に収めた状態を返す。画面の幅が縮んだ時に、範囲外に取り残されたり範囲外から歩き出したりしないようにするため。
+    /// `width` が負なら 0 として扱う。
+    public func clamped(width: Double) -> CatWalkState {
+        var next = self
+        next.x = min(max(x, 0), max(width, 0))
+        return next
+    }
+
+    /// 次に `advanced` で状態を進めるまで待つ秒数を返す。描画の更新を歩いている間と行動が切り替わる時だけにするため、
+    /// 歩く間は `walkingTickSeconds` ごと (行動の残りがそれより短ければ残りまで)、ほかの行動では行動が切り替わるまでの残り全部になる。
+    /// `activityRemaining` が 0 以下なら 0 を返し、すぐに次の行動へ進めさせる。
+    public func secondsUntilNextUpdate(walkingTickSeconds: Double) -> Double {
+        activity == .walking ? min(walkingTickSeconds, max(activityRemaining, 0)) : max(activityRemaining, 0)
     }
 
     /// `direction` に `distance` 進め、端に達したら端で向きを反転する。端ちょうどに着いた時も反転した向きにする。

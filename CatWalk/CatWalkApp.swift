@@ -8,20 +8,35 @@ struct CatWalkApp: App {
 
     var body: some Scene {
         MenuBarExtra("Cat Walk", systemImage: "cat.fill") {
-            Text("Cat Walk")
-            Divider()
-            Button("終了") {
-                NSApplication.shared.terminate(nil)
-            }
+            CatWalkMenu(overlay: appDelegate.overlay)
+        }
+    }
+}
+
+/// メニューバーのメニューの中身。猫の表示状態を読むため、変化を追跡できる View に分けている。
+struct CatWalkMenu: View {
+    /// 表示 / 非表示を切り替えるオーバーレイ。
+    let overlay: OverlayWindowController
+
+    var body: some View {
+        Text("Cat Walk")
+        Divider()
+        Button(overlay.isCatVisible ? "猫を隠す" : "猫を出す") {
+            overlay.setCatVisible(isVisible: !overlay.isCatVisible)
+        }
+        Divider()
+        Button("終了") {
+            NSApplication.shared.terminate(nil)
         }
     }
 }
 
 /// オーバーレイの表示はウィンドウを持たない `MenuBarExtra` からは起動できないため、アプリの起動通知で出す。
 final class AppDelegate: NSObject, NSApplicationDelegate {
-    private let overlay = OverlayWindowController()
+    /// 全ディスプレイの猫のオーバーレイ。
+    let overlay = OverlayWindowController()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        overlay.show()
+        overlay.setCatVisible(isVisible: true)
     }
 }
