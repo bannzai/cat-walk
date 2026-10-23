@@ -32,7 +32,8 @@ struct CatActivityTests {
         }
     }
 
-    @Test func everyActivityIsReachable() {
-        #expect(Set(CatActivity.allCases.flatMap(\.nextCandidates)) == Set(CatActivity.allCases))
+    @Test func everyActivityExceptDelightedIsReachable() {
+        // 喜ぶ行動は撫でた時にだけ入る
+        #expect(Set(CatActivity.allCases.flatMap(\.nextCandidates)) == Set(CatActivity.allCases).subtracting([.delighted]))
     }
 }

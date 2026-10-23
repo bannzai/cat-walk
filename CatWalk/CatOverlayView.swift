@@ -40,6 +40,12 @@ struct CatOverlayView: View {
                     .overlay(alignment: .topLeading) {
                         symbol(name: "sparkles")
                     }
+            // macOS には撫でる操作がまだ無く入らないが、iOS・watchOS と同じ姿勢にしておく
+            case .delighted:
+                catImage
+                    .overlay(alignment: .topTrailing) {
+                        symbol(name: "heart.fill")
+                    }
             }
         }
     }
