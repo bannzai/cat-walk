@@ -1,6 +1,6 @@
 /// 猫の歩行状態を表す純粋な値型。描画やタイマーに依存させず、3 つのプラットフォームで同じ振る舞いを共有する。
-/// 位置と行動の保存で使うため `Codable` にする。
-public struct CatWalkState: Equatable, Codable, Sendable {
+/// 位置と行動の保存で使うため `Codable` にし、iOS の Live Activity の ContentState にそのまま使うため `Hashable` にする。
+public struct CatWalkState: Hashable, Codable, Sendable {
     /// 猫が向いている方向。保存した状態を後の版でも読めるよう、raw value を保存形式として固定する。
     public enum Direction: String, Equatable, Codable, Sendable {
         /// 左向き。x が減る方向に歩く。
