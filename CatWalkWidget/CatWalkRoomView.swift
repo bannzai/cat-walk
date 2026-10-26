@@ -8,6 +8,7 @@ struct CatWalkRoomView: View {
     /// 猫の大きさ (pt)。ページ全体の部屋で小さく見えないよう他のサイズ (44pt) より大きくした仮の値で、デザインの段階で決め直す。
     private static let catSize: Double = 72
 
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.widgetContentMargins) private var widgetContentMargins
     @Environment(\.widgetRenderingMode) private var widgetRenderingMode
 
@@ -33,6 +34,8 @@ struct CatWalkRoomView: View {
                     .position(x: max(proxy.size.width - Self.catSize, 0) * entry.walk.x + Self.catSize / 2, y: floorY + Self.catSize / 2)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            // 部屋の背景は配色に関わらず明るい色のため、通常カラーでは前景を light の配色で描き、ダークモードで猫と一言が白くなって読めなくなるのを防ぐ。tinted / clear では OS の配色に任せる
+            .environment(\.colorScheme, widgetRenderingMode == .fullColor ? .light : colorScheme)
         }
     }
 }
