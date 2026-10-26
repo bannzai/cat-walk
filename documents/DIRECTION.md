@@ -75,6 +75,10 @@ MVP に入れないもの (後続): 育成・餌・ミニゲーム、複数の�
 | 2026-10-26 | 機能 | iOS 27 の特大ウィジェット (`systemExtraLargePortrait`) を必要な機能に追加。起票元の本文「フルデスクトップジェットアプリ」(原文のまま) は iOS のフルスクリーンウィジェットの意味だったため (2026-10-21 の bannzai の指摘)。調査: `documents/research/ios27-widgets-and-live-activities.md` (iOS 27 で第三者アプリも提供できることを SDK で確認) | bannzai の指摘を受けて agent |
 | 2026-10-26 | 実装 (#11) | 設定画面の利用規約・プライバシーポリシーは、端末の最も優先する言語が日本語なら `-ja`、それ以外の言語はすべて `-en` のページを開く (紹介サイトは日本語と英語のページしか持たず、日本語以外の人には英語の方が読める人が多いため) | agent |
 | 2026-10-26 | 実装 (#11) | watchOS の設定画面は利用規約・プライバシーポリシーもリンクにせず、メールと同じく iPhone の設定画面へ案内する文言にし、お問い合わせの宛先を文字で出す (watchOS の Link は Web ページを開けないと Apple が回答しているため。出典: https://developer.apple.com/forums/thread/650324 ) | agent |
+| 2026-10-26 | ストア素材 (#13) | アプリの文言は 9 言語 (原文の日本語と、translate-app-xcstrings skill の既定の en・de・es・fr・ko・pt-BR・zh-Hans・zh-Hant)。カタログは `Shared/Localizable.xcstrings` の 1 つを 5 ターゲットで共有し、キーはコードの日本語のまま、project の developmentRegion は en のままにする (対応しない言語の端末では英語に落とすため) | agent |
+| 2026-10-26 | ストア素材 (#13) | ストアのメタデータ・スクリーンショット・ヘッダーは ja と en-US の 2 locale (紹介サイトと同じ言語)。名前は ja「Cat Walk 画面を散歩する猫」、en-US「Cat Walk: Desktop Cat」 | agent |
+| 2026-10-26 | ストア素材 (#13) | スクリーンショットは iPhone 3 枚 (ロック画面の Live Activity・ホーム画面のウィジェット・撫でて喜ぶ) と Mac 3 枚 (作業中のデスクトップを歩く・つまんで持ち上げる・メニューバーと設定)。紹介サイトの暗い背景とオレンジの配色で、キャッチコピーは句読点を使わない。製品ページのヘッダーは 1 アイデア「作業中の画面に猫がいる」(紹介サイトの見出し) で、床の線の上を歩く猫。どちらも gemini で生成せずアプリと同じ猫の絵で描く | agent |
+| 2026-10-26 | ストア素材 (#13) | スクリーンショットは simulator の UI テストではなく、CatWalkTests の `AppStoreScreenshotTests` が macOS で ImageRenderer を使って描き、GitHub Actions の `app-store-screenshots` workflow で書き出す。iPhone の画面も図で描くため simulator が要らず、Mac の 2880 x 1800 を runner の画面の大きさに依らず決められるため。専用のターゲットを足さないのは、pbxproj を手で編集する (ADR 0002) 量を減らすため。書き出した PNG は `fastlane/screenshots/{ios,mac}/<locale>/` と `fastlane/creative_assets/<locale>/` にコミットする | agent |
 | 2026-10-26 | iOS 27 の特大ウィジェット (#25) | 猫の部屋は、壁・窓・棚・床・ラグを container background に置き、猫と今の行動の一言を前景に置く。tinted / clear のモードでは OS が背景を外すため、猫・一言・床の線だけが残る (部屋の絵を色を変えて残す作り込みはしない)。猫は他のサイズ (44pt) より大きい 72pt、床はウィジェットの下 30% にする (どちらも見た目の段階 #12 で決め直す仮の値)。タップは他のサイズと同じくアプリを開いて撫でる | agent |
 
 ## agent に任せること
