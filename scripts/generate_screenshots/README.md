@@ -30,4 +30,4 @@ rsync -a --delete tmp/app-store-screenshots-artifact/app-store-screenshots/creat
 | `fastlane/screenshots/mac/<locale>/` | Mac 3 枚 | 2880 x 1800 |
 | `fastlane/creative_assets/<locale>/product_page_header.png` | 製品ページのヘッダー | 3840 x 1646 (21:9) |
 
-fastlane の deliver は 1 回の実行で 1 つの platform を扱うため、iPhone と Mac を分けて置く (`deliver --platform ios --screenshots_path fastlane/screenshots/ios` と `--platform osx --screenshots_path fastlane/screenshots/mac`)。ヘッダーは deliver の対象ではなく、appstore-custom-product-page skill の「Creative Asset (header / search results) の入稿」で App Store Connect の Asset Library に入れる。
+fastlane の deliver は 1 回の実行で 1 つの platform を扱うため、iPhone と Mac を分けて置く (`fastlane deliver --platform ios --screenshots_path fastlane/screenshots/ios` と `fastlane deliver --platform osx --app_identifier com.bannzai.CatWalk --screenshots_path fastlane/screenshots/mac`)。`fastlane/Appfile` の `for_platform :mac` は lane の platform にだけ効き、deliver の `--platform` では切り替わらないため、Mac は `--app_identifier` で bundle ID を明示する。ヘッダーは deliver の対象ではなく、appstore-custom-product-page skill の「Creative Asset (header / search results) の入稿」で App Store Connect の Asset Library に入れる。
