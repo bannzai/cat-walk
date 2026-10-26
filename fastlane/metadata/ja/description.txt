@@ -13,8 +13,8 @@ Cat Walk は、作業中の画面の上を 1 匹の猫が歩き回るアプリ�
 ・「散歩に出す」と、ロック画面の Live Activity と Dynamic Island を猫が歩きます
 ・アプリの画面では、タップで猫を撫でると喜びます
 
-■ Apple Watch
-・コンプリケーションと watch アプリに、同じ猫が出ます
+■ Apple Watch (別のアプリ)
+・Apple Watch 版の Cat Walk では、コンプリケーションと watch アプリに同じ猫が出ます
 
 ■ 安心して使えること
 ・ログイン・アカウント登録はありません

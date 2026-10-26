@@ -13,8 +13,8 @@ IPHONE
 - Take it for a walk and the cat strolls across a Live Activity on your Lock Screen and in the Dynamic Island
 - Tap the cat in the app to pet it and make its day
 
-APPLE WATCH
-- The same cat appears in a complication and in the watch app
+APPLE WATCH (SEPARATE APP)
+- In Cat Walk for Apple Watch, the same cat appears in a complication and in the watch app
 
 PEACE OF MIND
 - No sign-in and no account
