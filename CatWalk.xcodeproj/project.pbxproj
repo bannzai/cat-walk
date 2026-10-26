@@ -45,6 +45,7 @@
 		CA7A120000000000000000B3 /* CatWalkActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A120000000000000000A2 /* CatWalkActivity.swift */; };
 		CA7A120000000000000000B4 /* CatWalkWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A120000000000000000A4 /* CatWalkWidgetBundle.swift */; };
 		CA7A120000000000000000B5 /* CatWalkLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A120000000000000000A5 /* CatWalkLiveActivity.swift */; };
+		CA7A130000000000000000B1 /* CatWalkRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A1 /* CatWalkRoomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		CA7A120000000000000000A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7A120000000000000000A4 /* CatWalkWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkWidgetBundle.swift; sourceTree = "<group>"; };
 		CA7A120000000000000000A5 /* CatWalkLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkLiveActivity.swift; sourceTree = "<group>"; };
+		CA7A130000000000000000A1 /* CatWalkRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkRoomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7A120000000000000000A5 /* CatWalkLiveActivity.swift */,
+				CA7A130000000000000000A1 /* CatWalkRoomView.swift */,
 				CA7A110000000000000000A4 /* CatWalkWidget.swift */,
 				CA7A120000000000000000A4 /* CatWalkWidgetBundle.swift */,
 				CA7A110000000000000000A5 /* Info.plist */,
@@ -532,6 +535,7 @@
 				CA7A110000000000000000B2 /* CatPostureView.swift in Sources */,
 				CA7A120000000000000000B2 /* CatWalkActivityAttributes.swift in Sources */,
 				CA7A120000000000000000B5 /* CatWalkLiveActivity.swift in Sources */,
+				CA7A130000000000000000B1 /* CatWalkRoomView.swift in Sources */,
 				CA7A110000000000000000B5 /* CatWalkTimelineProvider.swift in Sources */,
 				CA7A110000000000000000B9 /* CatWalkWidget.swift in Sources */,
 				CA7A120000000000000000B4 /* CatWalkWidgetBundle.swift in Sources */,
