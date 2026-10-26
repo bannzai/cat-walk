@@ -19,7 +19,9 @@ struct CatCoatTests {
 
     @Test func usesChatoraWhenNothingIsSaved() throws {
         try withIsolatedSuite { suiteName in
-            #expect(try #require(UserDefaults(suiteName: suiteName)).catWalkCoat == .chatora)
+            let defaults = try #require(UserDefaults(suiteName: suiteName))
+
+            #expect(defaults.catWalkCoat == .chatora)
         }
     }
 
@@ -38,7 +40,9 @@ struct CatCoatTests {
             for coat in CatCoat.allCases {
                 try #require(UserDefaults(suiteName: suiteName)).catWalkCoat = coat
 
-                #expect(try #require(UserDefaults(suiteName: suiteName)).catWalkCoat == coat)
+                let reopenedDefaults = try #require(UserDefaults(suiteName: suiteName))
+
+                #expect(reopenedDefaults.catWalkCoat == coat)
             }
         }
     }
