@@ -30,6 +30,8 @@ struct CatWalkRoomView: View {
                         .offset(y: floorY + Self.catSize)
                 }
                 CatPostureView(walk: entry.walk, size: Self.catSize)
+                    // 猫のラベルは上の一言と同じ文のため、VoiceOver で 2 回読まれないよう隠す
+                    .accessibilityHidden(true)
                     .widgetAccentable()
                     .position(x: max(proxy.size.width - Self.catSize, 0) * entry.walk.x + Self.catSize / 2, y: floorY + Self.catSize / 2)
             }

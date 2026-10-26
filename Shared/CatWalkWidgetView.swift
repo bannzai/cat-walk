@@ -28,6 +28,8 @@ struct CatWalkWidgetView: View {
                     .font(.headline)
                 GeometryReader { proxy in
                     CatPostureView(walk: entry.walk, size: catSize)
+                        // 猫のラベルは上の一言と同じ文のため、VoiceOver で 2 回読まれないよう隠す
+                        .accessibilityHidden(true)
                         .position(x: max(proxy.size.width - catSize, 0) * entry.walk.x + catSize / 2, y: proxy.size.height - catSize / 2)
                 }
             }
