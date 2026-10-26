@@ -22,6 +22,8 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - run: xcodebuild -version
+      # iOS 27 の SDK にしか無い API は `#if compiler(>=6.4)` で分けているため、どちらの分岐でビルドしたかを残す
+      - run: xcrun swift --version
       - name: Build macOS
         run: |
           set -o pipefail
@@ -48,6 +50,31 @@ jobs:
         run: |
           {
             echo "## warning / error"
+            echo '```'
+            grep -i -e "warning:" -e "error:" tmp/*.log || echo "なし"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # iOS 27 の特大ウィジェット (systemExtraLargePortrait) は Xcode 27 の SDK でしかコンパイルされないため、
+  # macos-26 (Xcode 26) の job とは別に Xcode 27 の image で iOS をビルドする。image は preview のため、ビルドだけにとどめる
+  build-ios-xcode-27:
+    runs-on: xcode-27
+    if: ${{ !contains(github.event.pull_request.title, '[Skip CI]') }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: xcodebuild -version
+      - run: xcrun swift --version
+      - name: Build iOS
+        run: |
+          set -o pipefail
+          mkdir -p tmp
+          make build-ios 2>&1 | tee tmp/build-ios.log
+      - name: Summarize warnings and errors
+        if: always()
+        run: |
+          {
+            echo "## warning / error (Xcode 27)"
             echo '```'
             grep -i -e "warning:" -e "error:" tmp/*.log || echo "なし"
             echo '```'
