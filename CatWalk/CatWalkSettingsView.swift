@@ -44,6 +44,12 @@ struct CatWalkSettingsView: View {
                     .foregroundStyle(.red)
             }
             CatWalkAboutSection()
+            #if DEBUG
+            Section("開発用: 猫の姿勢") {
+                // 設定ウィンドウの幅 420pt に 1 行 4 匹が収まる大きさ
+                CatPoseGalleryView(size: 64)
+            }
+            #endif
         }
         .formStyle(.grouped)
         .frame(width: 420)

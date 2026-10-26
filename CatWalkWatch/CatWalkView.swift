@@ -1,7 +1,7 @@
 import CatWalkCore
 import SwiftUI
 
-/// 猫のプレースホルダーが左右に歩いたり止まったりする view。Always On で画面が暗くなっている間は状態を進めず、今の姿勢のまま止める。
+/// 猫が左右に歩いたり止まったりする view。Always On で画面が暗くなっている間は状態を進めず、今の姿勢のまま止める。
 struct CatWalkView: View {
     /// 猫の大きさ。小さい画面でも往復の動きが確認できる、iOS の半分ほどの仮の値で、デザインの段階で決め直す。
     private static let catSize: Double = 28
@@ -16,7 +16,7 @@ struct CatWalkView: View {
     var body: some View {
         GeometryReader { proxy in
             let travel = max(proxy.size.width - Self.catSize, 0)
-            CatPostureView(activity: walk.activity, direction: walk.direction, size: Self.catSize)
+            CatPostureView(walk: walk, size: Self.catSize)
                 .position(x: walk.x + Self.catSize / 2, y: proxy.size.height / 2)
                 .animation(.linear(duration: Self.tickSeconds), value: walk.x)
                 .task(id: isLuminanceReduced) {

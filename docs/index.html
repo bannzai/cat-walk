@@ -73,21 +73,9 @@ nav a:hover { color: var(--text); }
 }
 .walker { position: absolute; bottom: 0; left: 0; width: 120px; height: 90px; animation: patrol 16s linear infinite; }
 .flipper { position: absolute; inset: 0; animation: face 16s steps(1, end) infinite; transform-origin: 50% 50%; }
-.cat-body { position: absolute; left: 22px; bottom: 14px; width: 70px; height: 38px; background: var(--accent); border-radius: 50% 50% 40% 40%; }
-.cat-head { position: absolute; left: 76px; bottom: 28px; width: 34px; height: 30px; background: var(--accent); border-radius: 50%; }
-.cat-head::before, .cat-head::after {
-  content: ""; position: absolute; top: -9px; width: 13px; height: 13px; background: var(--accent);
-  clip-path: polygon(50% 0, 0 100%, 100% 100%);
-}
-.cat-head::before { left: 3px; }
-.cat-head::after { right: 3px; }
-.cat-eye { position: absolute; left: 96px; bottom: 42px; width: 4px; height: 4px; background: var(--accent-dark); border-radius: 50%; }
-.cat-tail { position: absolute; left: 4px; bottom: 30px; width: 30px; height: 10px; background: var(--accent); border-radius: 10px; transform-origin: 100% 50%; transform: rotate(-30deg); animation: tail 1.2s ease-in-out infinite alternate; }
-.leg { position: absolute; bottom: 0; width: 8px; height: 18px; background: var(--accent); border-radius: 4px; transform-origin: 50% 0; animation: step 0.5s ease-in-out infinite alternate; }
-.leg.a { left: 30px; }
-.leg.b { left: 44px; animation-delay: -0.25s; }
-.leg.c { left: 64px; animation-delay: -0.25s; }
-.leg.d { left: 78px; }
+/* アプリと同じ猫の絵 (tools/cat-art/build.mjs が書き出す歩く 2 コマ) を交互に出す */
+.cat-frame { position: absolute; left: 0; bottom: -4px; width: 120px; height: 120px; animation: step 0.8s steps(1, end) infinite; }
+.cat-frame.second { animation-delay: -0.4s; }
 
 @keyframes patrol {
   0% { transform: translateX(-130px); }
@@ -98,10 +86,10 @@ nav a:hover { color: var(--text); }
   0% { transform: scaleX(1); }
   50% { transform: scaleX(-1); }
 }
-@keyframes step { from { transform: rotate(-22deg); } to { transform: rotate(22deg); } }
-@keyframes tail { from { transform: rotate(-45deg); } to { transform: rotate(-10deg); } }
+@keyframes step { 0% { opacity: 0; } 50% { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
-  .walker, .flipper, .cat-tail, .leg { animation: none; }
+  .walker, .flipper, .cat-frame { animation: none; }
+  .cat-frame.second { opacity: 0; }
   .walker { left: calc(50% - 60px); }
 }
 
@@ -154,15 +142,11 @@ footer { margin-top: 72px; padding: 28px 0 40px; border-top: 1px solid var(--lin
       <p class="lead">Mac の画面の上を 1 匹の猫が歩き回ります。iPhone のウィジェットや Dynamic Island、Apple Watch の文字盤でも、同じ猫が動いて見えます。</p>
     </div>
     <div class="wrap">
-      <div class="stage" role="img" aria-label="画面の下端を左右に歩く猫のシルエット">
+      <div class="stage" role="img" aria-label="画面の下端を左右に歩く茶トラの猫">
         <div class="walker">
           <div class="flipper">
-            <div class="cat-tail"></div>
-            <div class="leg a"></div><div class="leg b"></div>
-            <div class="cat-body"></div>
-            <div class="leg c"></div><div class="leg d"></div>
-            <div class="cat-head"></div>
-            <div class="cat-eye"></div>
+            <img class="cat-frame" src="./images/cat-walk1.svg" alt="">
+            <img class="cat-frame second" src="./images/cat-walk2.svg" alt="">
           </div>
         </div>
       </div>

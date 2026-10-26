@@ -31,13 +31,15 @@ struct CatWalkLiveActivity: Widget {
                 }
             } compactLeading: {
                 // compact と minimal は横位置を出す余地が無いため、姿勢だけを出す
-                CatPostureView(activity: context.state.activity, direction: context.state.direction, size: 16)
+                CatPostureView(walk: context.state, size: 16)
+                    // 猫のラベルは compactTrailing の一言と同じ文のため、VoiceOver で 2 回読まれないよう隠す
+                    .accessibilityHidden(true)
             } compactTrailing: {
                 Text(context.state.activity.caption)
                     .font(.caption2)
                     .lineLimit(1)
             } minimal: {
-                CatPostureView(activity: context.state.activity, direction: context.state.direction, size: 16)
+                CatPostureView(walk: context.state, size: 16)
             }
             .widgetURL(URL(string: "catwalk://pet"))
         }
@@ -53,7 +55,9 @@ private struct CatWalkActivityTrackView: View {
 
     var body: some View {
         GeometryReader { proxy in
-            CatPostureView(activity: walk.activity, direction: walk.direction, size: catSize)
+            CatPostureView(walk: walk, size: catSize)
+                // ロック画面・展開時はどちらも一言と並べて出すため、猫のラベルを VoiceOver で 2 回読ませないよう隠す
+                .accessibilityHidden(true)
                 .position(x: max(proxy.size.width - catSize, 0) * walk.x + catSize / 2, y: proxy.size.height - catSize / 2)
         }
     }

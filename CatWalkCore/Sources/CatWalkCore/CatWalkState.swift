@@ -92,6 +92,12 @@ public struct CatWalkState: Hashable, Codable, Sendable {
         activity == .walking ? min(walkingTickSeconds, max(activityRemaining, 0)) : max(activityRemaining, 0)
     }
 
+    /// 歩く 2 コマのどちらを描くか (0 か 1) を返す。`activityElapsed` を `stepSeconds` ごとに数えるため、x の単位 (アプリの pt・ウィジェットの割合) に依らず同じ歩調になる。
+    /// 状態を進める間隔の揺らぎ (0.98 秒・1.02 秒など) で同じコマが続かないよう、四捨五入して数える。`stepSeconds` は 0 より大きいこと。
+    public func walkingStep(stepSeconds: Double) -> Int {
+        Int((activityElapsed / stepSeconds).rounded()) % 2
+    }
+
     /// `direction` に `distance` 進め、端に達したら端で向きを反転する。端ちょうどに着いた時も反転した向きにする。
     private mutating func walk(distance: Double, width: Double) {
         guard width > 0 else {
