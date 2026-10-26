@@ -70,10 +70,12 @@ function mulberry32(seed) {
 
 /** 1 枚の絵を描く間の状態。描いた要素を role 付きで `items` に積む。 */
 class Doodle {
-  constructor(candidate, coat, seedBase) {
+  /** `mono` は単色の絵を描くか。単色の絵はロック画面・コンプリケーションの 22〜24pt で目・口が潰れないよう、目・口だけを太くする。 */
+  constructor(candidate, coat, seedBase, mono) {
     this.c = candidate;
     this.coat = coat;
     this.seedBase = seedBase;
+    this.featureScale = mono ? 1.8 : 1;
     this.items = [];
   }
 
@@ -159,12 +161,12 @@ class Doodle {
   /** 目・口などの線を、紙を敷かずに描く。 */
   feature(name, pts, width = 1.8) {
     const n = this.rng(name);
-    this.push("feature", polyline(pts.map(([x, y]) => [x + n(0.4), y + n(0.4)]), this.featureColor, width));
+    this.push("feature", polyline(pts.map(([x, y]) => [x + n(0.4), y + n(0.4)]), this.featureColor, width * this.featureScale));
   }
 
   dot(name, x, y, r) {
     const n = this.rng(name);
-    this.push("feature", `<circle cx="${f(x + n(0.6))}" cy="${f(y + n(0.6))}" r="${f(r * (1 + n(0.2)))}" fill="${this.featureColor}"/>`);
+    this.push("feature", `<circle cx="${f(x + n(0.6))}" cy="${f(y + n(0.6))}" r="${f(r * (1 + n(0.2)) * this.featureScale)}" fill="${this.featureColor}"/>`);
   }
 }
 
@@ -343,7 +345,7 @@ function drawPose(d, pose) {
  */
 export function catSVG({ candidateKey, coatKey, pose, mono = false, idPrefix = "" }) {
   // 柄で形が変わらないよう、乱数の種には案と姿勢だけを使う
-  const d = new Doodle(candidates[candidateKey], coats[coatKey], `${candidateKey}:${pose}`);
+  const d = new Doodle(candidates[candidateKey], coats[coatKey], `${candidateKey}:${pose}`, mono);
   drawPose(d, pose);
   const items = d.items;
   if (!mono) {
