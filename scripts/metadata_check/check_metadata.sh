@@ -39,7 +39,12 @@ if [[ $# -gt 0 ]]; then
 else
   locales=()
   for dir in "$METADATA_DIR"/*/; do
-    [[ -d "$dir" ]] && locales+=("$(basename "$dir")")
+    [[ -d "$dir" ]] || continue
+    # deliver が locale と同じ階層に置く審査連絡先 (review_information) と全 locale 共通の値 (default) は、name 等を持たないため検査しない
+    case "$(basename "$dir")" in
+      review_information | default) continue ;;
+    esac
+    locales+=("$(basename "$dir")")
   done
 fi
 

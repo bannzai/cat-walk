@@ -6,7 +6,7 @@ MAC
 - Clicks anywhere except on the cat go straight through to the windows behind it, so it never gets in your way
 - Shows up on every desktop, over other apps in full screen, and on multiple displays
 - Drag the cat to pick it up and set it down anywhere
-- In Settings, choose whether to show the cat, its size (small, medium, large), its walking speed (leisurely, normal, fast), and whether to launch at login
+- In Settings, choose whether to show the cat, its size (small, medium, large), its walking speed (slow, normal, fast), and whether to launch at login
 
 IPHONE
 - Home Screen and Lock Screen widgets where the cat changes its pose and spot over time
