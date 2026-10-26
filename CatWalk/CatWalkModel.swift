@@ -14,6 +14,8 @@ final class CatWalkModel {
     private(set) var walk: CatWalkState
     /// 猫の一辺 (pt)。設定の大きさから決まる。
     var catSize: Double
+    /// 猫の色・柄。設定から決まる。
+    var coat: CatCoat
     /// 歩く速さ (pt/秒)。設定の歩く速さから決まり、次に状態を進める時から効く。
     @ObservationIgnored var walkingSpeed: Double
     /// 持ち上げられている間の猫の中心 (パネルの左上を原点とする座標)。持ち上げていない間は nil。
@@ -42,10 +44,11 @@ final class CatWalkModel {
     /// 最後に `walk` へ経過時間を反映した時刻。止める時と保存する時に、そこから経った分を行動の残り時間から引くために持つ。
     @ObservationIgnored private var lastInstant: ContinuousClock.Instant?
 
-    /// 保存した状態と、設定の大きさ・歩く速さから始めるため、どれも既定値を持たせず受け取る。
-    init(walk: CatWalkState, catSize: Double, walkingSpeed: Double) {
+    /// 保存した状態と、設定の大きさ・色・柄・歩く速さから始めるため、どれも既定値を持たせず受け取る。
+    init(walk: CatWalkState, catSize: Double, coat: CatCoat, walkingSpeed: Double) {
         self.walk = walk
         self.catSize = catSize
+        self.coat = coat
         self.walkingSpeed = walkingSpeed
         previousWalkX = walk.x
     }

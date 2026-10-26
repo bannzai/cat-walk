@@ -29,7 +29,7 @@ struct CatWalkRoomView: View {
                         .opacity(0.4)
                         .offset(y: floorY + Self.catSize)
                 }
-                CatPostureView(walk: entry.walk, size: Self.catSize)
+                CatPostureView(walk: entry.walk, coat: entry.coat, size: Self.catSize)
                     // 猫のラベルは上の一言と同じ文のため、VoiceOver で 2 回読まれないよう隠す
                     .accessibilityHidden(true)
                     .widgetAccentable()

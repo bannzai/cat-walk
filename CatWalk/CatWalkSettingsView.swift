@@ -2,7 +2,7 @@ import CatWalkCore
 import ServiceManagement
 import SwiftUI
 
-/// 設定ウィンドウ。表示 / 非表示・大きさ・歩く速さはオーバーレイが保存し、ログイン時に起動は `SMAppService` の登録状態を正とする。
+/// 設定ウィンドウ。表示 / 非表示・大きさ・歩く速さ・色と柄はオーバーレイが保存し、ログイン時に起動は `SMAppService` の登録状態を正とする。
 struct CatWalkSettingsView: View {
     /// 設定を反映して保存するオーバーレイ。
     let overlay: OverlayWindowController
@@ -29,6 +29,7 @@ struct CatWalkSettingsView: View {
             }
             .pickerStyle(.segmented)
             .accessibilityIdentifier("settings-walking-speed")
+            CatCoatPicker(coat: Binding(get: { overlay.catCoat }, set: { overlay.setCatCoat(catCoat: $0) }))
             // 承認待ちも登録は済んでいるため、オフにすれば登録を取り消せるようオンとして見せる
             Toggle("ログイン時に起動する", isOn: Binding(get: { loginItemStatus == .enabled || loginItemStatus == .requiresApproval }, set: { setLaunchAtLogin(isEnabled: $0) }))
                 .accessibilityIdentifier("settings-launch-at-login")
@@ -47,7 +48,7 @@ struct CatWalkSettingsView: View {
             #if DEBUG
             Section("開発用: 猫の姿勢") {
                 // 設定ウィンドウの幅 420pt に 1 行 4 匹が収まる大きさ
-                CatPoseGalleryView(size: 64)
+                CatPoseGalleryView(coat: overlay.catCoat, size: 64)
             }
             #endif
         }

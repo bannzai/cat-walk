@@ -2,11 +2,14 @@
 // 実行: node tools/cat-art/build.mjs (リポジトリの root で。PNG の書き出しに rsvg-convert を使う)
 // 何度実行しても同じ入力から同じファイルを上書きするだけなので冪等。
 import { execFileSync } from "node:child_process";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { candidates, catSVG, coats, poses } from "./cat-art.mjs";
 
-/** アプリに入れる案と柄。bannzai が PR で別の案を選んだら、ここを変えて実行し直す。 */
+/**
+ * アプリに入れる案と、アプリアイコン・紹介サイト・単色の絵に使う柄。bannzai が PR で別の案を選んだら、ここを変えて実行し直す。
+ * 柄は設定の既定 (`CatWalkCore` の `catWalkCoat` の既定) と同じ茶トラにし、アイコンと初回起動の猫を同じ見た目にする。
+ */
 const shipped = { candidateKey: "b", coatKey: "chatora" };
 
 const root = process.cwd();
@@ -29,21 +32,33 @@ function png(svg, path, width, height = width, opaque = false) {
   }
 }
 
-// Asset Catalog の画像。猫は最大 64pt (macOS の「大」) で描くため、128pt の 1x/2x/3x にすれば縮小だけで済む
+// Asset Catalog の画像。猫は最大 64pt (macOS の「大」) で描くため、128pt の 1x/2x/3x にすれば縮小だけで済む。
+// 色の絵は柄ごとに `cat-<柄>-<姿勢>`、単色の絵は柄を描かず形だけのため柄に依らず `cat-<姿勢>-mono` の 1 組にする
 write(join(assetsDir, "Contents.json"), JSON.stringify({ info: { author: "xcode", version: 1 } }, null, 2) + "\n");
+/** `name`.imageset に `svg` の 1x/2x/3x の PNG と Contents.json を書く。`mono` なら template として扱わせる。 */
+function imageSet(name, svg, mono) {
+  const dir = join(assetsDir, `${name}.imageset`);
+  const images = [1, 2, 3].map((scale) => {
+    const filename = `${name}@${scale}x.png`;
+    png(svg, join(dir, filename), 128 * scale);
+    return { filename, idiom: "universal", scale: `${scale}x` };
+  });
+  // 単色の絵はロック画面・コンプリケーションの色で塗り直されるよう template として扱う
+  const properties = mono ? { "template-rendering-intent": "template" } : undefined;
+  write(join(dir, "Contents.json"), JSON.stringify({ images, info: { author: "xcode", version: 1 }, ...(properties ? { properties } : {}) }, null, 2) + "\n");
+  return `${name}.imageset`;
+}
+const catImageSets = new Set();
 for (const pose of poses) {
-  for (const mono of [false, true]) {
-    const name = `cat-${pose}${mono ? "-mono" : ""}`;
-    const dir = join(assetsDir, `${name}.imageset`);
-    const svg = catSVG({ ...shipped, pose, mono });
-    const images = [1, 2, 3].map((scale) => {
-      const filename = `${name}@${scale}x.png`;
-      png(svg, join(dir, filename), 128 * scale);
-      return { filename, idiom: "universal", scale: `${scale}x` };
-    });
-    // 単色の絵はロック画面・コンプリケーションの色で塗り直されるよう template として扱う
-    const properties = mono ? { "template-rendering-intent": "template" } : undefined;
-    write(join(dir, "Contents.json"), JSON.stringify({ images, info: { author: "xcode", version: 1 }, ...(properties ? { properties } : {}) }, null, 2) + "\n");
+  for (const coatKey of Object.keys(coats)) {
+    catImageSets.add(imageSet(`cat-${coatKey}-${pose}`, catSVG({ candidateKey: shipped.candidateKey, coatKey, pose }), false));
+  }
+  catImageSets.add(imageSet(`cat-${pose}-mono`, catSVG({ ...shipped, pose, mono: true }), true));
+}
+// 姿勢・柄の名前を変えた時に、前の名前の絵が Asset Catalog に残らないよう、書き出さなかった猫の imageset を消す
+for (const entry of readdirSync(assetsDir)) {
+  if (entry.startsWith("cat-") && entry.endsWith(".imageset") && !catImageSets.has(entry)) {
+    rmSync(join(assetsDir, entry), { recursive: true });
   }
 }
 
@@ -84,7 +99,7 @@ png(
   630,
 );
 
-// 案の比較シート。3 案の姿勢、アプリに入れた案の柄の種類、単色の絵を並べ、PR で見比べてもらう
+// 案の比較シート。3 案の姿勢、アプリに入れた案の柄の種類、単色の絵 (どの柄でも共通) を並べ、PR で見比べてもらう
 const cell = (svg, caption, bg = "#2b2f36") => `<figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="background:${bg};border-radius:12px;padding:8px;width:136px;height:136px;display:flex;align-items:center;justify-content:center">${svg}</div><figcaption style="font-size:13px;color:#cfd3da">${caption}</figcaption></figure>`;
 const poseLabels = { walk1: "歩く 1", walk2: "歩く 2", stand: "立ち止まる", sit: "座る", sleep: "眠る", groom: "毛づくろい", delighted: "撫でられて喜ぶ", lifted: "持ち上げられる (macOS)" };
 let id = 0;
@@ -93,7 +108,7 @@ const sections = [];
 for (const [key, c] of Object.entries(candidates)) {
   sections.push(row(`${c.label}${key === shipped.candidateKey ? " (このPRでアプリに入れた案)" : ""}`, poses.map((pose) => cell(catSVG({ candidateKey: key, coatKey: "chatora", pose, idPrefix: `s${id++}` }), poseLabels[pose]))));
 }
-sections.push(row(`柄の種類 (${candidates[shipped.candidateKey].label}で描いた見本。アプリに入れたのは茶トラだけ)`, Object.entries(coats).flatMap(([coatKey, coat]) => ["sit", "walk1"].map((pose) => cell(catSVG({ candidateKey: shipped.candidateKey, coatKey, pose, idPrefix: `s${id++}` }), `${coat.label} ${poseLabels[pose]}`)))));
+sections.push(row(`柄の種類 (${candidates[shipped.candidateKey].label}で描いた、設定で選べる 6 柄)`,Object.entries(coats).flatMap(([coatKey, coat]) => ["sit", "walk1"].map((pose) => cell(catSVG({ candidateKey: shipped.candidateKey, coatKey, pose, idPrefix: `s${id++}` }), `${coat.label} ${poseLabels[pose]}`)))));
 sections.push(row("ロック画面・コンプリケーションの単色の絵", poses.map((pose) => cell(catSVG({ ...shipped, pose, mono: true, idPrefix: `s${id++}` }), poseLabels[pose], "#000000"))));
 write(
   join(sheetDir, "index.html"),

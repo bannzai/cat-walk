@@ -1,4 +1,5 @@
 import CatWalkCore
+import Foundation
 import WidgetKit
 
 /// ウィジェットのタイムラインのエントリ。表示を始める時刻と、その時刻の猫の状態を持つ。
@@ -8,6 +9,8 @@ nonisolated struct CatWalkWidgetEntry: TimelineEntry {
     let date: Date
     /// その時刻の猫の状態。`x` は歩行範囲の幅に対する割合 (0...1) で、ウィジェットの余白を除いた実際の幅に view が掛ける。
     let walk: CatWalkState
+    /// アプリの設定画面で選んだ猫の色・柄。
+    let coat: CatCoat
 }
 
 /// iOS・watchOS のウィジェットに共通のタイムライン。`CatWalkState.timelineState` で区切りごとの猫の状態を並べる。
@@ -34,7 +37,7 @@ nonisolated struct CatWalkTimelineProvider: TimelineProvider {
         )
     }
 
-    /// `date` の区切りの猫の状態を持つエントリを返す。歩行範囲の幅を 1 とし、歩く速さもウィジェットの幅に対する割合に直して渡す。
+    /// `date` の区切りの猫の状態と、アプリと共有する保存先の柄を持つエントリを返す。歩行範囲の幅を 1 とし、歩く速さもウィジェットの幅に対する割合に直して渡す。
     private static func entry(date: Date, context: Context) -> CatWalkWidgetEntry {
         CatWalkWidgetEntry(
             date: date,
@@ -44,7 +47,8 @@ nonisolated struct CatWalkTimelineProvider: TimelineProvider {
                 width: 1,
                 // placeholder では displaySize が 0 になり得るため、0 除算を避ける最小の幅を 1pt とする
                 walkingSpeed: CatWalkState.defaultWalkingSpeed / max(context.displaySize.width, 1)
-            )
+            ),
+            coat: UserDefaults.catWalkShared.catWalkCoat
         )
     }
 }

@@ -14,7 +14,7 @@ export const candidates = {
   c: { label: "案 C ホワイトボードの落書き", points: 10, wobble: 0.08, jitter: 1.8, lineW: 4.2, fill: false, fillShift: 0, fillScale: 1 },
 };
 
-/** 柄の配色。アプリに入れるのは茶トラだけで、ほかは比較シートで種類の広がりを見てもらうための見本。 */
+/** 柄の配色。キーは `CatWalkCore` の `CatCoat` の raw value と同じで、アプリの画像名 `cat-<柄>-<姿勢>` になる。 */
 export const coats = {
   chatora: { label: "茶トラ", base: "#F2A65A", stripe: "#C8641E" },
   mike: { label: "三毛", base: "#FFFDF8", patchA: "#F2A65A", patchB: "#3B3330" },
@@ -24,7 +24,7 @@ export const coats = {
   hachiware: { label: "ハチワレ", base: "#FFFDF8", cap: "#3A3431" },
 };
 
-/** アプリが使う姿勢の名前。Asset Catalog の画像名 `cat-<名前>` になる。 */
+/** アプリが使う姿勢の名前。Asset Catalog の画像名 `cat-<柄>-<名前>` (単色の絵は柄に依らず `cat-<名前>-mono`) になる。 */
 export const poses = ["walk1", "walk2", "stand", "sit", "sleep", "groom", "delighted", "lifted"];
 
 /** 線の色 (鉛筆・マーカーの黒)。 */

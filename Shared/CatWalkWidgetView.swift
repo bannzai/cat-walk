@@ -13,7 +13,7 @@ struct CatWalkWidgetView: View {
         switch widgetFamily {
         case .accessoryCircular:
             // 円形は小さく横位置を出す余地が無いため、姿勢だけを中央に出す。大きさは円の内側に収まる仮の値で、デザインの段階で決め直す
-            CatPostureView(walk: entry.walk, size: 24)
+            CatPostureView(walk: entry.walk, coat: entry.coat, size: 24)
         // 特大サイズは iOS 27 の SDK (Xcode 27・Swift 6.4) の iOS にしか無いため、watchOS と Xcode 26 の CI でもビルドできるよう分ける
         #if os(iOS) && compiler(>=6.4)
         case .systemExtraLargePortrait:
@@ -27,7 +27,7 @@ struct CatWalkWidgetView: View {
                 Text(entry.walk.activity.caption)
                     .font(.headline)
                 GeometryReader { proxy in
-                    CatPostureView(walk: entry.walk, size: catSize)
+                    CatPostureView(walk: entry.walk, coat: entry.coat, size: catSize)
                         // 猫のラベルは上の一言と同じ文のため、VoiceOver で 2 回読まれないよう隠す
                         .accessibilityHidden(true)
                         .position(x: max(proxy.size.width - catSize, 0) * entry.walk.x + catSize / 2, y: proxy.size.height - catSize / 2)

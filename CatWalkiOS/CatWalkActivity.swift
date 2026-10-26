@@ -11,14 +11,14 @@ nonisolated func isCatWalkActivityRunning() -> Bool {
     !runningCatWalkActivities().isEmpty
 }
 
-/// `walk` の姿勢で Live Activity を開始する。散歩中の Live Activity が既にあれば何もしない。
+/// `walk` の姿勢と柄 `coat` で Live Activity を開始する。散歩中の Live Activity が既にあれば何もしない。
 /// `walkingSpeed` は歩行範囲の幅を 1 とした歩く速さで、バックグラウンドの更新に使う。開始できない時 (ユーザーが Live Activity を許可していない等) は ActivityKit のエラーを投げる。
-nonisolated func startCatWalkActivity(walk: CatWalkState, walkingSpeed: Double, date: Date) throws {
+nonisolated func startCatWalkActivity(walk: CatWalkState, coat: CatCoat, walkingSpeed: Double, date: Date) throws {
     guard !isCatWalkActivityRunning() else {
         return
     }
     _ = try Activity.request(
-        attributes: CatWalkActivityAttributes(startDate: date, walkingSpeed: walkingSpeed),
+        attributes: CatWalkActivityAttributes(startDate: date, walkingSpeed: walkingSpeed, coat: coat),
         content: ActivityContent(state: walk, staleDate: CatWalkState.liveActivityEndDate(startDate: date))
     )
 }

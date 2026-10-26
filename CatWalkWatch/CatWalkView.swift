@@ -12,11 +12,13 @@ struct CatWalkView: View {
 
     @Environment(\.isLuminanceReduced) private var isLuminanceReduced
     @State private var walk = CatWalkState()
+    /// 設定で選んだ猫の色・柄。
+    let coat: CatCoat
 
     var body: some View {
         GeometryReader { proxy in
             let travel = max(proxy.size.width - Self.catSize, 0)
-            CatPostureView(walk: walk, size: Self.catSize)
+            CatPostureView(walk: walk, coat: coat, size: Self.catSize)
                 .position(x: walk.x + Self.catSize / 2, y: proxy.size.height / 2)
                 .animation(.linear(duration: Self.tickSeconds), value: walk.x)
                 .task(id: isLuminanceReduced) {

@@ -134,6 +134,8 @@ final class OverlayWindowController {
     private(set) var catSize: CatSize
     /// 猫の歩く速さ。
     private(set) var walkingSpeed: CatWalkingSpeed
+    /// 猫の色・柄。
+    private(set) var catCoat: CatCoat
     /// 設定と猫の状態の保存先。
     @ObservationIgnored private let defaults: UserDefaults
     /// ディスプレイ ID ごとのパネル。
@@ -154,6 +156,7 @@ final class OverlayWindowController {
         isCatVisible = defaults.catWalkIsCatVisible
         catSize = defaults.catWalkSize
         walkingSpeed = defaults.catWalkWalkingSpeed
+        catCoat = defaults.catWalkCoat
     }
 
     /// 前回の設定と猫の状態でパネルを出し、ディスプレイ構成の変化の追従・マウスの監視・一定間隔の保存を始める。
@@ -225,6 +228,13 @@ final class OverlayWindowController {
         syncPanels()
     }
 
+    /// 猫の色・柄を `catCoat` にして保存し、全ディスプレイの猫に反映する。同じ値で何度呼んでも結果は同じ (冪等)。
+    func setCatCoat(catCoat: CatCoat) {
+        self.catCoat = catCoat
+        defaults.catWalkCoat = catCoat
+        syncPanels()
+    }
+
     /// 今出しているパネルの猫の状態を保存する。今は外しているディスプレイの保存済みの状態は残す。同じ状態で何度呼んでも結果は同じ (冪等)。
     func saveStates() {
         defaults.catWalkStates.merge(panels.map { (displayStorageKey(displayID: $0.key), $0.value.catWalkModel.currentWalk) }) { _, current in
@@ -258,6 +268,7 @@ final class OverlayWindowController {
                     // 保存が無いディスプレイは、初回起動と同じ姿から歩き始める
                     walk: savedStates[displayStorageKey(displayID: displayID)] ?? CatWalkState(),
                     catSize: catSize.points,
+                    coat: catCoat,
                     walkingSpeed: walkingSpeed.pointsPerSecond
                 )
             )
@@ -266,6 +277,7 @@ final class OverlayWindowController {
                 self?.saveStates()
             }
             panel.catWalkModel.catSize = catSize.points
+            panel.catWalkModel.coat = catCoat
             panel.catWalkModel.walkingSpeed = walkingSpeed.pointsPerSecond
             panel.fit(screen: screen)
             if isCatVisible {
