@@ -1,0 +1,49 @@
+name: app-store-screenshots
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+# 書き出しはストア素材を変える時だけでよく、macOS runner の並列枠を CI と共有するため、
+# 手動実行と、スクリーンショットの見た目に関わるファイルを変えた PR だけで動かす
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "AppStoreScreenshots/**"
+      - "Shared/**"
+      - "scripts/generate_screenshots/**"
+      - ".github/workflows/app-store-screenshots.yml"
+
+permissions:
+  contents: read # checkout のみ
+
+jobs:
+  generate:
+    runs-on: macos-26
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: xcodebuild -version
+      - name: Generate screenshots
+        run: |
+          set -o pipefail
+          mkdir -p tmp
+          scripts/generate_screenshots/generate.sh tmp/app-store-screenshots 2>&1 | tee tmp/generate-screenshots.log
+      - name: Summarize warnings and errors
+        if: always()
+        run: |
+          {
+            echo "## warning / error"
+            echo '```'
+            grep -i -e "warning:" -e "error:" -e "NG:" tmp/generate-screenshots.log || echo "なし"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: app-store-screenshots
+          path: |
+            tmp/app-store-screenshots
+            tmp/generate-screenshots.log
+          if-no-files-found: error
