@@ -56,6 +56,7 @@ for locale in "${locales[@]}"; do
     echo "エラー: locale のディレクトリが無い: $locale_dir" >&2
     exit 2
   fi
+  locale_checked_count=$checked_count
   for limit in "${LIMITS[@]}"; do
     IFS=: read -r name max unit <<<"$limit"
     file="$locale_dir/$name"
@@ -69,6 +70,10 @@ for locale in "${locales[@]}"; do
       error_count=$((error_count + 1))
     fi
   done
+  if [[ $checked_count -eq $locale_checked_count ]]; then
+    echo "エラー: $locale_dir に検査するファイルが 1 つも無い" >&2
+    exit 2
+  fi
 done
 
 if [[ $error_count -gt 0 ]]; then
