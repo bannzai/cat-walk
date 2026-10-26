@@ -118,13 +118,15 @@ struct AppStoreScreenshotTests {
 
     /// `image` を alpha を持たない sRGB の画像に描き直して返す。App Store Connect はスクリーンショットとヘッダーの透過を受け付けないため。
     private func opaqueImage(image: CGImage) throws -> CGImage {
+        // #require の中に #require を書くとマクロの展開が再帰してコンパイルできないため、色空間を先に取り出す
+        let colorSpace = try #require(CGColorSpace(name: CGColorSpace.sRGB))
         let context = try #require(CGContext(
             data: nil,
             width: image.width,
             height: image.height,
             bitsPerComponent: 8,
             bytesPerRow: 0,
-            space: try #require(CGColorSpace(name: CGColorSpace.sRGB)),
+            space: colorSpace,
             bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue
         ))
         context.draw(image, in: CGRect(x: 0, y: 0, width: image.width, height: image.height))
