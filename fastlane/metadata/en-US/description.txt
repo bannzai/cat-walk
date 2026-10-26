@@ -1,0 +1,25 @@
+Cat Walk puts a single cat on your screen. It wanders around while you work, so you can glance at a small, moving friend without stopping what you are doing.
+
+MAC
+- Lives in the menu bar and stays out of the Dock
+- The cat walks, stops, sits, sleeps, and grooms along the bottom of your screen
+- Clicks anywhere except on the cat go straight through to the windows behind it, so it never gets in your way
+- Shows up on every desktop, over other apps in full screen, and on multiple displays
+- Drag the cat to pick it up and set it down anywhere
+- In Settings, choose whether to show the cat, its size (small, medium, large), its walking speed (leisurely, normal, fast), and whether to launch at login
+
+IPHONE
+- Home Screen and Lock Screen widgets where the cat changes its pose and spot over time
+- Take it for a walk and the cat strolls across a Live Activity on your Lock Screen and in the Dynamic Island
+- Tap the cat in the app to pet it and make its day
+
+APPLE WATCH
+- The same cat appears in a complication and in the watch app
+
+PEACE OF MIND
+- No sign-in and no account
+- No ads
+- No data collected and nothing sent anywhere (your settings stay on your device)
+
+Terms of Use: https://bannzai.github.io/cat-walk/Terms-en
+Contact: send us an email from Contact us in the app's settings
