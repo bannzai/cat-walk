@@ -22,6 +22,9 @@ enum AppStoreScreenshotPage: CaseIterable {
     case productPageHeader
 }
 
+/// スクリーンショットに描く猫の色・柄。設定の既定で、アプリアイコンと紹介サイトの猫と同じ茶トラにする (documents/DIRECTION.md の #30 の行)。
+private let appStoreScreenshotCatCoat = CatCoat.chatora
+
 /// スクリーンショットの配色。紹介サイト (docs/index.html の `--bg`・`--text`・`--text-sub`・`--accent`・`--line`) と同じ色にし、ストアと紹介サイトの見た目を揃える。
 enum AppStoreScreenshotPalette {
     /// 背景。
@@ -143,7 +146,7 @@ private struct AppStoreScreenshotCatCallout: View {
     let diameter: Double
 
     var body: some View {
-        CatPostureView(walk: walk, size: diameter * 0.62, isLifted: isLifted)
+        CatPostureView(walk: walk, coat: appStoreScreenshotCatCoat, size: diameter * 0.62, isLifted: isLifted)
             .frame(width: diameter, height: diameter)
             .background(Circle().fill(Color(red: 0xfa / 255, green: 0xf4 / 255, blue: 0xec / 255)))
             .overlay(Circle().stroke(AppStoreScreenshotPalette.accent, lineWidth: diameter * 0.03))
@@ -343,7 +346,7 @@ private struct IPhoneAppScreen: View {
                 Circle()
                     .fill(AppStoreScreenshotPalette.accent.opacity(0.18))
                     .frame(width: 64, height: 64)
-                CatPostureView(walk: CatWalkState(activity: .delighted), size: 44)
+                CatPostureView(walk: CatWalkState(activity: .delighted), coat: appStoreScreenshotCatCoat, size: 44)
             }
             .position(x: 210, y: 852 - 88)
         }
@@ -359,7 +362,7 @@ private struct AppStoreScreenshotCatTrack: View {
 
     var body: some View {
         GeometryReader { proxy in
-            CatPostureView(walk: walk, size: catSize)
+            CatPostureView(walk: walk, coat: appStoreScreenshotCatCoat, size: catSize)
                 .position(x: max(proxy.size.width - catSize, 0) * walk.x + catSize / 2, y: proxy.size.height - catSize / 2)
         }
     }
@@ -451,11 +454,11 @@ private struct MacDesktop: View {
         switch cat {
         case .walking:
             // Dock の左端の手前を歩いている所。足を Dock の上端に揃える
-            CatPostureView(walk: CatWalkState(x: 0.4, activity: .walking), size: Self.catSize)
+            CatPostureView(walk: CatWalkState(x: 0.4, activity: .walking), coat: appStoreScreenshotCatCoat, size: Self.catSize)
                 .position(x: 520, y: Self.dockTop - Self.catSize / 2)
         case .lifted:
             ZStack(alignment: .topLeading) {
-                CatPostureView(walk: CatWalkState(), size: Self.catSize, isLifted: true)
+                CatPostureView(walk: CatWalkState(), coat: appStoreScreenshotCatCoat, size: Self.catSize, isLifted: true)
                     .frame(width: Self.catSize, height: Self.catSize)
                 Image(systemName: "hand.point.up.left.fill")
                     .font(.system(size: 30))
@@ -467,7 +470,7 @@ private struct MacDesktop: View {
             .position(x: 660, y: 470)
         case .settings:
             // 設定ウィンドウとメニューから離した左下で座っている所
-            CatPostureView(walk: CatWalkState(x: 0.2, direction: .left, activity: .sitting), size: Self.catSize)
+            CatPostureView(walk: CatWalkState(x: 0.2, direction: .left, activity: .sitting), coat: appStoreScreenshotCatCoat, size: Self.catSize)
                 .position(x: 300, y: Self.dockTop - Self.catSize / 2)
         }
     }
@@ -767,7 +770,7 @@ private struct ProductPageHeader: View {
             .multilineTextAlignment(.center)
             .frame(width: 1920)
             .offset(y: 270)
-            CatPostureView(walk: CatWalkState(activity: .walking), size: 120)
+            CatPostureView(walk: CatWalkState(activity: .walking), coat: appStoreScreenshotCatCoat, size: 120)
                 .position(x: 1180, y: Self.floorY - 60)
         }
         .frame(width: 1920, height: 823)

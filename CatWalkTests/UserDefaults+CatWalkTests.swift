@@ -20,6 +20,7 @@ struct UserDefaultsCatWalkTests {
             #expect(defaults.catWalkIsCatVisible)
             #expect(defaults.catWalkSize == .medium)
             #expect(defaults.catWalkWalkingSpeed == .normal)
+            #expect(defaults.catWalkCoat == .chatora)
             #expect(defaults.catWalkStates.isEmpty)
         }
     }
@@ -29,10 +30,21 @@ struct UserDefaultsCatWalkTests {
             defaults.catWalkIsCatVisible = false
             defaults.catWalkSize = .large
             defaults.catWalkWalkingSpeed = .fast
+            defaults.catWalkCoat = .hachiware
 
             #expect(!defaults.catWalkIsCatVisible)
             #expect(defaults.catWalkSize == .large)
             #expect(defaults.catWalkWalkingSpeed == .fast)
+            #expect(defaults.catWalkCoat == .hachiware)
+        }
+    }
+
+    /// 次の起動で作り直したオーバーレイが、前回の起動で保存した柄から始まる。
+    @Test func overlayStartsWithSavedCoat() throws {
+        try withIsolatedDefaults { defaults in
+            defaults.catWalkCoat = .sabatora
+
+            #expect(OverlayWindowController(defaults: defaults).catCoat == .sabatora)
         }
     }
 

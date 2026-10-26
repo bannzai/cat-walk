@@ -8,7 +8,7 @@ struct CatOverlayView: View {
 
     var body: some View {
         GeometryReader { proxy in
-            CatPostureView(walk: model.walk, size: model.catSize, isLifted: model.liftedCenter != nil)
+            CatPostureView(walk: model.walk, coat: model.coat, size: model.catSize, isLifted: model.liftedCenter != nil)
                 .position(model.liftedCenter ?? CGPoint(x: model.walk.x + model.catSize / 2, y: proxy.size.height - model.catSize))
                 // simtunnel の画面操作で猫の位置を読み、ドラッグとクリックの座標を決めるため
                 .accessibilityIdentifier("overlay-cat")

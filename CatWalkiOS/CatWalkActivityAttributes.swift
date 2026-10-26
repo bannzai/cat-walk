@@ -15,4 +15,6 @@ nonisolated struct CatWalkActivityAttributes: ActivityAttributes {
     let startDate: Date
     /// 歩行範囲の幅を 1 とした歩く速さ (幅/秒)。開始時のアプリの歩行範囲から求め、バックグラウンドの更新でもアプリと同じ速さで歩かせる。
     let walkingSpeed: Double
+    /// 散歩に出した時に設定で選んでいた猫の色・柄。属性は開始後に変えられないため、散歩の途中で設定を変えても、この散歩の猫は出した時の柄のまま歩く。
+    let coat: CatCoat
 }

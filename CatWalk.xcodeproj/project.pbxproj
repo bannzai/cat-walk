@@ -58,15 +58,20 @@
 		CA7A150000000000000000B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A150000000000000000A1 /* Assets.xcassets */; };
 		CA7A150000000000000000B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A150000000000000000A1 /* Assets.xcassets */; };
 		CA7A150000000000000000B9 /* CatPostureViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A150000000000000000A3 /* CatPostureViewTests.swift */; };
-		CA7A160000000000000000B1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A1 /* Localizable.xcstrings */; };
-		CA7A160000000000000000B2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A1 /* Localizable.xcstrings */; };
-		CA7A160000000000000000B3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A1 /* Localizable.xcstrings */; };
-		CA7A160000000000000000B4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A1 /* Localizable.xcstrings */; };
-		CA7A160000000000000000B5 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A1 /* Localizable.xcstrings */; };
+		CA7A180000000000000000B1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A180000000000000000A1 /* Localizable.xcstrings */; };
+		CA7A180000000000000000B2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A180000000000000000A1 /* Localizable.xcstrings */; };
+		CA7A180000000000000000B3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A180000000000000000A1 /* Localizable.xcstrings */; };
+		CA7A180000000000000000B4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A180000000000000000A1 /* Localizable.xcstrings */; };
+		CA7A180000000000000000B5 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A180000000000000000A1 /* Localizable.xcstrings */; };
 		CA7A170000000000000000B1 /* LocalizableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A170000000000000000A1 /* LocalizableTests.swift */; };
 		CA7A170000000000000000B2 /* AppStoreScreenshotPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A170000000000000000A2 /* AppStoreScreenshotPages.swift */; };
 		CA7A170000000000000000B3 /* AppStoreScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A170000000000000000A3 /* AppStoreScreenshotTests.swift */; };
 		CA7A170000000000000000B4 /* AppStoreScreenshots.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A170000000000000000A4 /* AppStoreScreenshots.xcstrings */; };
+		CA7A160000000000000000B1 /* CatCoatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A1 /* CatCoatPicker.swift */; };
+		CA7A160000000000000000B2 /* CatCoatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A1 /* CatCoatPicker.swift */; };
+		CA7A160000000000000000B3 /* CatCoatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A1 /* CatCoatPicker.swift */; };
+		CA7A160000000000000000B4 /* CatCoat+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A2 /* CatCoat+Shared.swift */; };
+		CA7A160000000000000000B5 /* CatCoat+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A2 /* CatCoat+Shared.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,11 +164,17 @@
 		CA7A150000000000000000A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA7A150000000000000000A2 /* CatPoseGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPoseGalleryView.swift; sourceTree = "<group>"; };
 		CA7A150000000000000000A3 /* CatPostureViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPostureViewTests.swift; sourceTree = "<group>"; };
-		CA7A160000000000000000A1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		CA7A180000000000000000A1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		CA7A170000000000000000A1 /* LocalizableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableTests.swift; sourceTree = "<group>"; };
 		CA7A170000000000000000A2 /* AppStoreScreenshotPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshotPages.swift; sourceTree = "<group>"; };
 		CA7A170000000000000000A3 /* AppStoreScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshotTests.swift; sourceTree = "<group>"; };
 		CA7A170000000000000000A4 /* AppStoreScreenshots.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppStoreScreenshots.xcstrings; sourceTree = "<group>"; };
+		CA7A160000000000000000A1 /* CatCoatPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCoatPicker.swift; sourceTree = "<group>"; };
+		CA7A160000000000000000A2 /* CatCoat+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatCoat+Shared.swift"; sourceTree = "<group>"; };
+		CA7A160000000000000000A3 /* CatWalkiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CatWalkiOS.entitlements; sourceTree = "<group>"; };
+		CA7A160000000000000000A4 /* CatWalkWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CatWalkWidget.entitlements; sourceTree = "<group>"; };
+		CA7A160000000000000000A5 /* CatWalkWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CatWalkWatch.entitlements; sourceTree = "<group>"; };
+		CA7A160000000000000000A6 /* CatWalkWatchWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CatWalkWatchWidget.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				EC6A8E4261743AEC774810F1 /* CatWalkView.swift */,
+				CA7A160000000000000000A5 /* CatWalkWatch.entitlements */,
 				66E71F638FA9A9CCA9CFA038 /* CatWalkWatchApp.swift */,
 			);
 			path = CatWalkWatch;
@@ -297,6 +309,7 @@
 			children = (
 				CA7A120000000000000000A2 /* CatWalkActivity.swift */,
 				CA7A120000000000000000A1 /* CatWalkActivityAttributes.swift */,
+				CA7A160000000000000000A3 /* CatWalkiOS.entitlements */,
 				6D520B940CB592C8D392E427 /* CatWalkiOSApp.swift */,
 				EDB2E867212BCD08D0479F12 /* CatWalkView.swift */,
 				CA7A120000000000000000A3 /* Info.plist */,
@@ -308,12 +321,14 @@
 			isa = PBXGroup;
 			children = (
 				CA7A150000000000000000A1 /* Assets.xcassets */,
+				CA7A160000000000000000A2 /* CatCoat+Shared.swift */,
+				CA7A160000000000000000A1 /* CatCoatPicker.swift */,
 				CA7A150000000000000000A2 /* CatPoseGalleryView.swift */,
 				CA7A130000000000000000A1 /* CatWalkAboutSection.swift */,
 				CA7A110000000000000000A1 /* CatPostureView.swift */,
 				CA7A110000000000000000A2 /* CatWalkTimelineProvider.swift */,
 				CA7A110000000000000000A3 /* CatWalkWidgetView.swift */,
-				CA7A160000000000000000A1 /* Localizable.xcstrings */,
+				CA7A180000000000000000A1 /* Localizable.xcstrings */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -324,6 +339,7 @@
 				CA7A120000000000000000A5 /* CatWalkLiveActivity.swift */,
 				CA7A140000000000000000A1 /* CatWalkRoomView.swift */,
 				CA7A110000000000000000A4 /* CatWalkWidget.swift */,
+				CA7A160000000000000000A4 /* CatWalkWidget.entitlements */,
 				CA7A120000000000000000A4 /* CatWalkWidgetBundle.swift */,
 				CA7A110000000000000000A5 /* Info.plist */,
 			);
@@ -334,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7A110000000000000000A6 /* CatWalkWatchWidget.swift */,
+				CA7A160000000000000000A6 /* CatWalkWatchWidget.entitlements */,
 				CA7A110000000000000000A7 /* Info.plist */,
 			);
 			path = CatWalkWatchWidget;
@@ -547,7 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A150000000000000000B4 /* Assets.xcassets in Resources */,
-				CA7A160000000000000000B1 /* Localizable.xcstrings in Resources */,
+				CA7A180000000000000000B1 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,7 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A150000000000000000B5 /* Assets.xcassets in Resources */,
-				CA7A160000000000000000B2 /* Localizable.xcstrings in Resources */,
+				CA7A180000000000000000B2 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,7 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A150000000000000000B6 /* Assets.xcassets in Resources */,
-				CA7A160000000000000000B3 /* Localizable.xcstrings in Resources */,
+				CA7A180000000000000000B3 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,7 +591,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A150000000000000000B7 /* Assets.xcassets in Resources */,
-				CA7A160000000000000000B4 /* Localizable.xcstrings in Resources */,
+				CA7A180000000000000000B4 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A150000000000000000B8 /* Assets.xcassets in Resources */,
-				CA7A160000000000000000B5 /* Localizable.xcstrings in Resources */,
+				CA7A180000000000000000B5 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +619,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7A160000000000000000B4 /* CatCoat+Shared.swift in Sources */,
+				CA7A160000000000000000B2 /* CatCoatPicker.swift in Sources */,
 				CA7A150000000000000000B3 /* CatPoseGalleryView.swift in Sources */,
 				CA7A110000000000000000B1 /* CatPostureView.swift in Sources */,
 				CA7A130000000000000000B2 /* CatWalkAboutSection.swift in Sources */,
@@ -616,6 +635,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7A160000000000000000B1 /* CatCoatPicker.swift in Sources */,
 				6C987FA667653342794918EC /* CatGeometry.swift in Sources */,
 				55594BFE457263B2262E9ABF /* CatOverlayView.swift in Sources */,
 				CA7A150000000000000000B2 /* CatPoseGalleryView.swift in Sources */,
@@ -633,6 +653,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7A160000000000000000B5 /* CatCoat+Shared.swift in Sources */,
+				CA7A160000000000000000B3 /* CatCoatPicker.swift in Sources */,
 				CA7A110000000000000000B3 /* CatPostureView.swift in Sources */,
 				CA7A130000000000000000B3 /* CatWalkAboutSection.swift in Sources */,
 				506A925872C1F8DE8E85BEB1 /* CatWalkView.swift in Sources */,
@@ -706,6 +728,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
+				CODE_SIGN_ENTITLEMENTS = CatWalkWatch/CatWalkWatch.entitlements;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cat Walk";
 				INFOPLIST_KEY_WKApplication = YES;
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -722,6 +745,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CatWalkiOS/CatWalkiOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CatWalkiOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -760,6 +784,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CatWalkiOS/CatWalkiOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CatWalkiOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -867,6 +892,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
+				CODE_SIGN_ENTITLEMENTS = CatWalkWatch/CatWalkWatch.entitlements;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cat Walk";
 				INFOPLIST_KEY_WKApplication = YES;
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -981,6 +1007,7 @@
 		CA7A11000000000000000095 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CatWalkWidget/CatWalkWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CatWalkWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cat Walk";
@@ -1001,6 +1028,7 @@
 		CA7A11000000000000000096 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CatWalkWidget/CatWalkWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CatWalkWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cat Walk";
@@ -1021,6 +1049,7 @@
 		CA7A11000000000000000098 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CatWalkWatchWidget/CatWalkWatchWidget.entitlements;
 				INFOPLIST_FILE = CatWalkWatchWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cat Walk";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1040,6 +1069,7 @@
 		CA7A11000000000000000099 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CatWalkWatchWidget/CatWalkWatchWidget.entitlements;
 				INFOPLIST_FILE = CatWalkWatchWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Cat Walk";
 				LD_RUNPATH_SEARCH_PATHS = (

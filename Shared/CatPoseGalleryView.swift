@@ -5,6 +5,8 @@ import SwiftUI
 /// 開発用に、猫のすべての姿勢の絵 (色と単色) を並べる view。行動は乱数で切り替わり、眠る姿勢は座った後にしか来ないため、
 /// simtunnel のスクリーンショットで絵を確かめる時に待たずに全部を撮れるよう、macOS の設定と iOS のアプリに DEBUG ビルドだけ出す。
 struct CatPoseGalleryView: View {
+    /// 並べる猫の色・柄。設定で選んだ柄の絵がすべての姿勢で揃っていることを確かめるため、設定の柄を渡す。
+    let coat: CatCoat
     /// 1 匹の大きさ (pt)。
     let size: Double
 
@@ -16,7 +18,7 @@ struct CatPoseGalleryView: View {
                 let isMonochrome = index >= catPoseGallerySamples.count
                 VStack(spacing: 4) {
                     // 単色の絵はロック画面と同じく暗い背景に白で出す
-                    Image(sample.walk.artworkName(isLifted: sample.isLifted, isMonochrome: isMonochrome))
+                    Image(sample.walk.artworkName(coat: coat, isLifted: sample.isLifted, isMonochrome: isMonochrome))
                         .resizable()
                         .scaledToFit()
                         .frame(width: size, height: size)
