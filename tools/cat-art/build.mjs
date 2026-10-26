@@ -52,22 +52,25 @@ function iconSVG() {
   const cat = catSVG({ ...shipped, pose: "sit", idPrefix: "icon" }).replace(/^<svg[^>]*>/, "").replace(/<\/svg>$/, "");
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024"><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F3A5C"/><stop offset="1" stop-color="#1D2440"/></linearGradient></defs><rect width="1024" height="1024" fill="url(#bg)"/><g transform="translate(47 32) scale(7.5)">${cat}</g></svg>`;
 }
-// アプリアイコン。iOS・watchOS は 1024 の 1 枚から OS が各サイズを作り、macOS は各サイズの PNG を置く
-const appIconDir = join(assetsDir, "AppIcon.appiconset");
-const macSizes = [16, 32, 128, 256, 512];
-// iOS と watchOS で同じファイルを共有すると、macOS の actool が片方を「unassigned child」と警告するため、OS ごとにファイルを分ける
-const appIconImages = ["ios", "watchos"].map((platform) => ({ filename: `AppIcon-${platform}.png`, idiom: "universal", platform, size: "1024x1024" }));
-for (const { filename } of appIconImages) {
-  png(iconSVG(), join(appIconDir, filename), 1024, 1024, true);
+// アプリアイコン。iOS・watchOS は 1024 の 1 枚から OS が各サイズを作り、macOS は各サイズの PNG を置く。
+// watchOS の項目を AppIcon に入れると macOS の actool が「unassigned child」と警告するため、watchOS は WatchAppIcon に分ける
+/** `name`.appiconset に `images` (Contents.json の項目に、書き出す一辺の px `px` を足したもの) を書き出す。 */
+function appIconSet(name, images) {
+  const dir = join(assetsDir, `${name}.appiconset`);
+  for (const { filename, px } of images) {
+    png(iconSVG(), join(dir, filename), px, px, true);
+  }
+  write(join(dir, "Contents.json"), JSON.stringify({ images: images.map(({ px, ...image }) => image), info: { author: "xcode", version: 1 } }, null, 2) + "\n");
 }
+const macSizes = [16, 32, 128, 256, 512];
+const appIconImages = [{ filename: "AppIcon-ios.png", idiom: "universal", platform: "ios", size: "1024x1024", px: 1024 }];
 for (const size of macSizes) {
   for (const scale of [1, 2]) {
-    const filename = `AppIcon-mac-${size}@${scale}x.png`;
-    png(iconSVG(), join(appIconDir, filename), size * scale, size * scale, true);
-    appIconImages.push({ filename, idiom: "mac", scale: `${scale}x`, size: `${size}x${size}` });
+    appIconImages.push({ filename: `AppIcon-mac-${size}@${scale}x.png`, idiom: "mac", scale: `${scale}x`, size: `${size}x${size}`, px: size * scale });
   }
 }
-write(join(appIconDir, "Contents.json"), JSON.stringify({ images: appIconImages, info: { author: "xcode", version: 1 } }, null, 2) + "\n");
+appIconSet("AppIcon", appIconImages);
+appIconSet("WatchAppIcon", [{ filename: "WatchAppIcon.png", idiom: "universal", platform: "watchos", size: "1024x1024", px: 1024 }]);
 
 // 紹介サイト。ヒーローで歩かせる 2 コマと、SNS で共有された時の og.png (1200x630)
 write(join(root, "docs/images/cat-walk1.svg"), catSVG({ ...shipped, pose: "walk1", idPrefix: "w1" }));
