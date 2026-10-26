@@ -179,6 +179,27 @@ struct CatWalkStateTests {
         #expect(CatWalkState(activity: .walking, activityRemaining: 0).secondsUntilNextUpdate(walkingTickSeconds: 1) == 0)
     }
 
+    @Test func walkingStartsOnFirstStep() {
+        #expect(CatWalkState().walkingStep(stepSeconds: 1) == 0)
+    }
+
+    @Test func walkingStepAlternatesEveryStepSeconds() {
+        let steps = (0..<5).map { CatWalkState(activity: .walking, activityElapsed: Double($0)).walkingStep(stepSeconds: 1) }
+
+        #expect(steps == [0, 1, 0, 1, 0])
+    }
+
+    @Test func walkingStepKeepsAlternatingWithJitteredUpdates() {
+        let steps = [0.98, 2.03, 2.97, 4.01].map { CatWalkState(activity: .walking, activityElapsed: $0).walkingStep(stepSeconds: 1) }
+
+        #expect(steps == [1, 0, 1, 0])
+    }
+
+    @Test func walkingStepRoundsPartialTick() {
+        #expect(CatWalkState(activity: .walking, activityElapsed: 4.4).walkingStep(stepSeconds: 1) == 0)
+        #expect(CatWalkState(activity: .walking, activityElapsed: 4.6).walkingStep(stepSeconds: 1) == 1)
+    }
+
     @Test func roundTripsThroughCodable() throws {
         let state = CatWalkState(x: 12.5, direction: .left, activity: .sleeping, activityElapsed: 3, activityRemaining: 40)
 
