@@ -1,3 +1,7 @@
+---
+lang: en
+---
+
 # Privacy Policy
 
 bannzai (the "Provider") establishes this Privacy Policy (this "Policy") regarding the handling of user information, including personal information, of users of the service "Cat Walk" (the "Service") provided by the Provider.
