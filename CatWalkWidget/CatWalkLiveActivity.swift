@@ -31,13 +31,13 @@ struct CatWalkLiveActivity: Widget {
                 }
             } compactLeading: {
                 // compact と minimal は横位置を出す余地が無いため、姿勢だけを出す
-                CatPostureView(activity: context.state.activity, direction: context.state.direction, size: 16)
+                CatPostureView(walk: context.state, size: 16)
             } compactTrailing: {
                 Text(context.state.activity.caption)
                     .font(.caption2)
                     .lineLimit(1)
             } minimal: {
-                CatPostureView(activity: context.state.activity, direction: context.state.direction, size: 16)
+                CatPostureView(walk: context.state, size: 16)
             }
             .widgetURL(URL(string: "catwalk://pet"))
         }
@@ -53,7 +53,7 @@ private struct CatWalkActivityTrackView: View {
 
     var body: some View {
         GeometryReader { proxy in
-            CatPostureView(activity: walk.activity, direction: walk.direction, size: catSize)
+            CatPostureView(walk: walk, size: catSize)
                 .position(x: max(proxy.size.width - catSize, 0) * walk.x + catSize / 2, y: proxy.size.height - catSize / 2)
         }
     }

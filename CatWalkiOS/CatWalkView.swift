@@ -1,7 +1,7 @@
 import CatWalkCore
 import SwiftUI
 
-/// 猫のプレースホルダーが画面下端を歩いたり止まったりする view。タップするかウィジェットから開くと撫でて喜ばせる。
+/// 猫が画面下端を歩いたり止まったりする view。タップするかウィジェットから開くと撫でて喜ばせる。
 /// 「散歩に出す」で同じ猫を Live Activity (Dynamic Island・ロック画面) にも出し、前面にいる間は状態を進めるたびに更新する。
 struct CatWalkView: View {
     /// 猫の大きさ。プレースホルダーの見た目の確認に十分な仮の値で、デザインの段階で決め直す。
@@ -17,11 +17,13 @@ struct CatWalkView: View {
     @State private var isShowingActivityError = false
     /// Live Activity を開始できなかった時のエラーメッセージ。アラートの本文に加工せずに出す。
     @State private var activityErrorMessage = ""
+    /// 開発用の姿勢の一覧を出しているか。
+    @State private var isShowingPoseGallery = false
 
     var body: some View {
         GeometryReader { proxy in
             let travel = max(proxy.size.width - Self.catSize, 0)
-            CatPostureView(activity: walk.activity, direction: walk.direction, size: Self.catSize)
+            CatPostureView(walk: walk, size: Self.catSize)
                 .position(x: walk.x + Self.catSize / 2, y: proxy.size.height - Self.catSize * 2)
                 .animation(.linear(duration: Self.tickSeconds), value: walk.x)
                 .task {
@@ -76,6 +78,22 @@ struct CatWalkView: View {
         } message: {
             Text(activityErrorMessage)
         }
+        #if DEBUG
+        .overlay(alignment: .topTrailing) {
+            Button("姿勢") {
+                isShowingPoseGallery = true
+            }
+            .padding()
+            .accessibilityIdentifier("debug-pose-gallery")
+        }
+        .sheet(isPresented: $isShowingPoseGallery) {
+            ScrollView {
+                // iPhone の幅に 1 行 4 匹が収まる大きさ
+                CatPoseGalleryView(size: 64)
+                    .padding()
+            }
+        }
+        #endif
     }
 
     /// 今の猫の状態を、Live Activity に送る形 (`x` を歩行範囲 `travel` に対する割合にしたもの) にして返す。
