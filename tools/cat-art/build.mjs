@@ -75,11 +75,10 @@ appIconSet("WatchAppIcon", [{ filename: "WatchAppIcon.png", idiom: "universal", 
 // 紹介サイト。ヒーローで歩かせる 2 コマと、SNS で共有された時の og.png (1200x630)
 write(join(root, "docs/images/cat-walk1.svg"), catSVG({ ...shipped, pose: "walk1", idPrefix: "w1" }));
 write(join(root, "docs/images/cat-walk2.svg"), catSVG({ ...shipped, pose: "walk2", idPrefix: "w2" }));
-const ogCats = ["walk1", "sit", "sleep"]
-  .map((pose, i) => `<g transform="translate(${160 + i * 330} 250) scale(2.3)">${catSVG({ ...shipped, pose, idPrefix: `og${i}` }).replace(/^<svg[^>]*>/, "").replace(/<\/svg>$/, "")}</g>`)
-  .join("");
+// 文字の配置と色は #11 で決めた og.png (アプリ名・キャッチコピー・対応 OS を左に、猫を右の地面に) に合わせ、猫だけをアプリの絵にする
+const ogCat = catSVG({ ...shipped, pose: "walk1", idPrefix: "og" }).replace(/^<svg[^>]*>/, "").replace(/<\/svg>$/, "");
 png(
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630"><rect width="1200" height="630" fill="#1d1f23"/><rect y="530" width="1200" height="8" fill="#3a3e46"/><text x="600" y="150" text-anchor="middle" font-family="Hiragino Sans, sans-serif" font-weight="800" font-size="64" fill="#eceef1">作業中の画面に<tspan fill="#f0a05a">猫がいる</tspan></text><text x="600" y="215" text-anchor="middle" font-family="Hiragino Sans, sans-serif" font-size="30" fill="#a8aeb8">Mac・iPhone・Apple Watch のアプリ Cat Walk</text>${ogCats}</svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630"><rect width="1200" height="630" fill="#1d1f23"/><rect x="0" y="520" width="1200" height="6" fill="#3a3e46"/><text x="96" y="230" font-family="Hiragino Sans, sans-serif" font-weight="800" font-size="104" fill="#eceef1">Cat Walk</text><text x="96" y="320" font-family="Hiragino Sans, sans-serif" font-weight="700" font-size="56" fill="#f0a05a">作業中の画面に猫がいる</text><text x="96" y="400" font-family="Hiragino Sans, sans-serif" font-weight="400" font-size="34" fill="#a8aeb8">Mac・iPhone・Apple Watch</text><g transform="translate(790 184) scale(2.8)">${ogCat}</g></svg>`,
   join(root, "docs/og.png"),
   1200,
   630,

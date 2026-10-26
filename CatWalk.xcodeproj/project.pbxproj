@@ -45,15 +45,18 @@
 		CA7A120000000000000000B3 /* CatWalkActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A120000000000000000A2 /* CatWalkActivity.swift */; };
 		CA7A120000000000000000B4 /* CatWalkWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A120000000000000000A4 /* CatWalkWidgetBundle.swift */; };
 		CA7A120000000000000000B5 /* CatWalkLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A120000000000000000A5 /* CatWalkLiveActivity.swift */; };
-		CA7A130000000000000000B1 /* CatPostureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A110000000000000000A1 /* CatPostureView.swift */; };
-		CA7A130000000000000000B2 /* CatPoseGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A2 /* CatPoseGalleryView.swift */; };
-		CA7A130000000000000000B3 /* CatPoseGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A2 /* CatPoseGalleryView.swift */; };
-		CA7A130000000000000000B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A1 /* Assets.xcassets */; };
-		CA7A130000000000000000B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A1 /* Assets.xcassets */; };
-		CA7A130000000000000000B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A1 /* Assets.xcassets */; };
-		CA7A130000000000000000B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A1 /* Assets.xcassets */; };
-		CA7A130000000000000000B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A1 /* Assets.xcassets */; };
-		CA7A130000000000000000B9 /* CatPostureViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A3 /* CatPostureViewTests.swift */; };
+		CA7A130000000000000000B1 /* CatWalkAboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A1 /* CatWalkAboutSection.swift */; };
+		CA7A130000000000000000B2 /* CatWalkAboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A1 /* CatWalkAboutSection.swift */; };
+		CA7A130000000000000000B3 /* CatWalkAboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A1 /* CatWalkAboutSection.swift */; };
+		CA7A140000000000000000B1 /* CatPostureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A110000000000000000A1 /* CatPostureView.swift */; };
+		CA7A140000000000000000B2 /* CatPoseGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A140000000000000000A2 /* CatPoseGalleryView.swift */; };
+		CA7A140000000000000000B3 /* CatPoseGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A140000000000000000A2 /* CatPoseGalleryView.swift */; };
+		CA7A140000000000000000B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A140000000000000000A1 /* Assets.xcassets */; };
+		CA7A140000000000000000B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A140000000000000000A1 /* Assets.xcassets */; };
+		CA7A140000000000000000B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A140000000000000000A1 /* Assets.xcassets */; };
+		CA7A140000000000000000B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A140000000000000000A1 /* Assets.xcassets */; };
+		CA7A140000000000000000B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A140000000000000000A1 /* Assets.xcassets */; };
+		CA7A140000000000000000B9 /* CatPostureViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A140000000000000000A3 /* CatPostureViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,9 +144,10 @@
 		CA7A120000000000000000A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7A120000000000000000A4 /* CatWalkWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkWidgetBundle.swift; sourceTree = "<group>"; };
 		CA7A120000000000000000A5 /* CatWalkLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkLiveActivity.swift; sourceTree = "<group>"; };
-		CA7A130000000000000000A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CA7A130000000000000000A2 /* CatPoseGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPoseGalleryView.swift; sourceTree = "<group>"; };
-		CA7A130000000000000000A3 /* CatPostureViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPostureViewTests.swift; sourceTree = "<group>"; };
+		CA7A130000000000000000A1 /* CatWalkAboutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkAboutSection.swift; sourceTree = "<group>"; };
+		CA7A140000000000000000A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA7A140000000000000000A2 /* CatPoseGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPoseGalleryView.swift; sourceTree = "<group>"; };
+		CA7A140000000000000000A3 /* CatPostureViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPostureViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,7 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				9FB73767B3C13D08E5E15B0C /* CatGeometryTests.swift */,
-				CA7A130000000000000000A3 /* CatPostureViewTests.swift */,
+				CA7A140000000000000000A3 /* CatPostureViewTests.swift */,
 				A1B2C3D4E5F60718293A4B5C /* CatWalkModelTests.swift */,
 				8DA80CEFFD24389831E5438B /* CatWalkSmokeTests.swift */,
 				90FEB9565A87CDB091F1D579 /* UserDefaults+CatWalkTests.swift */,
@@ -285,8 +289,9 @@
 		CA7A110000000000000000D1 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				CA7A130000000000000000A1 /* Assets.xcassets */,
-				CA7A130000000000000000A2 /* CatPoseGalleryView.swift */,
+				CA7A140000000000000000A1 /* Assets.xcassets */,
+				CA7A140000000000000000A2 /* CatPoseGalleryView.swift */,
+				CA7A130000000000000000A1 /* CatWalkAboutSection.swift */,
 				CA7A110000000000000000A1 /* CatPostureView.swift */,
 				CA7A110000000000000000A2 /* CatWalkTimelineProvider.swift */,
 				CA7A110000000000000000A3 /* CatWalkWidgetView.swift */,
@@ -323,7 +328,7 @@
 			buildPhases = (
 				7CE93E16D402C263B1D233A0 /* Sources */,
 				E5DF65706BB472028CF46E7A /* Frameworks */,
-				CA7A130000000000000000F2 /* Resources */,
+				CA7A140000000000000000F2 /* Resources */,
 				CA7A110000000000000000F5 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -365,7 +370,7 @@
 			buildPhases = (
 				9D8530940A2E927F868E0229 /* Sources */,
 				CD2CCE6EB5AFAF76CF0CBA2B /* Frameworks */,
-				CA7A130000000000000000F3 /* Resources */,
+				CA7A140000000000000000F3 /* Resources */,
 				CA7A110000000000000000F6 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -387,7 +392,7 @@
 			buildPhases = (
 				7EB9F318439B1368B337DB84 /* Sources */,
 				16D490128F7791534E19D012 /* Frameworks */,
-				CA7A130000000000000000F1 /* Resources */,
+				CA7A140000000000000000F1 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -407,7 +412,7 @@
 			buildPhases = (
 				CA7A110000000000000000F1 /* Sources */,
 				CA7A110000000000000000F2 /* Frameworks */,
-				CA7A130000000000000000F4 /* Resources */,
+				CA7A140000000000000000F4 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -427,7 +432,7 @@
 			buildPhases = (
 				CA7A110000000000000000F3 /* Sources */,
 				CA7A110000000000000000F4 /* Frameworks */,
-				CA7A130000000000000000F5 /* Resources */,
+				CA7A140000000000000000F5 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -498,43 +503,43 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CA7A130000000000000000F1 /* Resources */ = {
+		CA7A140000000000000000F1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA7A130000000000000000B4 /* Assets.xcassets in Resources */,
+				CA7A140000000000000000B4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA7A130000000000000000F2 /* Resources */ = {
+		CA7A140000000000000000F2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA7A130000000000000000B5 /* Assets.xcassets in Resources */,
+				CA7A140000000000000000B5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA7A130000000000000000F3 /* Resources */ = {
+		CA7A140000000000000000F3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA7A130000000000000000B6 /* Assets.xcassets in Resources */,
+				CA7A140000000000000000B6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA7A130000000000000000F4 /* Resources */ = {
+		CA7A140000000000000000F4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA7A130000000000000000B7 /* Assets.xcassets in Resources */,
+				CA7A140000000000000000B7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA7A130000000000000000F5 /* Resources */ = {
+		CA7A140000000000000000F5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA7A130000000000000000B8 /* Assets.xcassets in Resources */,
+				CA7A140000000000000000B8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,8 +550,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA7A130000000000000000B3 /* CatPoseGalleryView.swift in Sources */,
+				CA7A140000000000000000B3 /* CatPoseGalleryView.swift in Sources */,
 				CA7A110000000000000000B1 /* CatPostureView.swift in Sources */,
+				CA7A130000000000000000B2 /* CatWalkAboutSection.swift in Sources */,
 				CA7A120000000000000000B3 /* CatWalkActivity.swift in Sources */,
 				CA7A120000000000000000B1 /* CatWalkActivityAttributes.swift in Sources */,
 				8CE7A04241E798298C6761E0 /* CatWalkView.swift in Sources */,
@@ -560,8 +566,9 @@
 			files = (
 				6C987FA667653342794918EC /* CatGeometry.swift in Sources */,
 				55594BFE457263B2262E9ABF /* CatOverlayView.swift in Sources */,
-				CA7A130000000000000000B2 /* CatPoseGalleryView.swift in Sources */,
-				CA7A130000000000000000B1 /* CatPostureView.swift in Sources */,
+				CA7A140000000000000000B2 /* CatPoseGalleryView.swift in Sources */,
+				CA7A140000000000000000B1 /* CatPostureView.swift in Sources */,
+				CA7A130000000000000000B1 /* CatWalkAboutSection.swift in Sources */,
 				463747B73912E35F06600C5C /* CatWalkApp.swift in Sources */,
 				A1C4E7F02B3D5968C7E1F0A2 /* CatWalkModel.swift in Sources */,
 				D2A0C0E75070B0D034ADB0F4 /* CatWalkSettingsView.swift in Sources */,
@@ -575,6 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A110000000000000000B3 /* CatPostureView.swift in Sources */,
+				CA7A130000000000000000B3 /* CatWalkAboutSection.swift in Sources */,
 				506A925872C1F8DE8E85BEB1 /* CatWalkView.swift in Sources */,
 				E7F8F43763C20600ADBD88D2 /* CatWalkWatchApp.swift in Sources */,
 			);
@@ -585,7 +593,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C85B709E6270307420F83CF3 /* CatGeometryTests.swift in Sources */,
-				CA7A130000000000000000B9 /* CatPostureViewTests.swift in Sources */,
+				CA7A140000000000000000B9 /* CatPostureViewTests.swift in Sources */,
 				0F1E2D3C4B5A69788796A5B4 /* CatWalkModelTests.swift in Sources */,
 				49E6A9D38C189C324A295E48 /* CatWalkSmokeTests.swift in Sources */,
 				5883AC4A0B243E9D784CC4CC /* UserDefaults+CatWalkTests.swift in Sources */,

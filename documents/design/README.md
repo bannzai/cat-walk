@@ -4,6 +4,10 @@
 
 Claude Design の canvas (Artifact) の URL はアカウントの切り替えや削除で開けなくなることがあるため、判断に使ったモックはリポジトリに保存する。
 
+## 紹介サイトの OGP 画像
+
+`docs/og.png` (1200x630) は、アプリと同じ猫の絵から `node tools/cat-art/build.mjs` が書き出す (#12。#11 で作った `og.svg` の文字の配置と色を引き継いだ)。文字や配置を変える時は `tools/cat-art/build.mjs` を直す。
+
 ## mock-2026-10-21/
 
 Cat Walk の 3 OS (macOS / iOS / watchOS) の見た目と体験の方向を判断するために作ったモック。

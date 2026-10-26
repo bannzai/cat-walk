@@ -43,6 +43,7 @@ struct CatWalkSettingsView: View {
                 Text(loginItemError.localizedDescription)
                     .foregroundStyle(.red)
             }
+            CatWalkAboutSection()
             #if DEBUG
             Section("開発用: 猫の姿勢") {
                 // 設定ウィンドウの幅 420pt に 1 行 4 匹が収まる大きさ

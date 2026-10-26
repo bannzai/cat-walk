@@ -17,8 +17,8 @@ struct CatWalkView: View {
     @State private var isShowingActivityError = false
     /// Live Activity を開始できなかった時のエラーメッセージ。アラートの本文に加工せずに出す。
     @State private var activityErrorMessage = ""
-    /// 開発用の姿勢の一覧を出しているか。
-    @State private var isShowingPoseGallery = false
+    /// 設定画面 (利用規約・プライバシーポリシー・お問い合わせ) を出しているか。
+    @State private var isShowingSettings = false
 
     var body: some View {
         GeometryReader { proxy in
@@ -59,6 +59,15 @@ struct CatWalkView: View {
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .padding(.top)
+            Button("設定", systemImage: "gearshape") {
+                isShowingSettings = true
+            }
+            .labelStyle(.iconOnly)
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.circle)
+            .accessibilityIdentifier("settings-button")
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+            .padding([.top, .trailing])
         }
         // 猫は小さく毎秒動くため、猫の上に限らず画面のどこをタップしても撫でられるようにする
         .contentShape(Rectangle())
@@ -78,22 +87,28 @@ struct CatWalkView: View {
         } message: {
             Text(activityErrorMessage)
         }
-        #if DEBUG
-        .overlay(alignment: .topTrailing) {
-            Button("姿勢") {
-                isShowingPoseGallery = true
+        .sheet(isPresented: $isShowingSettings) {
+            NavigationStack {
+                Form {
+                    CatWalkAboutSection()
+                    #if DEBUG
+                    Section("開発用: 猫の姿勢") {
+                        // iPhone の幅に 1 行 4 匹が収まる大きさ
+                        CatPoseGalleryView(size: 64)
+                    }
+                    #endif
+                }
+                .navigationTitle("設定")
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("閉じる") {
+                            isShowingSettings = false
+                        }
+                        .accessibilityIdentifier("settings-close")
+                    }
+                }
             }
-            .padding()
-            .accessibilityIdentifier("debug-pose-gallery")
         }
-        .sheet(isPresented: $isShowingPoseGallery) {
-            ScrollView {
-                // iPhone の幅に 1 行 4 匹が収まる大きさ
-                CatPoseGalleryView(size: 64)
-                    .padding()
-            }
-        }
-        #endif
     }
 
     /// 今の猫の状態を、Live Activity に送る形 (`x` を歩行範囲 `travel` に対する割合にしたもの) にして返す。
