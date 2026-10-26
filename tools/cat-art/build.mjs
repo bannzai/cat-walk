@@ -7,11 +7,11 @@ import { dirname, join } from "node:path";
 import { candidates, catSVG, coats, poses } from "./cat-art.mjs";
 
 /** アプリに入れる案と柄。bannzai が PR で別の案を選んだら、ここを変えて実行し直す。 */
-const shipped = { candidateKey: "a", coatKey: "chatora" };
+const shipped = { candidateKey: "b", coatKey: "chatora" };
 
 const root = process.cwd();
 const assetsDir = join(root, "Shared/Assets.xcassets");
-const sheetDir = join(root, "documents/design/cat-2026-10-26");
+const sheetDir = join(root, "documents/design/cat-2026-10-27");
 
 /** `path` に `content` を書く。親ディレクトリが無ければ作る。 */
 function write(path, content) {
@@ -47,10 +47,10 @@ for (const pose of poses) {
   }
 }
 
-/** アプリアイコンの絵 (1024x1024、透過なし)。座った猫を、猫の色が埋もれない夜空色の背景に置く。 */
+/** アプリアイコンの絵 (1024x1024、透過なし)。座った猫を、落書きした紙のような生成り色の背景に置く。 */
 function iconSVG() {
   const cat = catSVG({ ...shipped, pose: "sit", idPrefix: "icon" }).replace(/^<svg[^>]*>/, "").replace(/<\/svg>$/, "");
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024"><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F3A5C"/><stop offset="1" stop-color="#1D2440"/></linearGradient></defs><rect width="1024" height="1024" fill="url(#bg)"/><g transform="translate(47 32) scale(7.5)">${cat}</g></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024"><rect width="1024" height="1024" fill="#F3EEE3"/><g transform="translate(-9 -150) scale(8.4)">${cat}</g></svg>`;
 }
 // アプリアイコン。iOS・watchOS は 1024 の 1 枚から OS が各サイズを作り、macOS は各サイズの PNG を置く。
 // watchOS の項目を AppIcon に入れると macOS の actool が「unassigned child」と警告するため、watchOS は WatchAppIcon に分ける
@@ -84,7 +84,7 @@ png(
   630,
 );
 
-// 案の比較シート。3 案の姿勢、案 A の柄の種類、単色の絵を並べ、PR で見比べてもらう
+// 案の比較シート。3 案の姿勢、アプリに入れた案の柄の種類、単色の絵を並べ、PR で見比べてもらう
 const cell = (svg, caption, bg = "#2b2f36") => `<figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="background:${bg};border-radius:12px;padding:8px;width:136px;height:136px;display:flex;align-items:center;justify-content:center">${svg}</div><figcaption style="font-size:13px;color:#cfd3da">${caption}</figcaption></figure>`;
 const poseLabels = { walk1: "歩く 1", walk2: "歩く 2", stand: "立ち止まる", sit: "座る", sleep: "眠る", groom: "毛づくろい", delighted: "撫でられて喜ぶ", lifted: "持ち上げられる (macOS)" };
 let id = 0;
