@@ -46,27 +46,27 @@ struct AppStoreScreenshotPageView: View {
     var body: some View {
         switch page {
         case .iPhoneLockScreen:
-            IPhoneScreenshotLayout(title: language.copy(key: "iphone.lock.title"), subtitle: language.copy(key: "iphone.lock.subtitle")) {
+            IPhoneScreenshotLayout(title: language.copy(key: "iphone.lock.title"), subtitle: language.copy(key: "iphone.lock.subtitle"), calloutWalk: CatWalkState(activity: .walking)) {
                 IPhoneLockScreen(language: language)
             }
         case .iPhoneHomeScreen:
-            IPhoneScreenshotLayout(title: language.copy(key: "iphone.home.title"), subtitle: language.copy(key: "iphone.home.subtitle")) {
+            IPhoneScreenshotLayout(title: language.copy(key: "iphone.home.title"), subtitle: language.copy(key: "iphone.home.subtitle"), calloutWalk: CatWalkState(direction: .left, activity: .standing)) {
                 IPhoneHomeScreen(language: language)
             }
         case .iPhonePetting:
-            IPhoneScreenshotLayout(title: language.copy(key: "iphone.pet.title"), subtitle: language.copy(key: "iphone.pet.subtitle")) {
+            IPhoneScreenshotLayout(title: language.copy(key: "iphone.pet.title"), subtitle: language.copy(key: "iphone.pet.subtitle"), calloutWalk: CatWalkState(activity: .delighted)) {
                 IPhoneAppScreen(language: language)
             }
         case .macDesktop:
-            MacScreenshotLayout(title: language.copy(key: "mac.desktop.title"), subtitle: language.copy(key: "mac.desktop.subtitle")) {
+            MacScreenshotLayout(title: language.copy(key: "mac.desktop.title"), subtitle: language.copy(key: "mac.desktop.subtitle"), calloutWalk: CatWalkState(activity: .walking), calloutIsLifted: false) {
                 MacDesktop(cat: .walking, language: language)
             }
         case .macLifting:
-            MacScreenshotLayout(title: language.copy(key: "mac.lift.title"), subtitle: language.copy(key: "mac.lift.subtitle")) {
+            MacScreenshotLayout(title: language.copy(key: "mac.lift.title"), subtitle: language.copy(key: "mac.lift.subtitle"), calloutWalk: CatWalkState(), calloutIsLifted: true) {
                 MacDesktop(cat: .lifted, language: language)
             }
         case .macSettings:
-            MacScreenshotLayout(title: language.copy(key: "mac.settings.title"), subtitle: language.copy(key: "mac.settings.subtitle")) {
+            MacScreenshotLayout(title: language.copy(key: "mac.settings.title"), subtitle: language.copy(key: "mac.settings.subtitle"), calloutWalk: CatWalkState(direction: .left, activity: .sitting), calloutIsLifted: false) {
                 MacDesktop(cat: .settings, language: language)
             }
         case .productPageHeader:
@@ -101,12 +101,14 @@ private struct AppStoreScreenshotCaption: View {
     }
 }
 
-/// iPhone 6.9 インチ (440 x 956 pt、3 倍で 1320 x 2868 px) の 1 枚。上にキャッチコピー、下に iPhone の枠に入れた画面を置き、端末の下端は見切れさせる。
+/// iPhone 6.9 インチ (440 x 956 pt、3 倍で 1320 x 2868 px) の 1 枚。上にキャッチコピー、下に iPhone の枠に入れた画面を置き、端末に重ねて猫の拡大図を出す。
 private struct IPhoneScreenshotLayout<Screen: View>: View {
     /// 見出し。
     let title: String
     /// 補足。
     let subtitle: String
+    /// 拡大図に描く猫の状態。画面の中の猫と同じ姿勢にする。
+    let calloutWalk: CatWalkState
     /// iPhone の画面 (393 x 852 pt で描く)。
     @ViewBuilder let screen: Screen
 
@@ -119,12 +121,33 @@ private struct IPhoneScreenshotLayout<Screen: View>: View {
             IPhoneFrame {
                 screen
             }
-            // 端末を 0.86 倍にすると、幅 440pt の中で左右に余白が残り、下端だけが見切れる
-            .scaleEffect(0.86, anchor: .top)
-            .padding(.top, 260)
+            // 端末を 0.78 倍にすると、見出しの下 (250pt から) に端末の下端までが収まり、画面の下端近くの猫が見切れない
+            .scaleEffect(0.78, anchor: .top)
+            .padding(.top, 250)
+            // 画面の中の猫は実寸 (44pt) で小さいため、端末の空いている中ほどに拡大図を重ねる
+            AppStoreScreenshotCatCallout(walk: calloutWalk, isLifted: false, diameter: 190)
+                .position(x: 322, y: 590)
         }
         .frame(width: 440, height: 956, alignment: .top)
         .clipped()
+    }
+}
+
+/// 猫の拡大図。画面の中の実寸の猫が小さく見えるため、同じ姿勢の猫を円の中に大きく描く。
+private struct AppStoreScreenshotCatCallout: View {
+    /// 描く猫の状態。
+    let walk: CatWalkState
+    /// 持ち上げた姿で描くか。
+    let isLifted: Bool
+    /// 円の直径 (pt)。猫は直径の 0.62 倍にし、円の縁との間に余白を残す。
+    let diameter: Double
+
+    var body: some View {
+        CatPostureView(walk: walk, size: diameter * 0.62, isLifted: isLifted)
+            .frame(width: diameter, height: diameter)
+            .background(Circle().fill(Color(red: 0xfa / 255, green: 0xf4 / 255, blue: 0xec / 255)))
+            .overlay(Circle().stroke(AppStoreScreenshotPalette.accent, lineWidth: diameter * 0.03))
+            .shadow(color: .black.opacity(0.45), radius: diameter * 0.08, y: diameter * 0.03)
     }
 }
 
@@ -162,6 +185,10 @@ private struct MacScreenshotLayout<Screen: View>: View {
     let title: String
     /// 補足。
     let subtitle: String
+    /// 拡大図に描く猫の状態。画面の中の猫と同じ姿勢にする。
+    let calloutWalk: CatWalkState
+    /// 拡大図の猫を持ち上げた姿で描くか。
+    let calloutIsLifted: Bool
     /// Mac の画面 (1440 x 900 pt で描く)。
     @ViewBuilder let screen: Screen
 
@@ -185,6 +212,9 @@ private struct MacScreenshotLayout<Screen: View>: View {
                 // 画面を 0.72 倍にすると、見出しの下に 16:10 の画面全体が収まる
                 .scaleEffect(0.72, anchor: .top)
                 .padding(.top, 220)
+            // 画面の中の猫は 64pt を 0.72 倍した大きさで小さいため、画面の右下に拡大図を重ねる
+            AppStoreScreenshotCatCallout(walk: calloutWalk, isLifted: calloutIsLifted, diameter: 260)
+                .position(x: 1250, y: 690)
         }
         .frame(width: 1440, height: 900, alignment: .top)
         .clipped()
@@ -406,7 +436,8 @@ private struct MacDesktop: View {
             MacMenuBar(showsMenu: cat == .settings, language: language)
             if cat == .settings {
                 MacSettingsWindow(language: language)
-                    .offset(x: 860, y: 120)
+                    // メニューバーのメニュー (右上) と重ならないよう、左下にずらす
+                    .offset(x: 600, y: 190)
             }
             MacDock()
                 .frame(width: 1440, height: 900, alignment: .bottom)
