@@ -5,3 +5,8 @@ xcuserdata/
 .envrc
 DerivedData/
 .build/
+
+# Firebase の設定ファイル (API キーを含む)。Firebase を使わないプロジェクトでも入れる (create-new-app の firebase-config-gitignore 項目)
+lib/firebase_options.dart
+**/GoogleService-Info.plist
+**/google-services.json
