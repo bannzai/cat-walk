@@ -20,6 +20,8 @@ struct CatPoseGalleryView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: size, height: size)
+                        // 単色の絵は template のため前景色で塗られ、既定の前景色 (ライトモードの黒) だと黒い背景に消える。色の絵は template ではないので前景色の影響を受けない
+                        .foregroundStyle(.white)
                         .background(isMonochrome ? Color.black : Color.clear)
                     Text(sample.label)
                         .font(.caption2)
