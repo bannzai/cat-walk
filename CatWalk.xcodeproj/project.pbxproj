@@ -20,6 +20,12 @@
 		E7F8F43763C20600ADBD88D2 /* CatWalkWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E71F638FA9A9CCA9CFA038 /* CatWalkWatchApp.swift */; };
 		EA395DB040FAB23B2DAD83AE /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82958EA9A6CBC24DC77CC217 /* OverlayWindow.swift */; };
 		FD93A6017896BC738907E90D /* CatWalkiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D520B940CB592C8D392E427 /* CatWalkiOSApp.swift */; };
+		6C987FA667653342794918EC /* CatGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7761ED4CF40E39C6F23BE900 /* CatGeometry.swift */; };
+		9188659FDC60BF6578E5DB49 /* UserDefaults+CatWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544CBA072C311F807588527 /* UserDefaults+CatWalk.swift */; };
+		D2A0C0E75070B0D034ADB0F4 /* CatWalkSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37497A9D27F468542C27B162 /* CatWalkSettingsView.swift */; };
+		C85B709E6270307420F83CF3 /* CatGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB73767B3C13D08E5E15B0C /* CatGeometryTests.swift */; };
+		5883AC4A0B243E9D784CC4CC /* UserDefaults+CatWalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FEB9565A87CDB091F1D579 /* UserDefaults+CatWalkTests.swift */; };
+		0F1E2D3C4B5A69788796A5B4 /* CatWalkModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5C /* CatWalkModelTests.swift */; };
 		CA7A110000000000000000B1 /* CatPostureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A110000000000000000A1 /* CatPostureView.swift */; };
 		CA7A110000000000000000B2 /* CatPostureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A110000000000000000A1 /* CatPostureView.swift */; };
 		CA7A110000000000000000B3 /* CatPostureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A110000000000000000A1 /* CatPostureView.swift */; };
@@ -106,6 +112,12 @@
 		E7BC8F439B0225873744DA2F /* CatWalkCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CatWalkCore; path = CatWalkCore; sourceTree = SOURCE_ROOT; };
 		EC6A8E4261743AEC774810F1 /* CatWalkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkView.swift; sourceTree = "<group>"; };
 		EDB2E867212BCD08D0479F12 /* CatWalkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkView.swift; sourceTree = "<group>"; };
+		7761ED4CF40E39C6F23BE900 /* CatGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatGeometry.swift; sourceTree = "<group>"; };
+		3544CBA072C311F807588527 /* UserDefaults+CatWalk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+CatWalk.swift"; sourceTree = "<group>"; };
+		37497A9D27F468542C27B162 /* CatWalkSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkSettingsView.swift; sourceTree = "<group>"; };
+		9FB73767B3C13D08E5E15B0C /* CatGeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatGeometryTests.swift; sourceTree = "<group>"; };
+		90FEB9565A87CDB091F1D579 /* UserDefaults+CatWalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+CatWalkTests.swift"; sourceTree = "<group>"; };
+		A1B2C3D4E5F60718293A4B5C /* CatWalkModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkModelTests.swift; sourceTree = "<group>"; };
 		CA7A110000000000000000A1 /* CatPostureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPostureView.swift; sourceTree = "<group>"; };
 		CA7A110000000000000000A2 /* CatWalkTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkTimelineProvider.swift; sourceTree = "<group>"; };
 		CA7A110000000000000000A3 /* CatWalkWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkWidgetView.swift; sourceTree = "<group>"; };
@@ -177,11 +189,14 @@
 		035B387EE5E224315C6E5A2B /* CatWalk */ = {
 			isa = PBXGroup;
 			children = (
+				7761ED4CF40E39C6F23BE900 /* CatGeometry.swift */,
 				80125F2AB09F47A99480D78C /* CatOverlayView.swift */,
 				0AAEF2B2A4624035055905F3 /* CatWalk.entitlements */,
 				C1132E636363475990873537 /* CatWalkApp.swift */,
 				B2D5F8013C4E6A79D8F2A1B3 /* CatWalkModel.swift */,
+				37497A9D27F468542C27B162 /* CatWalkSettingsView.swift */,
 				82958EA9A6CBC24DC77CC217 /* OverlayWindow.swift */,
+				3544CBA072C311F807588527 /* UserDefaults+CatWalk.swift */,
 			);
 			path = CatWalk;
 			sourceTree = "<group>";
@@ -211,7 +226,10 @@
 		5471F07E45EDF8166A99DCE8 /* CatWalkTests */ = {
 			isa = PBXGroup;
 			children = (
+				9FB73767B3C13D08E5E15B0C /* CatGeometryTests.swift */,
+				A1B2C3D4E5F60718293A4B5C /* CatWalkModelTests.swift */,
 				8DA80CEFFD24389831E5438B /* CatWalkSmokeTests.swift */,
+				90FEB9565A87CDB091F1D579 /* UserDefaults+CatWalkTests.swift */,
 			);
 			path = CatWalkTests;
 			sourceTree = "<group>";
@@ -476,10 +494,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C987FA667653342794918EC /* CatGeometry.swift in Sources */,
 				55594BFE457263B2262E9ABF /* CatOverlayView.swift in Sources */,
 				463747B73912E35F06600C5C /* CatWalkApp.swift in Sources */,
 				A1C4E7F02B3D5968C7E1F0A2 /* CatWalkModel.swift in Sources */,
+				D2A0C0E75070B0D034ADB0F4 /* CatWalkSettingsView.swift in Sources */,
 				EA395DB040FAB23B2DAD83AE /* OverlayWindow.swift in Sources */,
+				9188659FDC60BF6578E5DB49 /* UserDefaults+CatWalk.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,7 +518,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C85B709E6270307420F83CF3 /* CatGeometryTests.swift in Sources */,
+				0F1E2D3C4B5A69788796A5B4 /* CatWalkModelTests.swift in Sources */,
 				49E6A9D38C189C324A295E48 /* CatWalkSmokeTests.swift in Sources */,
+				5883AC4A0B243E9D784CC4CC /* UserDefaults+CatWalkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
