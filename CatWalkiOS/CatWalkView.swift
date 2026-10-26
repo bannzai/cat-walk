@@ -17,6 +17,8 @@ struct CatWalkView: View {
     @State private var isShowingActivityError = false
     /// Live Activity を開始できなかった時のエラーメッセージ。アラートの本文に加工せずに出す。
     @State private var activityErrorMessage = ""
+    /// 設定画面 (利用規約・プライバシーポリシー・お問い合わせ) を出しているか。
+    @State private var isShowingSettings = false
 
     var body: some View {
         GeometryReader { proxy in
@@ -57,6 +59,15 @@ struct CatWalkView: View {
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .padding(.top)
+            Button("設定", systemImage: "gearshape") {
+                isShowingSettings = true
+            }
+            .labelStyle(.iconOnly)
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.circle)
+            .accessibilityIdentifier("settings-button")
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+            .padding([.top, .trailing])
         }
         // 猫は小さく毎秒動くため、猫の上に限らず画面のどこをタップしても撫でられるようにする
         .contentShape(Rectangle())
@@ -75,6 +86,22 @@ struct CatWalkView: View {
             Button("OK") {}
         } message: {
             Text(activityErrorMessage)
+        }
+        .sheet(isPresented: $isShowingSettings) {
+            NavigationStack {
+                Form {
+                    CatWalkAboutSection()
+                }
+                .navigationTitle("設定")
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("閉じる") {
+                            isShowingSettings = false
+                        }
+                        .accessibilityIdentifier("settings-close")
+                    }
+                }
+            }
         }
     }
 
