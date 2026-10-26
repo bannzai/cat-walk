@@ -1,3 +1,7 @@
+---
+lang: en
+---
+
 # Terms of Use
 
 These Terms of Use (these "Terms") set forth the conditions for the provision of the Service and the rights and obligations between bannzai, the provider (the "Provider"), and users. Before using the Service, you must read the full text of these Terms and agree to them.
