@@ -10,3 +10,7 @@ Cat Walk の 3 OS (macOS / iOS / watchOS) の見た目と体験の方向を判�
 
 - `canvas.json` と `*.dc.html` (7 枚): Claude Design の canvas から取り出したそのままのファイル。各ファイルは `./support.js` (Claude Design の canvas 側の実行環境) を参照するため単独では描画できず、canvas に戻す時に使う。canvas の URL: https://claude.ai/artifact/UBrra8BTMETv7KV45wwVHp
 - `index.html`: 7 枚の artboard を縦に並べた、`support.js` に依存しない単独の HTML (ブラウザでの表示は未確認。HTML を読んで確認した)。プロパティ (`{{accent}}` 等) は各ファイルの既定値に置き換えてある
+
+## cat-2026-10-26/
+
+モックへの返答「猫はもっと可愛く。あともっと種類を増やす」を受けて作った猫の絵の 3 案と柄の見本の比較シート (#12)。`index.html` は `node tools/cat-art/build.mjs` が書き出すため、手で編集しない。
