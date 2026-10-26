@@ -206,7 +206,8 @@ function head(d, hx, hy, r, eyes) {
       d.dot(`eye${i}`, ex, y, eyes === "round" ? 2.6 : 1.8);
     }
   });
-  const my = hy + r * 0.42;
+  // 単色の絵は目・口を太くするため、目と口の抜きがつながらないよう口を下げる
+  const my = hy + r * (d.featureScale > 1 ? 0.56 : 0.42);
   const mx = hx - r * 0.04 + n(1);
   d.feature("mouth", [[mx - 3.2, my - 0.6], [mx - 1.6, my + 1.4], [mx, my - 0.2], [mx + 1.6, my + 1.4], [mx + 3.2, my - 0.6]], 1.5);
   for (const side of [-1, 1]) {
