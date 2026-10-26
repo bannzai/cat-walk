@@ -203,11 +203,13 @@ function head(d, hx, hy, r, eyes) {
     } else if (eyes === "happy") {
       d.feature(`eye${i}`, [[ex - 3, y + 1.5], [ex, y - 1.5], [ex + 3, y + 1.5]]);
     } else {
-      d.dot(`eye${i}`, ex, y, eyes === "round" ? 2.6 : 1.8);
+      // 大きめの点の目は、単色の絵で 1.8 倍にすると口とつながるため 1.4 倍に抑える
+      d.dot(`eye${i}`, ex, y, eyes === "round" ? 2.6 * (d.featureScale > 1 ? 1.4 / d.featureScale : 1) : 1.8);
     }
   });
-  // 単色の絵は目・口を太くするため、目と口の抜きがつながらないよう口を下げる
-  const my = hy + r * (d.featureScale > 1 ? 0.56 : 0.42);
+  // 単色の絵は目・口を太くするため、目と口の抜きがつながらないよう口を下げる。
+  // 閉じた目は縦に細く隙間が残りやすい一方、眠る姿勢は頭が小さく口が顎からはみ出すため、下げ幅を小さくする
+  const my = hy + r * (d.featureScale > 1 ? (eyes === "closed" ? 0.48 : 0.56) : 0.42);
   const mx = hx - r * 0.04 + n(1);
   d.feature("mouth", [[mx - 3.2, my - 0.6], [mx - 1.6, my + 1.4], [mx, my - 0.2], [mx + 1.6, my + 1.4], [mx + 3.2, my - 0.6]], 1.5);
   for (const side of [-1, 1]) {
