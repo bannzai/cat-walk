@@ -55,11 +55,11 @@ function iconSVG() {
 // アプリアイコン。iOS・watchOS は 1024 の 1 枚から OS が各サイズを作り、macOS は各サイズの PNG を置く
 const appIconDir = join(assetsDir, "AppIcon.appiconset");
 const macSizes = [16, 32, 128, 256, 512];
-const appIconImages = [
-  { filename: "AppIcon.png", idiom: "universal", platform: "ios", size: "1024x1024" },
-  { filename: "AppIcon.png", idiom: "universal", platform: "watchos", size: "1024x1024" },
-];
-png(iconSVG(), join(appIconDir, "AppIcon.png"), 1024, 1024, true);
+// iOS と watchOS で同じファイルを共有すると、macOS の actool が片方を「unassigned child」と警告するため、OS ごとにファイルを分ける
+const appIconImages = ["ios", "watchos"].map((platform) => ({ filename: `AppIcon-${platform}.png`, idiom: "universal", platform, size: "1024x1024" }));
+for (const { filename } of appIconImages) {
+  png(iconSVG(), join(appIconDir, filename), 1024, 1024, true);
+}
 for (const size of macSizes) {
   for (const scale of [1, 2]) {
     const filename = `AppIcon-mac-${size}@${scale}x.png`;
