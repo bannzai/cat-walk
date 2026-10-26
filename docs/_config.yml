@@ -2,5 +2,5 @@
 # 拡張子なし URL (/Terms-ja) と .html の両方で配信するため .nojekyll は置かない
 title: Cat Walk
 description: 猫がデスクトップの上を散歩する macOS / iOS / watchOS アプリ
-# 英語のページ (*-en.md) は各ファイルの front matter で lang: en を指定する。defaults の glob では GitHub Pages で lang が en にならなかったため
+# 英語のページ (*-en.md) は各ファイルの front matter で lang: en を指定し、_layouts/default.html が page の lang を html の lang に使う
 lang: ja
