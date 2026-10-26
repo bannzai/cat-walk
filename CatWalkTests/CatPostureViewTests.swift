@@ -28,6 +28,16 @@ struct CatPostureViewTests {
         #expect(CatWalkState().artworkName(isLifted: true, isMonochrome: true) == "cat-lifted-mono")
     }
 
+    @Test func mirrorsOnlyWhenFacingLeft() {
+        #expect(!CatWalkState(direction: .right, activity: .walking).isArtworkMirrored(isLifted: false))
+        #expect(CatWalkState(direction: .left, activity: .walking).isArtworkMirrored(isLifted: false))
+    }
+
+    @Test func doesNotMirrorSleepingSoTheZStaysReadable() {
+        #expect(!CatWalkState(direction: .left, activity: .sleeping).isArtworkMirrored(isLifted: false))
+        #expect(CatWalkState(direction: .left, activity: .sleeping).isArtworkMirrored(isLifted: true))
+    }
+
     /// テストのホストは macOS アプリのため、アプリに同梱した Asset Catalog から絵を読めることを確かめる。
     @Test func everyArtworkResolvesInAppBundle() {
         let walks = CatActivity.allCases.map { CatWalkState(activity: $0) } + [CatWalkState(activity: .walking, activityElapsed: CatPostureView.walkingStepSeconds)]

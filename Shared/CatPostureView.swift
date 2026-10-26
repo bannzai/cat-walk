@@ -19,15 +19,22 @@ struct CatPostureView: View {
     var isLifted = false
 
     var body: some View {
-        Image(walk.artworkName(isLifted: isLifted, isMonochrome: widgetRenderingMode != .fullColor))
+        // 画像の名前が VoiceOver のラベルになるのを避け、今の行動の一言を読ませる
+        Image(walk.artworkName(isLifted: isLifted, isMonochrome: widgetRenderingMode != .fullColor), label: Text(walk.activity.caption))
             .resizable()
             .scaledToFit()
             .frame(width: size, height: size)
-            .scaleEffect(x: walk.direction == .right ? 1 : -1, y: 1)
+            .scaleEffect(x: walk.isArtworkMirrored(isLifted: isLifted) ? -1 : 1, y: 1)
     }
 }
 
 extension CatWalkState {
+    /// 絵を左右反転して描くか。絵は右向きのため左向きの時に反転する。
+    /// ただし眠る絵は描き込んだ z が鏡文字になり、丸まった姿で向きも見分けにくいため反転しない。持ち上げられた絵は正面向きだが、反転しても見た目が変わらないため向きに従う。
+    func isArtworkMirrored(isLifted: Bool) -> Bool {
+        direction == .left && (isLifted || activity != .sleeping)
+    }
+
     /// 今の姿勢の絵の Asset Catalog の名前。`isMonochrome` なら白 1 色の絵 (`-mono`) にする。
     /// 持ち上げは時間で進む行動ではなく `CatWalkState` に入らないため、引数で受けて行動より優先する。
     func artworkName(isLifted: Bool, isMonochrome: Bool) -> String {
