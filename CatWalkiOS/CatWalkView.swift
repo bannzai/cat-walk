@@ -17,13 +17,15 @@ struct CatWalkView: View {
     @State private var isShowingActivityError = false
     /// Live Activity を開始できなかった時のエラーメッセージ。アラートの本文に加工せずに出す。
     @State private var activityErrorMessage = ""
-    /// 設定画面 (利用規約・プライバシーポリシー・お問い合わせ) を出しているか。
+    /// 設定画面 (猫の色・柄、利用規約・プライバシーポリシー・お問い合わせ) を出しているか。
     @State private var isShowingSettings = false
+    /// 設定で選んだ猫の色・柄。ウィジェットも読むため、App Group の保存先から読み、変えたらそこへ書く。
+    @State private var coat = UserDefaults.catWalkShared.catWalkCoat
 
     var body: some View {
         GeometryReader { proxy in
             let travel = max(proxy.size.width - Self.catSize, 0)
-            CatPostureView(walk: walk, size: Self.catSize)
+            CatPostureView(walk: walk, coat: coat, size: Self.catSize)
                 .position(x: walk.x + Self.catSize / 2, y: proxy.size.height - Self.catSize * 2)
                 .animation(.linear(duration: Self.tickSeconds), value: walk.x)
                 .task {
@@ -47,7 +49,7 @@ struct CatWalkView: View {
                 } else {
                     do {
                         // placeholder と同じく、幅が 0 の画面での 0 除算を避ける最小の幅を 1pt とする
-                        try startCatWalkActivity(walk: activityWalk(travel: travel), walkingSpeed: CatWalkState.defaultWalkingSpeed / max(travel, 1), date: .now)
+                        try startCatWalkActivity(walk: activityWalk(travel: travel), coat: coat, walkingSpeed: CatWalkState.defaultWalkingSpeed / max(travel, 1), date: .now)
                         isWalkingOut = true
                         scheduleCatWalkActivityRefresh(date: .now)
                     } catch {
@@ -77,6 +79,9 @@ struct CatWalkView: View {
         .onOpenURL { _ in
             walk = walk.petted()
         }
+        .onChange(of: coat) { _, newCoat in
+            saveSharedCatCoat(coat: newCoat)
+        }
         .onChange(of: scenePhase) { _, newScenePhase in
             if newScenePhase == .background && isWalkingOut {
                 scheduleCatWalkActivityRefresh(date: .now)
@@ -90,11 +95,12 @@ struct CatWalkView: View {
         .sheet(isPresented: $isShowingSettings) {
             NavigationStack {
                 Form {
+                    CatCoatPicker(coat: $coat)
                     CatWalkAboutSection()
                     #if DEBUG
                     Section("開発用: 猫の姿勢") {
                         // iPhone の幅に 1 行 4 匹が収まる大きさ
-                        CatPoseGalleryView(size: 64)
+                        CatPoseGalleryView(coat: coat, size: 64)
                     }
                     #endif
                 }

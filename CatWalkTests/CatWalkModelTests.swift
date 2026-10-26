@@ -6,7 +6,7 @@ import Testing
 
 struct CatWalkModelTests {
     @Test func dropPutsWalkingCatUnderReleasedPoint() {
-        let model = CatWalkModel(walk: CatWalkState(x: 10, direction: .left, activity: .sleeping), catSize: 44, walkingSpeed: 24)
+        let model = CatWalkModel(walk: CatWalkState(x: 10, direction: .left, activity: .sleeping), catSize: 44, coat: .chatora, walkingSpeed: 24)
         model.travelWidth = 500
         defer {
             model.stop()
@@ -23,7 +23,7 @@ struct CatWalkModelTests {
     }
 
     @Test func dropClampsIntoTravelWidth() {
-        let model = CatWalkModel(walk: CatWalkState(), catSize: 44, walkingSpeed: 24)
+        let model = CatWalkModel(walk: CatWalkState(), catSize: 44, coat: .chatora, walkingSpeed: 24)
         model.travelWidth = 500
         defer {
             model.stop()
@@ -36,7 +36,7 @@ struct CatWalkModelTests {
     }
 
     @Test func liftKeepsCatStillUntilDropped() {
-        let model = CatWalkModel(walk: CatWalkState(x: 10, activity: .sitting, activityRemaining: 8), catSize: 44, walkingSpeed: 24)
+        let model = CatWalkModel(walk: CatWalkState(x: 10, activity: .sitting, activityRemaining: 8), catSize: 44, coat: .chatora, walkingSpeed: 24)
         model.travelWidth = 500
         model.start()
 
@@ -49,7 +49,7 @@ struct CatWalkModelTests {
 
     @Test func dropWithoutLiftDoesNothing() {
         let walk = CatWalkState(x: 10, activity: .sitting)
-        let model = CatWalkModel(walk: walk, catSize: 44, walkingSpeed: 24)
+        let model = CatWalkModel(walk: walk, catSize: 44, coat: .chatora, walkingSpeed: 24)
         model.travelWidth = 500
 
         model.drop()
@@ -59,7 +59,7 @@ struct CatWalkModelTests {
     }
 
     @Test func narrowingTravelWidthClampsPreviousPosition() {
-        let model = CatWalkModel(walk: CatWalkState(x: 400), catSize: 44, walkingSpeed: 24)
+        let model = CatWalkModel(walk: CatWalkState(x: 400), catSize: 44, coat: .chatora, walkingSpeed: 24)
         model.travelWidth = 500
 
         model.travelWidth = 100
