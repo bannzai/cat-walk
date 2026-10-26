@@ -10,19 +10,19 @@ struct CatPoseGalleryView: View {
 
     var body: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: size + 24))], spacing: 12) {
-            ForEach([false, true], id: \.self) { isMonochrome in
-                ForEach(catPoseGallerySamples.indices, id: \.self) { index in
-                    let sample = catPoseGallerySamples[index]
-                    VStack(spacing: 4) {
-                        // 単色の絵はロック画面と同じく暗い背景に白で出す
-                        Image(sample.walk.artworkName(isLifted: sample.isLifted, isMonochrome: isMonochrome))
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: size, height: size)
-                            .background(isMonochrome ? Color.black : Color.clear)
-                        Text(sample.label)
-                            .font(.caption2)
-                    }
+            // 色と単色の 2 周を 1 つの ForEach にする。ForEach を入れ子にすると両方の id が 0〜7 で重なり、LazyVGrid が単色の周を描かないため
+            ForEach(0..<catPoseGallerySamples.count * 2, id: \.self) { index in
+                let sample = catPoseGallerySamples[index % catPoseGallerySamples.count]
+                let isMonochrome = index >= catPoseGallerySamples.count
+                VStack(spacing: 4) {
+                    // 単色の絵はロック画面と同じく暗い背景に白で出す
+                    Image(sample.walk.artworkName(isLifted: sample.isLifted, isMonochrome: isMonochrome))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: size, height: size)
+                        .background(isMonochrome ? Color.black : Color.clear)
+                    Text(sample.label)
+                        .font(.caption2)
                 }
             }
         }
