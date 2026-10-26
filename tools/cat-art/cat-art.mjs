@@ -280,6 +280,10 @@ function lifted(c, coat) {
     out.push(el("body", `<rect x="${f(hx + dx * bodyRx - legW / 2)}" y="${f(legTop)}" width="${f(legW)}" height="${f(legLen)}" rx="${f(legW / 2)}" fill="${coat.base}"/>`));
   }
   out.push(el("body", ellipse(hx, bodyCy, bodyRx, bodyRy, coat.hachiware ? coat.base : "url(#base)")));
+  if (coat.patchA) {
+    out.push(el("detail", ellipse(hx - bodyRx * 0.55, bodyCy - bodyRy * 0.2, bodyRx * 0.45, bodyRy * 0.45, coat.patchB)));
+    out.push(el("detail", ellipse(hx + bodyRx * 0.6, bodyCy + bodyRy * 0.3, bodyRx * 0.35, bodyRy * 0.35, coat.patchA)));
+  }
   out.push(el("detail", ellipse(hx, bodyCy + bodyRy * 0.12, bodyRx * 0.58, bodyRy * 0.68, coat.light)));
   if (coat.stripe) {
     for (const side of [-1, 1]) {
