@@ -21,6 +21,7 @@ permissions:
 jobs:
   generate:
     runs-on: macos-26
+    # 実測は約 1.5 分 (run 40368213949)。macOS runner の混雑と Xcode の初回ビルドの揺れを見込み、CI の build-and-test と同じ 40 分にする
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

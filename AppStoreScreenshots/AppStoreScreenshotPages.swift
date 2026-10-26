@@ -446,9 +446,11 @@ private struct MacDesktop: View {
         .frame(width: 1440, height: 900)
     }
 
+    /// 場面ごとの猫。x 座標は Dock (中央 600〜840pt 付近) とウィンドウに重ならない、空いている所に置く。
     @ViewBuilder private var catView: some View {
         switch cat {
         case .walking:
+            // Dock の左端の手前を歩いている所。足を Dock の上端に揃える
             CatPostureView(walk: CatWalkState(x: 0.4, activity: .walking), size: Self.catSize)
                 .position(x: 520, y: Self.dockTop - Self.catSize / 2)
         case .lifted:
@@ -461,8 +463,10 @@ private struct MacDesktop: View {
                     .shadow(color: .black.opacity(0.5), radius: 2)
                     .offset(x: Self.catSize * 0.45, y: Self.catSize * 0.05)
             }
+            // エディタのウィンドウと文書のウィンドウの間の空いている所で持ち上げている
             .position(x: 660, y: 470)
         case .settings:
+            // 設定ウィンドウとメニューから離した左下で座っている所
             CatPostureView(walk: CatWalkState(x: 0.2, direction: .left, activity: .sitting), size: Self.catSize)
                 .position(x: 300, y: Self.dockTop - Self.catSize / 2)
         }

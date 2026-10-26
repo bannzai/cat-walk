@@ -7,6 +7,7 @@ struct LocalizableTests {
     /// アプリが対応する言語。`translate-app.config.json` の原文と訳の言語。テストの引数は既定の MainActor の外で評価されるため nonisolated にする。
     nonisolated static let languages = ["ja", "en", "de", "es", "fr", "ko", "pt-BR", "zh-Hans", "zh-Hant"]
 
+    /// `language` の表に、原文の日本語の表のキーがすべてあることを確かめる。
     @Test(arguments: languages)
     func everyLanguageHasEveryJapaneseKey(language: String) throws {
         let japaneseKeys = Set(try localizableTable(language: "ja").keys)
@@ -16,6 +17,7 @@ struct LocalizableTests {
         #expect(japaneseKeys.subtracting(keys).isEmpty, "\(language) に無いキー: \(japaneseKeys.subtracting(keys).sorted())")
     }
 
+    /// 日本語以外の `language` の訳に、訳し忘れの平仮名・片仮名が残っていないことを確かめる。
     @Test(arguments: languages.filter { $0 != "ja" })
     func translatesAwayFromJapanese(language: String) throws {
         for (key, value) in try localizableTable(language: language) {

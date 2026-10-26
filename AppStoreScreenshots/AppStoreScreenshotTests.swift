@@ -97,6 +97,8 @@ extension AppStoreScreenshotPage {
 /// 手順は `scripts/generate_screenshots/README.md`。
 @Suite(.enabled(if: ProcessInfo.processInfo.environment["SCREENSHOTS_OUTPUT_DIR"] != nil))
 struct AppStoreScreenshotTests {
+    /// `language` の全ページを `SCREENSHOTS_OUTPUT_DIR` の下の `outputPathTemplate` に PNG で書き出し、寸法が `pixelSize` と一致することを確かめる。
+    /// 同じパスのファイルは上書きする。
     @Test(arguments: AppStoreScreenshotLanguage.all)
     func writesEveryPage(language: AppStoreScreenshotLanguage) throws {
         let outputDirectory = URL(filePath: try #require(ProcessInfo.processInfo.environment["SCREENSHOTS_OUTPUT_DIR"]))
