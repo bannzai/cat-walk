@@ -43,6 +43,7 @@ struct CatWalkSettingsView: View {
                 Text(loginItemError.localizedDescription)
                     .foregroundStyle(.red)
             }
+            CatWalkAboutSection()
         }
         .formStyle(.grouped)
         .frame(width: 420)
