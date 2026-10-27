@@ -1,0 +1,17 @@
+{
+  "format": "xcstrings",
+  "path": "Shared/Localizable.xcstrings",
+  "source_language": "ja",
+  "target_languages": ["en", "de", "es", "fr", "ko", "pt-BR", "zh-Hans", "zh-Hant"],
+  "engine": "codex",
+  "model": "gpt-5.6-luna",
+  "context": "Cat Walk は、Mac の画面の上・iPhone のウィジェットと Live Activity・Apple Watch のコンプリケーションを 1 匹の猫が歩き回る、作業の邪魔をしない癒しのアプリ。ログイン・広告・課金は無い。ボタンやラベルは短く、やわらかく親しみのある口調で訳す。猫の行動を表す一言 (おさんぽ中・ひとやすみ等) は、猫を見守る人が添える愛嬌のある短い言葉にする。アプリ名 Cat Walk は訳さない。macOS のメニュー項目・設定は各言語の macOS の慣用表現に合わせる",
+  "source_dirs": ["CatWalk", "CatWalkiOS", "CatWalkWatch", "CatWalkWidget", "CatWalkWatchWidget", "Shared"],
+  "style": {
+    "en": "UI ラベルはタイトルケースではなく文頭だけ大文字にする (macOS のメニュー項目の「設定…」は Settings… にする)",
+    "de": "案内文はやわらかい口調のアプリに合わせて du で呼びかけ、ボタンは不定詞の形にする",
+    "ko": "ボタンは簡潔な名詞形・動詞形にし、案内文は 해요체 にする",
+    "zh-Hans": "中国大陆の簡体字の慣用表現にする",
+    "zh-Hant": "台湾の繁体字の慣用表現にする"
+  }
+}

@@ -10,13 +10,13 @@ public let catWalkContactEmailAddress = "bannzai.app@gmail.com"
 public let catWalkContactURL = URL(string: "mailto:\(catWalkContactEmailAddress)")!
 
 /// 端末の言語に合う利用規約のページの URL を返す。
-/// - Parameter preferredLanguages: 端末の言語の優先順 (`Locale.preferredLanguages`)。アプリは日本語の文言しか持たないため、アプリの言語ではなく端末の言語で選ぶ
+/// - Parameter preferredLanguages: 端末の言語の優先順 (`Locale.preferredLanguages`)。紹介サイトは日本語と英語のページしか持たず、アプリの言語 (9 言語) と一致しないため、端末の言語で選ぶ
 public func catWalkTermsURL(preferredLanguages: [String]) -> URL {
     catWalkSiteURL.appending(path: "Terms-\(catWalkSitePageLanguageSuffix(preferredLanguages: preferredLanguages))")
 }
 
 /// 端末の言語に合うプライバシーポリシーのページの URL を返す。
-/// - Parameter preferredLanguages: 端末の言語の優先順 (`Locale.preferredLanguages`)。アプリは日本語の文言しか持たないため、アプリの言語ではなく端末の言語で選ぶ
+/// - Parameter preferredLanguages: 端末の言語の優先順 (`Locale.preferredLanguages`)。紹介サイトは日本語と英語のページしか持たず、アプリの言語 (9 言語) と一致しないため、端末の言語で選ぶ
 public func catWalkPrivacyPolicyURL(preferredLanguages: [String]) -> URL {
     catWalkSiteURL.appending(path: "PrivacyPolicy-\(catWalkSitePageLanguageSuffix(preferredLanguages: preferredLanguages))")
 }

@@ -58,6 +58,15 @@
 		CA7A150000000000000000B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A150000000000000000A1 /* Assets.xcassets */; };
 		CA7A150000000000000000B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA7A150000000000000000A1 /* Assets.xcassets */; };
 		CA7A150000000000000000B9 /* CatPostureViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A150000000000000000A3 /* CatPostureViewTests.swift */; };
+		CA7A180000000000000000B1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A180000000000000000A1 /* Localizable.xcstrings */; };
+		CA7A180000000000000000B2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A180000000000000000A1 /* Localizable.xcstrings */; };
+		CA7A180000000000000000B3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A180000000000000000A1 /* Localizable.xcstrings */; };
+		CA7A180000000000000000B4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A180000000000000000A1 /* Localizable.xcstrings */; };
+		CA7A180000000000000000B5 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A180000000000000000A1 /* Localizable.xcstrings */; };
+		CA7A170000000000000000B1 /* LocalizableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A170000000000000000A1 /* LocalizableTests.swift */; };
+		CA7A170000000000000000B2 /* AppStoreScreenshotPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A170000000000000000A2 /* AppStoreScreenshotPages.swift */; };
+		CA7A170000000000000000B3 /* AppStoreScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A170000000000000000A3 /* AppStoreScreenshotTests.swift */; };
+		CA7A170000000000000000B4 /* AppStoreScreenshots.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CA7A170000000000000000A4 /* AppStoreScreenshots.xcstrings */; };
 		CA7A160000000000000000B1 /* CatCoatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A1 /* CatCoatPicker.swift */; };
 		CA7A160000000000000000B2 /* CatCoatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A1 /* CatCoatPicker.swift */; };
 		CA7A160000000000000000B3 /* CatCoatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A160000000000000000A1 /* CatCoatPicker.swift */; };
@@ -155,6 +164,11 @@
 		CA7A150000000000000000A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA7A150000000000000000A2 /* CatPoseGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPoseGalleryView.swift; sourceTree = "<group>"; };
 		CA7A150000000000000000A3 /* CatPostureViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPostureViewTests.swift; sourceTree = "<group>"; };
+		CA7A180000000000000000A1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		CA7A170000000000000000A1 /* LocalizableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableTests.swift; sourceTree = "<group>"; };
+		CA7A170000000000000000A2 /* AppStoreScreenshotPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshotPages.swift; sourceTree = "<group>"; };
+		CA7A170000000000000000A3 /* AppStoreScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshotTests.swift; sourceTree = "<group>"; };
+		CA7A170000000000000000A4 /* AppStoreScreenshots.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppStoreScreenshots.xcstrings; sourceTree = "<group>"; };
 		CA7A160000000000000000A1 /* CatCoatPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCoatPicker.swift; sourceTree = "<group>"; };
 		CA7A160000000000000000A2 /* CatCoat+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CatCoat+Shared.swift"; sourceTree = "<group>"; };
 		CA7A160000000000000000A3 /* CatWalkiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CatWalkiOS.entitlements; sourceTree = "<group>"; };
@@ -260,6 +274,7 @@
 				CA7A150000000000000000A3 /* CatPostureViewTests.swift */,
 				A1B2C3D4E5F60718293A4B5C /* CatWalkModelTests.swift */,
 				8DA80CEFFD24389831E5438B /* CatWalkSmokeTests.swift */,
+				CA7A170000000000000000A1 /* LocalizableTests.swift */,
 				90FEB9565A87CDB091F1D579 /* UserDefaults+CatWalkTests.swift */,
 			);
 			path = CatWalkTests;
@@ -268,6 +283,7 @@
 		8FDD8F7BBEC74307784A0D33 = {
 			isa = PBXGroup;
 			children = (
+				CA7A170000000000000000D1 /* AppStoreScreenshots */,
 				035B387EE5E224315C6E5A2B /* CatWalk */,
 				D2D4DC5C1494846617AECCDE /* CatWalkiOS */,
 				5471F07E45EDF8166A99DCE8 /* CatWalkTests */,
@@ -312,6 +328,7 @@
 				CA7A110000000000000000A1 /* CatPostureView.swift */,
 				CA7A110000000000000000A2 /* CatWalkTimelineProvider.swift */,
 				CA7A110000000000000000A3 /* CatWalkWidgetView.swift */,
+				CA7A180000000000000000A1 /* Localizable.xcstrings */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -337,6 +354,16 @@
 				CA7A110000000000000000A7 /* Info.plist */,
 			);
 			path = CatWalkWatchWidget;
+			sourceTree = "<group>";
+		};
+		CA7A170000000000000000D1 /* AppStoreScreenshots */ = {
+			isa = PBXGroup;
+			children = (
+				CA7A170000000000000000A2 /* AppStoreScreenshotPages.swift */,
+				CA7A170000000000000000A4 /* AppStoreScreenshots.xcstrings */,
+				CA7A170000000000000000A3 /* AppStoreScreenshotTests.swift */,
+			);
+			path = AppStoreScreenshots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +397,7 @@
 			buildPhases = (
 				E8F08339E78D371998E366B7 /* Sources */,
 				45F0748C392790F99C785C8D /* Frameworks */,
+				CA7A170000000000000000F1 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -501,7 +529,15 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				de,
 				en,
+				es,
+				fr,
+				ja,
+				ko,
+				"pt-BR",
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 8FDD8F7BBEC74307784A0D33;
 			minimizedProjectReferenceProxies = 1;
@@ -528,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A150000000000000000B4 /* Assets.xcassets in Resources */,
+				CA7A180000000000000000B1 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A150000000000000000B5 /* Assets.xcassets in Resources */,
+				CA7A180000000000000000B2 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A150000000000000000B6 /* Assets.xcassets in Resources */,
+				CA7A180000000000000000B3 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +591,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A150000000000000000B7 /* Assets.xcassets in Resources */,
+				CA7A180000000000000000B4 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +600,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A150000000000000000B8 /* Assets.xcassets in Resources */,
+				CA7A180000000000000000B5 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA7A170000000000000000F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA7A170000000000000000B4 /* AppStoreScreenshots.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,10 +666,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7A170000000000000000B2 /* AppStoreScreenshotPages.swift in Sources */,
+				CA7A170000000000000000B3 /* AppStoreScreenshotTests.swift in Sources */,
 				C85B709E6270307420F83CF3 /* CatGeometryTests.swift in Sources */,
 				CA7A150000000000000000B9 /* CatPostureViewTests.swift in Sources */,
 				0F1E2D3C4B5A69788796A5B4 /* CatWalkModelTests.swift in Sources */,
 				49E6A9D38C189C324A295E48 /* CatWalkSmokeTests.swift in Sources */,
+				CA7A170000000000000000B1 /* LocalizableTests.swift in Sources */,
 				5883AC4A0B243E9D784CC4CC /* UserDefaults+CatWalkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

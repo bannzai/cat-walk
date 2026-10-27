@@ -1,0 +1,276 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "header.subtitle" : {
+      "comment" : "製品ページのヘッダーの補足。対応する端末",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac, iPhone, and Apple Watch"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac・iPhone・Apple Watch"
+          }
+        }
+      }
+    },
+    "header.title" : {
+      "comment" : "製品ページのヘッダーの見出し。紹介サイトの見出しと同じ",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A cat walks on your screen"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "作業中の画面に猫がいる"
+          }
+        }
+      }
+    },
+    "iphone.home.subtitle" : {
+      "comment" : "iPhone 2 枚目の補足",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Its pose and spot change over time"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時間ごとに姿勢と場所が変わる"
+          }
+        }
+      }
+    },
+    "iphone.home.title" : {
+      "comment" : "iPhone 2 枚目の見出し。ホーム画面のウィジェットの猫",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your cat hangs out\non your Home Screen"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ホーム画面でも\n猫がくつろぐ"
+          }
+        }
+      }
+    },
+    "iphone.lock.date" : {
+      "comment" : "iPhone 1 枚目のロック画面の日付",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monday, October 26"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10月26日 月曜日"
+          }
+        }
+      }
+    },
+    "iphone.lock.subtitle" : {
+      "comment" : "iPhone 1 枚目の補足",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live Activities and Dynamic Island"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live Activity と Dynamic Island に対応"
+          }
+        }
+      }
+    },
+    "iphone.lock.title" : {
+      "comment" : "iPhone 1 枚目の見出し。散歩に出した猫がロック画面の Live Activity を歩く",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your cat walks\non the Lock Screen"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "散歩に出すと\nロック画面を猫が歩く"
+          }
+        }
+      }
+    },
+    "iphone.pet.subtitle" : {
+      "comment" : "iPhone 3 枚目の補足",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No sign-in and no ads"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログインも広告もなし"
+          }
+        }
+      }
+    },
+    "iphone.pet.title" : {
+      "comment" : "iPhone 3 枚目の見出し。アプリの画面で撫でると猫が喜ぶ",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to pet\nand make its day"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タップで撫でると\nうれしそうにする"
+          }
+        }
+      }
+    },
+    "mac.desktop.subtitle" : {
+      "comment" : "Mac 1 枚目の補足。猫のいない所はクリックがウィンドウを通り抜ける",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clicks pass right through to your work"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "クリックの邪魔をしない透明なウィンドウ"
+          }
+        }
+      }
+    },
+    "mac.desktop.title" : {
+      "comment" : "Mac 1 枚目の見出し。作業中のデスクトップの下端を猫が歩く",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A cat strolls across your screen"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "作業中の画面を猫が散歩する"
+          }
+        }
+      }
+    },
+    "mac.lift.subtitle" : {
+      "comment" : "Mac 2 枚目の補足",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drag your cat to move it"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドラッグで猫を持ち上げられる"
+          }
+        }
+      }
+    },
+    "mac.lift.title" : {
+      "comment" : "Mac 2 枚目の見出し。ドラッグで猫を持ち上げる",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick it up and set it down anywhere"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "つまんで好きな場所へ"
+          }
+        }
+      }
+    },
+    "mac.settings.subtitle" : {
+      "comment" : "Mac 3 枚目の補足",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show or hide it anytime from the menu bar"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メニューバーからいつでも出したり隠したり"
+          }
+        }
+      }
+    },
+    "mac.settings.title" : {
+      "comment" : "Mac 3 枚目の見出し。設定ウィンドウとメニューバー",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick its size and pace"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大きさも速さも好みに合わせて"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

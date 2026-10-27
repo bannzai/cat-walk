@@ -24,6 +24,8 @@ jobs:
       - run: xcodebuild -version
       # iOS 27 の SDK にしか無い API は `#if compiler(>=6.4)` で分けているため、どちらの分岐でビルドしたかを残す
       - run: xcrun swift --version
+      - name: Check store metadata length
+        run: scripts/metadata_check/check_metadata.sh
       - name: Build macOS
         run: |
           set -o pipefail
