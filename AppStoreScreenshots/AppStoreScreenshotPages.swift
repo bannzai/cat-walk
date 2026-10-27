@@ -627,7 +627,7 @@ private struct MacDocumentContent: View {
     }
 }
 
-/// 設定ウィンドウ。`CatWalkSettingsView` の項目 (表示・大きさ・歩く速さ・ログイン時に起動) と選択肢を、同じ順に並べる。
+/// 設定ウィンドウ。`CatWalkSettingsView` の項目 (表示・大きさ・歩く速さ・色と柄・ログイン時に起動) と選択肢を、同じ順に並べる。
 /// ImageRenderer は macOS の Toggle・Picker を描けないため、同じ見た目を図形で描く。
 private struct MacSettingsWindow: View {
     /// 文言を引く言語。
@@ -652,6 +652,9 @@ private struct MacSettingsWindow: View {
                 }
                 MacSettingsRow(title: language.app(key: "歩く速さ")) {
                     MacSegmentedControl(titles: ["のんびり", "ふつう", "はやい"].map { language.app(key: $0) }, selectedIndex: 0)
+                }
+                MacSettingsRow(title: language.app(key: "猫の色・柄")) {
+                    MacPopUpButton(title: language.app(key: "茶トラ"))
                 }
                 MacSettingsRow(title: language.app(key: "ログイン時に起動する")) {
                     MacSwitch(isOn: true)
@@ -709,6 +712,29 @@ private struct MacSwitch: View {
                     .frame(width: 18, height: 18)
                     .padding(2)
             }
+    }
+}
+
+/// macOS のポップアップボタンの見た目。`CatCoatPicker` は macOS の Form で既定のメニュー形式の Picker になるため、選んでいる柄の名前と上下の矢印で描く。
+private struct MacPopUpButton: View {
+    /// 選んでいる項目の文言。
+    let title: String
+
+    var body: some View {
+        HStack(spacing: 6) {
+            Text(title)
+                .font(.system(size: 13))
+                .foregroundStyle(.white)
+            Image(systemName: "chevron.up.chevron.down")
+                .font(.system(size: 9, weight: .bold))
+                .foregroundStyle(.white.opacity(0.8))
+        }
+        .padding(.horizontal, 10)
+        .frame(height: 24)
+        .background(
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                .fill(Color(white: 0.32))
+        )
     }
 }
 
