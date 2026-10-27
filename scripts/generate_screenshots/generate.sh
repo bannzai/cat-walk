@@ -63,7 +63,12 @@ for locale in "${LOCALES[@]}"; do
   for expected in "${EXPECTED[@]}"; do
     IFS=: read -r kind count width height <<<"$expected"
     dir="$output_dir/$kind/$locale"
-    actual_count=$(find "$dir" -maxdepth 1 -name '*.png' -type f 2>/dev/null | wc -l | tr -d ' ')
+    if [[ ! -d "$dir" ]]; then
+      echo "NG: $kind/$locale のディレクトリが無い (テストが書き出していない)" >&2
+      failures=$((failures + 1))
+      continue
+    fi
+    actual_count=$(find "$dir" -maxdepth 1 -name '*.png' -type f | wc -l | tr -d ' ')
     if [[ "$actual_count" -ne "$count" ]]; then
       echo "NG: $kind/$locale の PNG が $actual_count 枚 (期待は $count 枚)" >&2
       failures=$((failures + 1))
