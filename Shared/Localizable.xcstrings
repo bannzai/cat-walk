@@ -1504,7 +1504,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Petit"
+            "value" : "Petite"
           }
         },
         "ja" : {
@@ -1516,7 +1516,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "작게"
+            "value" : "소"
           }
         },
         "pt-BR" : {
