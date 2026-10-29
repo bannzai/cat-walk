@@ -8,5 +8,7 @@ struct CatWalkWidgetBundle: WidgetBundle {
         CatWalkWidget()
         CatWalkLiveActivity()
         CatWalkFrameAnimationWidget()
+        CatWalkClockHandWidget()
+        CatWalkClockHandRotationCheckWidget()
     }
 }
