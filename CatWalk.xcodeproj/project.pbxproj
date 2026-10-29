@@ -51,6 +51,9 @@
 		CA7A140000000000000000B1 /* CatWalkRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A140000000000000000A1 /* CatWalkRoomView.swift */; };
 		CA7A190000000000000000B1 /* CatWalkFrameAnimationWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A190000000000000000A1 /* CatWalkFrameAnimationWidget.swift */; };
 		CA7A190000000000000000B2 /* CatWalkFrames-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA7A190000000000000000A2 /* CatWalkFrames-Regular.ttf */; };
+		CA7A1A0000000000000000B1 /* CatWalkClockHandWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A1A0000000000000000A1 /* CatWalkClockHandWidget.swift */; };
+		CA7A1A0000000000000000B2 /* ClockHandRotationKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA7A1A0000000000000000C1 /* ClockHandRotationKit */; };
+		CA7A1A0000000000000000B3 /* ClockHandRotationKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA7A1A0000000000000000C2 /* ClockHandRotationKit */; };
 		CA7A150000000000000000B1 /* CatPostureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A110000000000000000A1 /* CatPostureView.swift */; };
 		CA7A150000000000000000B2 /* CatPoseGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A150000000000000000A2 /* CatPoseGalleryView.swift */; };
 		CA7A150000000000000000B3 /* CatPoseGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A150000000000000000A2 /* CatPoseGalleryView.swift */; };
@@ -165,6 +168,7 @@
 		CA7A140000000000000000A1 /* CatWalkRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkRoomView.swift; sourceTree = "<group>"; };
 		CA7A190000000000000000A1 /* CatWalkFrameAnimationWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkFrameAnimationWidget.swift; sourceTree = "<group>"; };
 		CA7A190000000000000000A2 /* CatWalkFrames-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CatWalkFrames-Regular.ttf"; sourceTree = "<group>"; };
+		CA7A1A0000000000000000A1 /* CatWalkClockHandWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkClockHandWidget.swift; sourceTree = "<group>"; };
 		CA7A150000000000000000A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA7A150000000000000000A2 /* CatPoseGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPoseGalleryView.swift; sourceTree = "<group>"; };
 		CA7A150000000000000000A3 /* CatPostureViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPostureViewTests.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0D0B2D6BB7798FD8D20B2E7 /* CatWalkCore in Frameworks */,
+				CA7A1A0000000000000000B3 /* ClockHandRotationKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A110000000000000000BB /* CatWalkCore in Frameworks */,
+				CA7A1A0000000000000000B2 /* ClockHandRotationKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +346,7 @@
 		CA7A110000000000000000D2 /* CatWalkWidget */ = {
 			isa = PBXGroup;
 			children = (
+				CA7A1A0000000000000000A1 /* CatWalkClockHandWidget.swift */,
 				CA7A190000000000000000A1 /* CatWalkFrameAnimationWidget.swift */,
 				CA7A190000000000000000A2 /* CatWalkFrames-Regular.ttf */,
 				CA7A120000000000000000A5 /* CatWalkLiveActivity.swift */,
@@ -392,6 +399,7 @@
 			name = CatWalkiOS;
 			packageProductDependencies = (
 				B50E248FF3D37BBF2E63A5A8 /* CatWalkCore */,
+				CA7A1A0000000000000000C2 /* ClockHandRotationKit */,
 			);
 			productName = CatWalkiOS;
 			productReference = 7F0D49065C63E6E2A7A4B081 /* CatWalkiOS.app */;
@@ -475,6 +483,7 @@
 			name = CatWalkWidget;
 			packageProductDependencies = (
 				CA7A110000000000000000C1 /* CatWalkCore */,
+				CA7A1A0000000000000000C1 /* ClockHandRotationKit */,
 			);
 			productName = CatWalkWidget;
 			productReference = CA7A110000000000000000A8 /* CatWalkWidget.appex */;
@@ -549,6 +558,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				93E6027DB0AE639B216029A1 /* XCLocalSwiftPackageReference "CatWalkCore" */,
+				CA7A1A0000000000000000D1 /* XCRemoteSwiftPackageReference "ClockHandRotationKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
@@ -690,6 +700,7 @@
 			files = (
 				CA7A110000000000000000B2 /* CatPostureView.swift in Sources */,
 				CA7A120000000000000000B2 /* CatWalkActivityAttributes.swift in Sources */,
+				CA7A1A0000000000000000B1 /* CatWalkClockHandWidget.swift in Sources */,
 				CA7A190000000000000000B1 /* CatWalkFrameAnimationWidget.swift in Sources */,
 				CA7A120000000000000000B5 /* CatWalkLiveActivity.swift in Sources */,
 				CA7A140000000000000000B1 /* CatWalkRoomView.swift in Sources */,
@@ -1169,6 +1180,17 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		CA7A1A0000000000000000D1 /* XCRemoteSwiftPackageReference "ClockHandRotationKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/octree/ClockHandRotationKit";
+			requirement = {
+				kind = exactVersion;
+				version = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		26E5DC07BEB47E7497B13848 /* CatWalkCore */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1193,6 +1215,16 @@
 		CA7A110000000000000000C2 /* CatWalkCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CatWalkCore;
+		};
+		CA7A1A0000000000000000C1 /* ClockHandRotationKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA7A1A0000000000000000D1 /* XCRemoteSwiftPackageReference "ClockHandRotationKit" */;
+			productName = ClockHandRotationKit;
+		};
+		CA7A1A0000000000000000C2 /* ClockHandRotationKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA7A1A0000000000000000D1 /* XCRemoteSwiftPackageReference "ClockHandRotationKit" */;
+			productName = ClockHandRotationKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
