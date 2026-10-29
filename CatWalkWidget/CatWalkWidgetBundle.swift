@@ -7,5 +7,6 @@ struct CatWalkWidgetBundle: WidgetBundle {
     var body: some Widget {
         CatWalkWidget()
         CatWalkLiveActivity()
+        CatWalkFrameAnimationWidget()
     }
 }
