@@ -107,7 +107,8 @@ private struct CatWalkClockHandView: View {
 }
 
 /// 枠の中心を中心にした、`startAngle` から `endAngle` (度) までの半径 `radius` の円弧。回転させた時に枠の上へ来た 1 区間のコマだけを見せる切り抜きに使う。
-private struct CatWalkClockHandArc: Shape {
+/// `Shape` の `path(in:)` は SwiftUI がメインスレッド以外から呼ぶため nonisolated にする。
+nonisolated private struct CatWalkClockHandArc: Shape {
     /// 円弧の始まりの角度 (度)。
     let startAngle: Double
     /// 円弧の終わりの角度 (度)。

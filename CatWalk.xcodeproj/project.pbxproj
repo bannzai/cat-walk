@@ -53,6 +53,7 @@
 		CA7A190000000000000000B2 /* CatWalkFrames-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA7A190000000000000000A2 /* CatWalkFrames-Regular.ttf */; };
 		CA7A1A0000000000000000B1 /* CatWalkClockHandWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A1A0000000000000000A1 /* CatWalkClockHandWidget.swift */; };
 		CA7A1A0000000000000000B2 /* ClockHandRotationKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA7A1A0000000000000000C1 /* ClockHandRotationKit */; };
+		CA7A1A0000000000000000B3 /* ClockHandRotationKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA7A1A0000000000000000C2 /* ClockHandRotationKit */; };
 		CA7A150000000000000000B1 /* CatPostureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A110000000000000000A1 /* CatPostureView.swift */; };
 		CA7A150000000000000000B2 /* CatPoseGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A150000000000000000A2 /* CatPoseGalleryView.swift */; };
 		CA7A150000000000000000B3 /* CatPoseGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A150000000000000000A2 /* CatPoseGalleryView.swift */; };
@@ -214,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0D0B2D6BB7798FD8D20B2E7 /* CatWalkCore in Frameworks */,
+				CA7A1A0000000000000000B3 /* ClockHandRotationKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +399,7 @@
 			name = CatWalkiOS;
 			packageProductDependencies = (
 				B50E248FF3D37BBF2E63A5A8 /* CatWalkCore */,
+				CA7A1A0000000000000000C2 /* ClockHandRotationKit */,
 			);
 			productName = CatWalkiOS;
 			productReference = 7F0D49065C63E6E2A7A4B081 /* CatWalkiOS.app */;
@@ -1214,6 +1217,11 @@
 			productName = CatWalkCore;
 		};
 		CA7A1A0000000000000000C1 /* ClockHandRotationKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA7A1A0000000000000000D1 /* XCRemoteSwiftPackageReference "ClockHandRotationKit" */;
+			productName = ClockHandRotationKit;
+		};
+		CA7A1A0000000000000000C2 /* ClockHandRotationKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CA7A1A0000000000000000D1 /* XCRemoteSwiftPackageReference "ClockHandRotationKit" */;
 			productName = ClockHandRotationKit;
