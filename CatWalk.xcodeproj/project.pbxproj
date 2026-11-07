@@ -49,6 +49,8 @@
 		CA7A130000000000000000B2 /* CatWalkAboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A1 /* CatWalkAboutSection.swift */; };
 		CA7A130000000000000000B3 /* CatWalkAboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A130000000000000000A1 /* CatWalkAboutSection.swift */; };
 		CA7A140000000000000000B1 /* CatWalkRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A140000000000000000A1 /* CatWalkRoomView.swift */; };
+		CA7A190000000000000000B1 /* CatWalkFrameAnimationWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A190000000000000000A1 /* CatWalkFrameAnimationWidget.swift */; };
+		CA7A190000000000000000B2 /* CatWalkFrames-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA7A190000000000000000A2 /* CatWalkFrames-Regular.ttf */; };
 		CA7A150000000000000000B1 /* CatPostureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A110000000000000000A1 /* CatPostureView.swift */; };
 		CA7A150000000000000000B2 /* CatPoseGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A150000000000000000A2 /* CatPoseGalleryView.swift */; };
 		CA7A150000000000000000B3 /* CatPoseGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A150000000000000000A2 /* CatPoseGalleryView.swift */; };
@@ -161,6 +163,8 @@
 		CA7A120000000000000000A5 /* CatWalkLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkLiveActivity.swift; sourceTree = "<group>"; };
 		CA7A130000000000000000A1 /* CatWalkAboutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkAboutSection.swift; sourceTree = "<group>"; };
 		CA7A140000000000000000A1 /* CatWalkRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkRoomView.swift; sourceTree = "<group>"; };
+		CA7A190000000000000000A1 /* CatWalkFrameAnimationWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatWalkFrameAnimationWidget.swift; sourceTree = "<group>"; };
+		CA7A190000000000000000A2 /* CatWalkFrames-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CatWalkFrames-Regular.ttf"; sourceTree = "<group>"; };
 		CA7A150000000000000000A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA7A150000000000000000A2 /* CatPoseGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPoseGalleryView.swift; sourceTree = "<group>"; };
 		CA7A150000000000000000A3 /* CatPostureViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPostureViewTests.swift; sourceTree = "<group>"; };
@@ -336,6 +340,8 @@
 		CA7A110000000000000000D2 /* CatWalkWidget */ = {
 			isa = PBXGroup;
 			children = (
+				CA7A190000000000000000A1 /* CatWalkFrameAnimationWidget.swift */,
+				CA7A190000000000000000A2 /* CatWalkFrames-Regular.ttf */,
 				CA7A120000000000000000A5 /* CatWalkLiveActivity.swift */,
 				CA7A140000000000000000A1 /* CatWalkRoomView.swift */,
 				CA7A110000000000000000A4 /* CatWalkWidget.swift */,
@@ -591,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A150000000000000000B7 /* Assets.xcassets in Resources */,
+				CA7A190000000000000000B2 /* CatWalkFrames-Regular.ttf in Resources */,
 				CA7A180000000000000000B4 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,6 +690,7 @@
 			files = (
 				CA7A110000000000000000B2 /* CatPostureView.swift in Sources */,
 				CA7A120000000000000000B2 /* CatWalkActivityAttributes.swift in Sources */,
+				CA7A190000000000000000B1 /* CatWalkFrameAnimationWidget.swift in Sources */,
 				CA7A120000000000000000B5 /* CatWalkLiveActivity.swift in Sources */,
 				CA7A140000000000000000B1 /* CatWalkRoomView.swift in Sources */,
 				CA7A110000000000000000B5 /* CatWalkTimelineProvider.swift in Sources */,
